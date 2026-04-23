@@ -337,7 +337,6 @@ public partial class PlayerEditor : Window
         _wurmPathsList.AddItem(normalizedPath);
         Players.WurmPaths.Add(normalizedPath);
         Terminal.Write($"Path added: {normalizedPath}");
-        Players.Save();
         RefreshPlayerList();
     }
 
@@ -370,6 +369,7 @@ public partial class PlayerEditor : Window
         }
         
         Terminal.Write($"Detected {_playerList.ItemCount} players.");
+        Players.Save();
     }
 
     private string ToCamelCase(string text)
@@ -410,7 +410,6 @@ public partial class PlayerEditor : Window
             Players.WurmPaths.Remove(pathToRemove);
             
             _rightClickedIndex = -1;
-            Players.Save();
             RefreshPlayerList();
         }
     }

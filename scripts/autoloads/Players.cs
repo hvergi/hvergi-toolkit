@@ -92,7 +92,7 @@ public static class Players
         return false;
     }
 
-    private class SaveData
+    public class SaveData
     {
         public List<string> WurmPaths { get; set; }
         public List<Player> Players { get; set; }
