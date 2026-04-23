@@ -23,7 +23,6 @@ The application uses a modular architecture where the main toolkit manages a set
 | App Name | Description |
 | :--- | :--- |
 | **Player Editor** | Manages Wurm Online installation paths and player data. Includes auto-discovery for standalone and Steam versions. |
-| **Grinder** | A skill gain simulator that helps players optimize their "skill ticks" by calculating success rates and quality outcomes. |
 | **Moi Tracker** | (Base implemented) Tracks Meditating/Moi progress. |
 | **Skill Tracker** | (Base implemented) Monitors skill gain logs. |
 | **Affinity Food Planner** | (Base implemented) Plans food for affinity gains. |

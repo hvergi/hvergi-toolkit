@@ -9,6 +9,7 @@ public partial class PlayerEditor : Window
     private ItemList _wurmPathsList;
     private ItemList _playerList;
     private PopupMenu _pathContextMenu;
+    private FileDialog _folderDialog;
     private int _rightClickedIndex = -1;
 
     public override void _Ready()
@@ -17,6 +18,7 @@ public partial class PlayerEditor : Window
         _wurmPathsList = GetNode<ItemList>("%WurmPathsList");
         _playerList = GetNode<ItemList>("%PlayerList");
         _pathContextMenu = GetNode<PopupMenu>("%PathContextMenu");
+        _folderDialog = GetNode<FileDialog>("%FolderDialog");
 
         var autoFindWurmButton = GetNode<Button>("%AutoFindWurmButton");
         var autoFindSteamButton = GetNode<Button>("%AutoFindSteamButton");
@@ -30,6 +32,9 @@ public partial class PlayerEditor : Window
         // Connect ItemList signals
         _wurmPathsList.ItemClicked += OnWurmPathItemClicked;
         _pathContextMenu.IdPressed += OnPathContextIdPressed;
+
+        // Connect FileDialog signals
+        _folderDialog.DirSelected += OnFolderSelected;
 
         // Window management
         this.CloseRequested += OnCloseRequested;
@@ -286,8 +291,12 @@ public partial class PlayerEditor : Window
 
     private void OnManualAddPressed()
     {
-        Terminal.Write("Manual Add pressed");
-        // Implementation for manual path addition
+        _folderDialog.PopupCentered();
+    }
+
+    private void OnFolderSelected(string dir)
+    {
+        AddWurmPath(dir);
     }
 
     public void AddWurmPath(string path)
