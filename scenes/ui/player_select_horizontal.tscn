@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dp6m0j4w8n3u1"]
+
+[ext_resource type="Script" uid="uid://bguk6yxq52i41" path="res://scenes/ui/PlayerSelectHorizontal.cs" id="1_script"]
+
+[node name="PlayerSelectHorizontal" type="HBoxContainer" unique_id=1986874551]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+script = ExtResource("1_script")
+
+[node name="Label" type="Label" parent="." unique_id=2021146649]
+layout_mode = 2
+text = "Player:"
+
+[node name="OptionButton" type="OptionButton" parent="." unique_id=767677387]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ShowHiddenCheck" type="CheckBox" parent="." unique_id=2062316454]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Show Hidden"
