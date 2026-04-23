@@ -1,0 +1,35 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Hvergi Toolkit"
+run/main_scene="uid://pd2xx5lapec4"
+config/use_custom_user_dir=true
+config/features=PackedStringArray("4.6", "C#", "Forward Plus")
+run/low_processor_mode=true
+config/icon="res://icon.svg"
+
+[display]
+
+window/energy_saving/keep_screen_on=false
+window/subwindows/embed_subwindows=false
+
+[dotnet]
+
+project/assembly_name="Hvergi Toolkit"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"

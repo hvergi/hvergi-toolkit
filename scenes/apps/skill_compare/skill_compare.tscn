@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cr4lvkktllics"]
+
+[ext_resource type="Script" uid="uid://cbk71yisgcfi3" path="res://scenes/apps/skill_compare/SkillCompare.cs" id="1_script"]
+
+[node name="SkillCompare" type="Window" unique_id=298878252]
+oversampling_override = 1.0
+title = "Skill Compare"
+initial_position = 4
+size = Vector2i(1152, 648)
+script = ExtResource("1_script")

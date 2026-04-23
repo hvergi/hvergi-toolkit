@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://qhwl7wwqy5eo"]
+
+[ext_resource type="Script" uid="uid://dko42h2vd5tko" path="res://scenes/apps/sermon_warden/SermonWarden.cs" id="1_script"]
+
+[node name="SermonWarden" type="Window" unique_id=195599277]
+oversampling_override = 1.0
+title = "Sermon Warden"
+initial_position = 4
+size = Vector2i(1152, 648)
+script = ExtResource("1_script")

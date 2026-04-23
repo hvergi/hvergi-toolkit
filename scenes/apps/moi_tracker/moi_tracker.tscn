@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://nviixs6ypmuu"]
+
+[ext_resource type="Script" uid="uid://nxn0b8fsuhls" path="res://scenes/apps/moi_tracker/MoiTracker.cs" id="1_script"]
+
+[node name="MoiTracker" type="Window" unique_id=1601958756]
+oversampling_override = 1.0
+title = "Moi Tracker"
+initial_position = 4
+size = Vector2i(1152, 648)
+script = ExtResource("1_script")

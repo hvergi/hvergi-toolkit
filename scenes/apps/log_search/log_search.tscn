@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cxkvbgcbdfqgx"]
+
+[ext_resource type="Script" uid="uid://b74mkk2kfgovr" path="res://scenes/apps/log_search/LogSearch.cs" id="1_script"]
+
+[node name="LogSearch" type="Window" unique_id=1708122677]
+oversampling_override = 1.0
+title = "Log Search"
+initial_position = 4
+size = Vector2i(1152, 648)
+script = ExtResource("1_script")

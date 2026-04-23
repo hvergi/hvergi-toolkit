@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dhp7yffitjfeb"]
+
+[ext_resource type="Script" uid="uid://who3iyf6di4q" path="res://scenes/apps/stp_calculator/STPCalculator.cs" id="1_script"]
+
+[node name="STPCalculator" type="Window" unique_id=272963523]
+oversampling_override = 1.0
+title = "STP Calculator"
+initial_position = 4
+size = Vector2i(1152, 648)
+script = ExtResource("1_script")

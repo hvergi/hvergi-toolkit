@@ -1,0 +1,217 @@
+[gd_scene format=3 uid="uid://pd2xx5lapec4"]
+
+[ext_resource type="Script" uid="uid://3rbt873eh0b8" path="res://scenes/hvergi_toolkit/HvergiToolkit.cs" id="1_uexwx"]
+
+[node name="HvergiToolkit" type="Control" unique_id=1602896807 node_paths=PackedStringArray("terminalOutput", "contentTabContainer", "newsButton", "appsButton", "settingsButton", "playerEditorButton", "moiTrackerButton", "skillTrackerButton", "tradeWatcherButton", "stpCalcButton", "skillCompareButton", "sermonButton", "logAlertButton", "logSearchButton", "affinityFoodPlannerButton", "dyeEstimatorButton", "settlementPlannerButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uexwx")
+terminalOutput = NodePath("Layout/Terminal/TerminalLog")
+contentTabContainer = NodePath("Layout/HBoxContainer/SectionTab")
+newsButton = NodePath("Layout/HBoxContainer/NavIcons/NewsButton")
+appsButton = NodePath("Layout/HBoxContainer/NavIcons/AppsButton")
+settingsButton = NodePath("Layout/HBoxContainer/NavIcons/SettingsButton")
+playerEditorButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/PlayerEditorButton")
+moiTrackerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/MoiTrackerButton")
+skillTrackerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SkillTrackerButton")
+tradeWatcherButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/TradeWatcherButton")
+stpCalcButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/STPCalcButton")
+skillCompareButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SkillCompareButton")
+sermonButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SermonButton")
+logAlertButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/LogAlertButton")
+logSearchButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/LogSearchButton")
+affinityFoodPlannerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/AffintyFoodPlannerButton")
+dyeEstimatorButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/DyeEstimatorButton")
+settlementPlannerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SettlementPlannerButton")
+
+[node name="Panel" type="Panel" parent="." unique_id=1824719474]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Layout" type="VBoxContainer" parent="." unique_id=2035933914]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="HBoxContainer" parent="Layout" unique_id=1056479420]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="Layout/TopBar" unique_id=1091780233]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="Title" type="Label" parent="Layout/TopBar/MarginContainer" unique_id=459968443]
+layout_mode = 2
+text = "Hvergi Toolkit"
+
+[node name="Spacer" type="Control" parent="Layout/TopBar" unique_id=1402091906]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpdateButton" type="Button" parent="Layout/TopBar" unique_id=2055742349]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Update"
+
+[node name="EndMargin" type="Control" parent="Layout/TopBar" unique_id=1621217307]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Layout" unique_id=1084317602]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NavIcons" type="VBoxContainer" parent="Layout/HBoxContainer" unique_id=108099786]
+layout_mode = 2
+
+[node name="NewsButton" type="Button" parent="Layout/HBoxContainer/NavIcons" unique_id=320236079]
+layout_mode = 2
+size_flags_vertical = 3
+text = "News"
+
+[node name="AppsButton" type="Button" parent="Layout/HBoxContainer/NavIcons" unique_id=701573834]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Apps"
+
+[node name="SettingsButton" type="Button" parent="Layout/HBoxContainer/NavIcons" unique_id=989672632]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Settings"
+
+[node name="SectionTab" type="TabContainer" parent="Layout/HBoxContainer" unique_id=1585863744]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 1
+tabs_visible = false
+
+[node name="NewsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=582676789]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Layout/HBoxContainer/SectionTab/NewsContainer" unique_id=761584771]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[font_size=30]Beta 1[/font_size]
+* Added Main UI"
+
+[node name="AppsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=1943042757]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="GridContainer" type="GridContainer" parent="Layout/HBoxContainer/SectionTab/AppsContainer" unique_id=232175105]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 4
+
+[node name="PlayerEditorButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1423878364]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Player Editor"
+
+[node name="MoiTrackerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1542206932]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Moi Tracker"
+
+[node name="SkillTrackerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=2012942201]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Skill Tracker"
+
+[node name="TradeWatcherButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1299991211]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Trade Watcher"
+
+[node name="STPCalcButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=506206683]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "STP Calculator"
+
+[node name="SkillCompareButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=88345195]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Skill Compare"
+
+[node name="SermonButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1262834605]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Sermon Warden"
+
+[node name="LogAlertButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1655472775]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Log Alert"
+
+[node name="LogSearchButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=609761138]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Log Search"
+
+[node name="AffintyFoodPlannerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=696753583]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Affinty Food Planner"
+
+[node name="DyeEstimatorButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1385247213]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Dye Estimator"
+
+[node name="SettlementPlannerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=481683656]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "SettlementPlanner"
+
+[node name="SettingsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=1861348102]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Terminal" type="Panel" parent="Layout" unique_id=1039621438]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="TerminalLog" type="RichTextLabel" parent="Layout/Terminal" unique_id=1093261778]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = -15.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://tfdn7chevj5"]
+
+[ext_resource type="Script" uid="uid://bkkgrvpmmr28v" path="res://scenes/apps/dye_estimator/DyeEstimator.cs" id="1_script"]
+
+[node name="DyeEstimator" type="Window" unique_id=848081874]
+oversampling_override = 1.0
+title = "Dye Estimator"
+initial_position = 4
+size = Vector2i(1152, 648)
+script = ExtResource("1_script")

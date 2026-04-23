@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://6asf4qnb02rg"]
+
+[ext_resource type="Script" uid="uid://cy2j2qhip7oli" path="res://scenes/apps/log_alert/LogAlert.cs" id="1_script"]
+
+[node name="LogAlert" type="Window" unique_id=1523459657]
+oversampling_override = 1.0
+title = "Log Alert"
+initial_position = 4
+size = Vector2i(1152, 648)
+script = ExtResource("1_script")

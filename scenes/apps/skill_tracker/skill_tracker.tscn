@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://rq4xlan056j0"]
+
+[ext_resource type="Script" uid="uid://brno3q3r6axt" path="res://scenes/apps/skill_tracker/SkillTracker.cs" id="1_script"]
+
+[node name="SkillTracker" type="Window" unique_id=238528204]
+oversampling_override = 1.0
+title = "Skill Tracker"
+initial_position = 4
+size = Vector2i(1152, 648)
+script = ExtResource("1_script")

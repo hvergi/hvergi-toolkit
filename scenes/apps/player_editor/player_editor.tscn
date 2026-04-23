@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://yrandct5se3l"]
+
+[ext_resource type="Script" uid="uid://t3p0i0kettvv" path="res://scenes/apps/player_editor/PlayerEditor.cs" id="1_5nnfm"]
+
+[node name="PlayerEditor" type="Window" unique_id=536692622]
+oversampling_override = 1.0
+title = "Player Editor"
+initial_position = 4
+size = Vector2i(1152, 648)
+script = ExtResource("1_5nnfm")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1615095943]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MainLayout" type="VBoxContainer" parent="MarginContainer" unique_id=1602880143]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="DirectorySection" type="VBoxContainer" parent="MarginContainer/MainLayout" unique_id=1115041291]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="WurmPathsLabel" type="Label" parent="MarginContainer/MainLayout/DirectorySection" unique_id=500038293]
+layout_mode = 2
+text = "Wurm Paths"
+
+[node name="WurmPathsList" type="ItemList" parent="MarginContainer/MainLayout/DirectorySection" unique_id=690074633]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PathButtons" type="HBoxContainer" parent="MarginContainer/MainLayout/DirectorySection" unique_id=1355830159]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AutoFindWurmButton" type="Button" parent="MarginContainer/MainLayout/DirectorySection/PathButtons" unique_id=1604082640]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Auto-Find Wurm"
+
+[node name="AutoFindSteamButton" type="Button" parent="MarginContainer/MainLayout/DirectorySection/PathButtons" unique_id=2117927339]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Auto-Find Steam"
+
+[node name="ManualAddButton" type="Button" parent="MarginContainer/MainLayout/DirectorySection/PathButtons" unique_id=929437297]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Manual Add"
+
+[node name="PlayerSection" type="HSplitContainer" parent="MarginContainer/MainLayout" unique_id=584826735]
+layout_mode = 2
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(300)
+split_offset = 300
+
+[node name="PlayerListContainer" type="VBoxContainer" parent="MarginContainer/MainLayout/PlayerSection" unique_id=1780435141]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="DetectedPlayersLabel" type="Label" parent="MarginContainer/MainLayout/PlayerSection/PlayerListContainer" unique_id=608362290]
+layout_mode = 2
+text = "Detected Players"
+
+[node name="PlayerList" type="ItemList" parent="MarginContainer/MainLayout/PlayerSection/PlayerListContainer" unique_id=234821242]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EditorWorkspace" type="PanelContainer" parent="MarginContainer/MainLayout/PlayerSection" unique_id=974803653]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace" unique_id=533046519]
+layout_mode = 2
+
+[node name="WorkspaceLabel" type="Label" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer" unique_id=1137417375]
+layout_mode = 2
+text = "Editor Workspace"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer" unique_id=639267437]
+layout_mode = 2
+
+[node name="PathContextMenu" type="PopupMenu" parent="." unique_id=325389878]
+unique_name_in_owner = true
+item_count = 1
+item_0/text = "Remove Path"
+item_0/id = 0

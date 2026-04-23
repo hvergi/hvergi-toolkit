@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://blka24tvbg13b"]
+
+[ext_resource type="Script" uid="uid://cvg8ye5utge56" path="res://scenes/apps/trade_watcher/TradeWatcher.cs" id="1_script"]
+
+[node name="TradeWatcher" type="Window" unique_id=540257882]
+oversampling_override = 1.0
+title = "Trade Watcher"
+initial_position = 4
+size = Vector2i(1152, 648)
+script = ExtResource("1_script")
