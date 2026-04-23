@@ -44,6 +44,16 @@ public partial class HvergiToolkit : Control
 	public override void _Ready()
 	{
 		Terminal.Output = terminalOutput;
+		
+		if (!Players.Load())
+		{
+			Terminal.WriteWarning("No player data found. Please open the Player Editor to configure your Wurm paths.");
+		}
+		else
+		{
+			Terminal.Write($"Loaded {Players.WurmPaths.Count} paths and {Players.PlayerDict.Count} players.");
+		}
+
 		newsButton.Pressed += OnNewsButtonPressed;
 		appsButton.Pressed += OnAppsButtonPressed;
 		settingsButton.Pressed += OnSettingsButtonPressed;

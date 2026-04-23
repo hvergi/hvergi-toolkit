@@ -24,6 +24,16 @@ public partial class PlayerEditor : Window
         var autoFindSteamButton = GetNode<Button>("%AutoFindSteamButton");
         var manualAddButton = GetNode<Button>("%ManualAddButton");
 
+        // Load existing paths
+        foreach (var path in Players.WurmPaths)
+        {
+            _wurmPathsList.AddItem(path);
+        }
+        if (Players.WurmPaths.Count > 0)
+        {
+            RefreshPlayerList();
+        }
+
         // Connect Button signals
         autoFindWurmButton.Pressed += OnAutoFindWurmPressed;
         autoFindSteamButton.Pressed += OnAutoFindSteamPressed;
@@ -275,9 +285,13 @@ public partial class PlayerEditor : Window
                 foreach (System.Text.RegularExpressions.Match match in matches)
                 {
                     string path = match.Groups[1].Value.Replace(@"\\", @"\");
-                    if (Directory.Exists(path) && !libraryPaths.Contains(path))
+                    if (Directory.Exists(path))
                     {
-                        libraryPaths.Add(path);
+                        bool exists = (OS.GetName() == "Windows") 
+                            ? libraryPaths.Any(p => string.Equals(p, path, StringComparison.OrdinalIgnoreCase))
+                            : libraryPaths.Contains(path);
+
+                        if (!exists) libraryPaths.Add(path);
                     }
                 }
             }
@@ -306,19 +320,24 @@ public partial class PlayerEditor : Window
         // Normalize path to use consistent slashes and remove trailing ones
         string normalizedPath = Path.GetFullPath(path).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
 
-        for (int i = 0; i < _wurmPathsList.ItemCount; i++)
+        // Verification: Ensure it's a valid Wurm directory (contains 'players' folder)
+        string playersPath = Path.Combine(normalizedPath, "players");
+        if (!Directory.Exists(playersPath))
         {
-            string existingPath = Path.GetFullPath(_wurmPathsList.GetItemText(i)).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
-
-            bool isDuplicate = (OS.GetName() == "Windows") 
-                ? string.Equals(existingPath, normalizedPath, StringComparison.OrdinalIgnoreCase)
-                : existingPath == normalizedPath;
-
-            if (isDuplicate) return;
+            Terminal.WriteError($"Invalid Wurm directory: '{normalizedPath}'. Missing 'players' folder.");
+            return;
         }
 
+        bool alreadyExists = (OS.GetName() == "Windows")
+            ? Players.WurmPaths.Any(p => string.Equals(p, normalizedPath, StringComparison.OrdinalIgnoreCase))
+            : Players.WurmPaths.Contains(normalizedPath);
+
+        if (alreadyExists) return;
+
         _wurmPathsList.AddItem(normalizedPath);
+        Players.WurmPaths.Add(normalizedPath);
         Terminal.Write($"Path added: {normalizedPath}");
+        Players.Save();
         RefreshPlayerList();
     }
 
@@ -337,6 +356,10 @@ public partial class PlayerEditor : Window
                 var playerDirs = Directory.GetDirectories(playersFolderPath);
                 foreach (var dir in playerDirs)
                 {
+                    // Verification: Ensure player directory contains a 'logs' folder
+                    string logsPath = Path.Combine(dir, "logs");
+                    if (!Directory.Exists(logsPath)) continue;
+
                     string playerName = Path.GetFileName(dir);
                     if (Players.AddPlayer(playerName, dir))
                     {
@@ -381,9 +404,13 @@ public partial class PlayerEditor : Window
     {
         if (id == 0 && _rightClickedIndex != -1)
         {
+            string pathToRemove = _wurmPathsList.GetItemText(_rightClickedIndex);
             Terminal.Write($"Removing path at index: {_rightClickedIndex}");
             _wurmPathsList.RemoveItem(_rightClickedIndex);
+            Players.WurmPaths.Remove(pathToRemove);
+            
             _rightClickedIndex = -1;
+            Players.Save();
             RefreshPlayerList();
         }
     }
