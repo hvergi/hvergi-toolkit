@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -12,6 +13,12 @@ public partial class PlayerEditor : Window
     private FileDialog _folderDialog;
     private int _rightClickedIndex = -1;
 
+    private Label _selectedPlayerLabel;
+    private Control _settingsGrid;
+    private CheckBox _favCheck;
+    private CheckBox _hiddenCheck;
+    private Player _selectedPlayer;
+
     public override void _Ready()
     {
         // Get node references
@@ -19,6 +26,11 @@ public partial class PlayerEditor : Window
         _playerList = GetNode<ItemList>("%PlayerList");
         _pathContextMenu = GetNode<PopupMenu>("%PathContextMenu");
         _folderDialog = GetNode<FileDialog>("%FolderDialog");
+
+        _selectedPlayerLabel = GetNode<Label>("%SelectedPlayerLabel");
+        _settingsGrid = GetNode<Control>("%SettingsGrid");
+        _favCheck = GetNode<CheckBox>("%FavCheck");
+        _hiddenCheck = GetNode<CheckBox>("%HiddenCheck");
 
         var autoFindWurmButton = GetNode<Button>("%AutoFindWurmButton");
         var autoFindSteamButton = GetNode<Button>("%AutoFindSteamButton");
@@ -42,6 +54,11 @@ public partial class PlayerEditor : Window
         // Connect ItemList signals
         _wurmPathsList.ItemClicked += OnWurmPathItemClicked;
         _pathContextMenu.IdPressed += OnPathContextIdPressed;
+        _playerList.ItemSelected += OnPlayerItemSelected;
+
+        // Connect Settings signals
+        _favCheck.Toggled += OnFavToggled;
+        _hiddenCheck.Toggled += OnHiddenToggled;
 
         // Connect FileDialog signals
         _folderDialog.DirSelected += OnFolderSelected;
@@ -209,9 +226,9 @@ public partial class PlayerEditor : Window
         }
     }
 
-    private System.Collections.Generic.List<string> FindSteamWurmPaths()
+    private List<string> FindSteamWurmPaths()
     {
-        var foundPaths = new System.Collections.Generic.List<string>();
+        var foundPaths = new List<string>();
         string steamPath = GetSteamInstallPath();
         if (string.IsNullOrEmpty(steamPath)) return foundPaths;
 
@@ -269,9 +286,9 @@ public partial class PlayerEditor : Window
         return "";
     }
 
-    private System.Collections.Generic.List<string> GetSteamLibraryPaths(string steamPath)
+    private List<string> GetSteamLibraryPaths(string steamPath)
     {
-        var libraryPaths = new System.Collections.Generic.List<string> { steamPath };
+        var libraryPaths = new List<string> { steamPath };
         string vdfPath = Path.Combine(steamPath, "config/libraryfolders.vdf");
         if (!File.Exists(vdfPath)) vdfPath = Path.Combine(steamPath, "steamapps/libraryfolders.vdf");
 
@@ -342,8 +359,13 @@ public partial class PlayerEditor : Window
 
     private void RefreshPlayerList()
     {
-        Players.Clear();
+        // Don't clear Players.PlayerDict as it contains saved metadata (Favorites, Hidden)
         _playerList.Clear();
+        _selectedPlayer = null;
+        _settingsGrid.Visible = false;
+        _selectedPlayerLabel.Text = "Select a player to edit";
+
+        HashSet<string> foundPlayers = new HashSet<string>();
 
         for (int i = 0; i < _wurmPathsList.ItemCount; i++)
         {
@@ -360,16 +382,76 @@ public partial class PlayerEditor : Window
                     if (!Directory.Exists(logsPath)) continue;
 
                     string playerName = Path.GetFileName(dir);
-                    if (Players.AddPlayer(playerName, dir))
+                    foundPlayers.Add(playerName);
+
+                    if (!Players.PlayerDict.ContainsKey(playerName))
                     {
-                        _playerList.AddItem(ToCamelCase(playerName));
+                        Players.AddPlayer(playerName, dir);
+                    }
+                    else
+                    {
+                        // Update path in case it changed/moved
+                        Players.PlayerDict[playerName].Path = dir;
                     }
                 }
             }
         }
+
+        // Remove players that are no longer found in any configured path
+        var playersToRemove = Players.PlayerDict.Keys.Where(name => !foundPlayers.Contains(name)).ToList();
+        foreach (var name in playersToRemove)
+        {
+            Players.PlayerDict.Remove(name);
+        }
+
+        // Repopulate UI list from sorted keys
+        foreach (var playerName in Players.PlayerDict.Keys.OrderBy(n => n))
+        {
+            int idx = _playerList.AddItem(ToCamelCase(playerName));
+            _playerList.SetItemMetadata(idx, playerName);
+        }
         
         Terminal.Write($"Detected {_playerList.ItemCount} players.");
         Players.Save();
+    }
+
+    private void OnPlayerItemSelected(long index)
+    {
+        string playerName = _playerList.GetItemMetadata((int)index).AsString();
+        if (Players.PlayerDict.TryGetValue(playerName, out Player player))
+        {
+            _selectedPlayer = player;
+            _selectedPlayerLabel.Text = ToCamelCase(playerName);
+            _settingsGrid.Visible = true;
+
+            // Update UI without triggering signals
+            _favCheck.SetBlockSignals(true);
+            _hiddenCheck.SetBlockSignals(true);
+
+            _favCheck.ButtonPressed = player.IsFav;
+            _hiddenCheck.ButtonPressed = player.IsHidden;
+
+            _favCheck.SetBlockSignals(false);
+            _hiddenCheck.SetBlockSignals(false);
+        }
+    }
+
+    private void OnFavToggled(bool toggled)
+    {
+        if (_selectedPlayer != null)
+        {
+            _selectedPlayer.IsFav = toggled;
+            Players.Save();
+        }
+    }
+
+    private void OnHiddenToggled(bool toggled)
+    {
+        if (_selectedPlayer != null)
+        {
+            _selectedPlayer.IsHidden = toggled;
+            Players.Save();
+        }
     }
 
     private string ToCamelCase(string text)
