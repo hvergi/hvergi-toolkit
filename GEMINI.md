@@ -1,35 +1,47 @@
 # Hvergi Toolkit
 
 ## Project Overview
-Hvergi Toolkit is a Godot-based utility application designed for players of Wurm Online. It serves as a centralized hub for various specialized tools such as trackers, planners, and editors to enhance the gaming experience.
+Hvergi Toolkit is a utility application for Wurm Online players, built with **Godot 4.6** and **C# (.NET 8.0)**. It provides a suite of tools for managing player data, tracking skills, and simulating game mechanics.
 
-- **Engine:** Godot 4.6 (Forward Plus renderer)
-- **Language:** C# (.NET 8.0 / .NET 9.0 for Android)
-- **Physics Engine:** Jolt Physics
-- **Rendering Driver:** D3D12 (Windows)
+### Key Technologies
+- **Game Engine:** Godot 4.6 (Forward Plus renderer)
+- **Language:** C# (.NET 8.0 SDK)
+- **Physics:** Jolt Physics
+- **Rendering:** D3D12 (Windows), Vulkan/Forward+ (General)
 
 ## Architecture
-The application is structured around a main scene (`scenes/hvergi_toolkit/hvergi_toolkit.tscn`) which provides a unified UI with the following sections:
-- **News:** Project updates and changelogs.
-- **Apps:** A grid of utility applications (Trackers, Planners, Search tools, etc.).
-- **Settings:** Application configuration.
-- **Terminal:** A log display for system messages and status updates.
+The application uses a modular architecture where the main toolkit manages a set of independent "Apps" that run in their own windows.
+
+- **Main Scene:** `scenes/hvergi_toolkit/hvergi_toolkit.tscn`
+- **Autoloads:**
+  - `Terminal`: A global logging and output system for feedback.
+- **App System:**
+  - Each utility is located in `scenes/apps/{app_name}/`.
+  - Apps are typically `Window` nodes that are instantiated dynamically by the main toolkit.
+
+## Utility Apps
+| App Name | Description |
+| :--- | :--- |
+| **Player Editor** | Manages Wurm Online installation paths and player data. Includes auto-discovery for standalone and Steam versions. |
+| **Grinder** | A skill gain simulator that helps players optimize their "skill ticks" by calculating success rates and quality outcomes. |
+| **Moi Tracker** | (Base implemented) Tracks Meditating/Moi progress. |
+| **Skill Tracker** | (Base implemented) Monitors skill gain logs. |
+| **Affinity Food Planner** | (Base implemented) Plans food for affinity gains. |
+| **STP Calculator** | (Base implemented) Skill Tick Probability/Power calculator. |
+| **Log Alert/Search** | (Base implemented) Utilities for processing Wurm log files. |
 
 ## Building and Running
 ### Prerequisites
-- Godot Engine 4.6 (with .NET support).
-- .NET 8.0 SDK (and .NET 9.0 for Android targets).
+- Godot 4.6 (with .NET support)
+- .NET 8.0 SDK
 
 ### Key Commands
 - **Build Project:** `dotnet build`
-- **Run Project:** Open `project.godot` in Godot Editor and press F5, or use `godot --path .` from the CLI.
-- **Test Project:** (TODO: Add testing framework if implemented)
+- **Run Project:** Open in Godot Editor and press `F5`, or run `godot --path .` via CLI.
+- **Exporting:** Presets are configured in `export_presets.cfg` for Windows Desktop.
 
 ## Development Conventions
-- **Scene Organization:** Scenes are located in the `scenes/` directory, typically grouped with their corresponding C# scripts.
-- **C# Scripting:** 
-    - Uses the `partial class` pattern common in Godot 4.
-    - Uses `[Export]` for inspector-visible variables.
-    - Adheres to standard C# naming conventions (PascalCase for classes/methods).
-- **UI System:** Built using Godot's Control nodes, leveraging `VBoxContainer`, `HBoxContainer`, and `TabContainer` for layout management.
-- **Node Referencing:** Utilizes `%UniqueName` and `unique_id` features for robust node access within scenes.
+- **Scene Organization:** Each app has its own directory in `scenes/apps/` containing its `.tscn` and `.cs` files.
+- **Node Referencing:** Use `%UniqueName` in scenes and `GetNode("%Name")` in C# for robust referencing.
+- **Cross-Platform:** Directory discovery logic in `PlayerEditor.cs` supports Windows (Registry), Linux (XML), and macOS (XML/Plist).
+- **Styling:** The UI uses standard Godot Theme constants and `PanelContainer`/`MarginContainer` for responsive layouts.
