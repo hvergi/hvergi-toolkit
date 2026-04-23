@@ -2,17 +2,20 @@ using System.Collections.Generic;
 
 public static class Players
 {
-    public static Dictionary<string,Player> playerDict {get;}
+    public static Dictionary<string, Player> PlayerDict { get; } = new Dictionary<string, Player>();
 
-    public static bool addPlayer(string player_name,string path)
+    public static bool AddPlayer(string playerName, string path)
     {
-        if(playerDict.ContainsKey(player_name)) return false;
+        if (PlayerDict.ContainsKey(playerName)) return false;
         Player player = new();
-        player.Name = player_name;
+        player.Name = playerName;
         player.Path = path;
-        playerDict.Add(player_name,player);
+        PlayerDict.Add(playerName, player);
         return true;
     }
 
+    public static void Clear()
+    {
+        PlayerDict.Clear();
+    }
 }
-

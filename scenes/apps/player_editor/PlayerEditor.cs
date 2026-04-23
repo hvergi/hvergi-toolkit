@@ -319,6 +319,52 @@ public partial class PlayerEditor : Window
 
         _wurmPathsList.AddItem(normalizedPath);
         Terminal.Write($"Path added: {normalizedPath}");
+        RefreshPlayerList();
+    }
+
+    private void RefreshPlayerList()
+    {
+        Players.Clear();
+        _playerList.Clear();
+
+        for (int i = 0; i < _wurmPathsList.ItemCount; i++)
+        {
+            string wurmPath = _wurmPathsList.GetItemText(i);
+            string playersFolderPath = Path.Combine(wurmPath, "players");
+
+            if (Directory.Exists(playersFolderPath))
+            {
+                var playerDirs = Directory.GetDirectories(playersFolderPath);
+                foreach (var dir in playerDirs)
+                {
+                    string playerName = Path.GetFileName(dir);
+                    if (Players.AddPlayer(playerName, dir))
+                    {
+                        _playerList.AddItem(ToCamelCase(playerName));
+                    }
+                }
+            }
+        }
+        
+        Terminal.Write($"Detected {_playerList.ItemCount} players.");
+    }
+
+    private string ToCamelCase(string text)
+    {
+        if (string.IsNullOrEmpty(text)) return text;
+
+        // Split by common separators if they exist, or just treat as one word
+        var words = text.Split(new[] { '_', ' ', '-' }, StringSplitOptions.RemoveEmptyEntries);
+        
+        for (int i = 0; i < words.Length; i++)
+        {
+            if (words[i].Length > 0)
+            {
+                words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1).ToLower();
+            }
+        }
+
+        return string.Join("", words);
     }
 
     private void OnWurmPathItemClicked(long index, Vector2 atPosition, long mouseButtonIndex)
@@ -338,6 +384,7 @@ public partial class PlayerEditor : Window
             Terminal.Write($"Removing path at index: {_rightClickedIndex}");
             _wurmPathsList.RemoveItem(_rightClickedIndex);
             _rightClickedIndex = -1;
+            RefreshPlayerList();
         }
     }
 
