@@ -1,10 +1,142 @@
-[gd_scene format=3 uid="uid://b7dhd1rtmmtdm"]
+[gd_scene load_steps=3 format=3 uid="uid://b7dhd1rtmmtdm"]
 
-[ext_resource type="Script" uid="uid://cskc1324ogvld" path="res://scenes/apps/affinity_food_planner/AffinityFoodPlanner.cs" id="1_script"]
+[ext_resource type="Script" path="res://scenes/apps/affinity_food_planner/AffinityFoodPlanner.cs" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dp6m0j4w8n3u1" path="res://scenes/ui/player_select_horizontal.tscn" id="2_ui"]
 
-[node name="AffinityFoodPlanner" type="Window" unique_id=1642270238]
-oversampling_override = 1.0
+[node name="AffinityFoodPlanner" type="Window"]
 title = "Affinity Food Planner"
 initial_position = 4
-size = Vector2i(1152, 648)
+size = Vector2i(1000, 700)
 script = ExtResource("1_script")
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PlayerSection" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PlayerSelect" parent="Margin/VBox/PlayerSection" instance=ExtResource("2_ui")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator" type="VSeparator" parent="Margin/VBox/PlayerSection"]
+layout_mode = 2
+
+[node name="CustomerContainer" type="HBoxContainer" parent="Margin/VBox/PlayerSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Margin/VBox/PlayerSection/CustomerContainer"]
+layout_mode = 2
+text = "Customer Name:"
+
+[node name="CustomerOption" type="OptionButton" parent="Margin/VBox/PlayerSection/CustomerContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CustomerEdit" type="LineEdit" parent="Margin/VBox/PlayerSection/CustomerContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+placeholder_text = "New Name..."
+
+[node name="SaveCustomerBtn" type="Button" parent="Margin/VBox/PlayerSection/CustomerContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save"
+
+[node name="MakerSection" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MakerSelect" parent="Margin/VBox/MakerSection" instance=ExtResource("2_ui")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MakerResultLabel" type="Label" parent="Margin/VBox/MakerSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Maker Predicted Result: None"
+horizontal_alignment = 2
+
+[node name="InputsGrid" type="GridContainer" parent="Margin/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="LabelTest" type="Label" parent="Margin/VBox/InputsGrid"]
+layout_mode = 2
+text = "Test Meal Resulted in:"
+
+[node name="TestSkillOption" type="OptionButton" parent="Margin/VBox/InputsGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelWant" type="Label" parent="Margin/VBox/InputsGrid"]
+layout_mode = 2
+text = "Desired Affinity Skill:"
+
+[node name="WantSkillOption" type="OptionButton" parent="Margin/VBox/InputsGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ActionButtons" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="FetchMealsBtn" type="Button" parent="Margin/VBox/ActionButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fetch Meals"
+
+[node name="FetchMoonshineBtn" type="Button" parent="Margin/VBox/ActionButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fetch Moonshine"
+
+[node name="SaveAffinityBtn" type="Button" parent="Margin/VBox/ActionButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save Test Affinity to Player/Customer"
+
+[node name="HSeparator" type="HSeparator" parent="Margin/VBox"]
+layout_mode = 2
+
+[node name="ResultsLabel" type="Label" parent="Margin/VBox"]
+layout_mode = 2
+text = "Calculated Recipes:"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ResultsList" type="RichTextLabel" parent="Margin/VBox/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Enter test result and desired skill, then click fetch."

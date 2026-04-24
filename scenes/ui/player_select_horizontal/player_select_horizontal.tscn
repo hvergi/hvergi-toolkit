@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dp6m0j4w8n3u1"]
 
-[ext_resource type="Script" uid="uid://bguk6yxq52i41" path="res://scenes/ui/PlayerSelectHorizontal.cs" id="1_script"]
+[ext_resource type="Script" uid="uid://bguk6yxq52i41" path="res://scenes/ui/player_select_horizontal/PlayerSelectHorizontal.cs" id="1_script"]
 
 [node name="PlayerSelectHorizontal" type="HBoxContainer" unique_id=1986874551]
 anchors_preset = 10

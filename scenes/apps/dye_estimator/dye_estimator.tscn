@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://tfdn7chevj5"]
 
 [ext_resource type="Script" uid="uid://bkkgrvpmmr28v" path="res://scenes/apps/dye_estimator/DyeEstimator.cs" id="1_script"]
-[ext_resource type="PackedScene" uid="uid://ba3uxhjkuliwo" path="res://scenes/ui/player_list.tscn" id="2_7hdq1"]
-[ext_resource type="PackedScene" uid="uid://dp6m0j4w8n3u1" path="res://scenes/ui/player_select_horizontal.tscn" id="2_yj17g"]
+[ext_resource type="PackedScene" uid="uid://ba3uxhjkuliwo" path="res://scenes/ui/player_list/player_list.tscn" id="2_7hdq1"]
+[ext_resource type="PackedScene" uid="uid://dp6m0j4w8n3u1" path="res://scenes/ui/player_select_horizontal/player_select_horizontal.tscn" id="2_yj17g"]
 
 [node name="DyeEstimator" type="Window" unique_id=848081874]
 oversampling_override = 1.0

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ba3uxhjkuliwo"]
 
-[ext_resource type="Script" uid="uid://b6150wncjosot" path="res://scenes/ui/PlayerList.cs" id="1_script"]
+[ext_resource type="Script" uid="uid://b6150wncjosot" path="res://scenes/ui/player_list/PlayerList.cs" id="1_script"]
 
 [node name="PlayerList" type="PanelContainer" unique_id=695884541]
 anchors_preset = 15
