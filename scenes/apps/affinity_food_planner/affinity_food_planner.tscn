@@ -1,10 +1,362 @@
 [gd_scene format=3 uid="uid://b7dhd1rtmmtdm"]
 
 [ext_resource type="Script" uid="uid://cskc1324ogvld" path="res://scenes/apps/affinity_food_planner/AffinityFoodPlanner.cs" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dp6m0j4w8n3u1" path="res://scenes/ui/player_select_horizontal/player_select_horizontal.tscn" id="2_ui"]
 
-[node name="AffinityFoodPlanner" type="Window" unique_id=1642270238]
+[node name="AffinityFoodPlanner" type="Window" unique_id=553414210]
 oversampling_override = 1.0
 title = "Affinity Food Planner"
 initial_position = 4
-size = Vector2i(1152, 648)
+size = Vector2i(1152, 800)
 script = ExtResource("1_script")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=446948793]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=1756455903]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SplitPanels" type="HBoxContainer" parent="Margin/VBox" unique_id=360196864]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="TargetPanel" type="PanelContainer" parent="Margin/VBox/SplitPanels" unique_id=1543348970]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/SplitPanels/TargetPanel" unique_id=1172285898]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=104457281]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Target Setup"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=533121154]
+layout_mode = 2
+
+[node name="TargetTabs" type="TabContainer" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=1926106716]
+unique_name_in_owner = true
+layout_mode = 2
+current_tab = 0
+
+[node name="Players" type="VBoxContainer" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs" unique_id=819213930]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="PlayerSelect" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Players" unique_id=1420248507 instance=ExtResource("2_ui")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Customers" type="VBoxContainer" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs" unique_id=1326514256]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="CustomerHBox" type="HBoxContainer" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Customers" unique_id=1146442080]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CustomerOption" type="OptionButton" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Customers/CustomerHBox" unique_id=1262036379]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AddCustomerBtn" type="Button" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Customers/CustomerHBox" unique_id=1485704478]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add..."
+
+[node name="DeleteCustomerBtn" type="Button" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Customers/CustomerHBox" unique_id=127576258]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Del"
+
+[node name="Spacer" type="Control" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=1931413823]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="LabelTest" type="Label" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=1697091540]
+layout_mode = 2
+text = "Their Test Meal Result (Current Affinity):"
+
+[node name="TestSkillOption" type="OptionButton" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=1360342818]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SaveAffinityBtn" type="Button" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=1418762480]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save Test Result to Profile"
+
+[node name="LabelWant" type="Label" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=1086285445]
+layout_mode = 2
+text = "Desired Affinity Skill:"
+
+[node name="WantSkillOption" type="OptionButton" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=540753827]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MakerPanel" type="PanelContainer" parent="Margin/VBox/SplitPanels" unique_id=1420387341]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel" unique_id=175432709]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=630457643]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Cook / Maker Setup"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=19089013]
+layout_mode = 2
+
+[node name="MakerSelect" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=1626513421 instance=ExtResource("2_ui")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PredictionPanel" type="PanelContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=1165213277]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/PredictionPanel" unique_id=1080161283]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/PredictionPanel/VBox" unique_id=1672814912]
+layout_mode = 2
+text = "Maker's Test Affinity:"
+horizontal_alignment = 1
+
+[node name="MakerResultLabel" type="RichTextLabel" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/PredictionPanel/VBox" unique_id=1658426074]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][color=gray]Select Maker and Skills[/color][/center]"
+fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=151552607]
+layout_mode = 2
+
+[node name="MakerSettingsTabs" type="TabContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=1725783637]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Equipment" type="VBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs" unique_id=1373925475]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="StationHBox" type="HBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Equipment" unique_id=1197952490]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Equipment/StationHBox" unique_id=291892467]
+layout_mode = 2
+text = "Type:"
+
+[node name="StationOption" type="OptionButton" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Equipment/StationHBox" unique_id=1638002978]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Oven"
+popup/item_0/id = 0
+popup/item_1/text = "Forge"
+popup/item_1/id = 1
+
+[node name="RarityHBox" type="HBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Equipment" unique_id=610575644]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Equipment/RarityHBox" unique_id=1591133974]
+layout_mode = 2
+text = "Rarity:"
+
+[node name="RarityOption" type="OptionButton" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Equipment/RarityHBox" unique_id=1960185889]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 4
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Rare"
+popup/item_1/id = 1
+popup/item_2/text = "Supreme"
+popup/item_2/id = 2
+popup/item_3/text = "Fantastic"
+popup/item_3/id = 3
+
+[node name="Ingredients" type="VBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs" unique_id=85574608]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MeatHBox" type="HBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Ingredients" unique_id=214676829]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Ingredients/MeatHBox" unique_id=1815144342]
+layout_mode = 2
+text = "Meat:"
+
+[node name="MeatOption" type="OptionButton" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Ingredients/MeatHBox" unique_id=903012752]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheeseHBox" type="HBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Ingredients" unique_id=895592135]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Ingredients/CheeseHBox" unique_id=910723260]
+layout_mode = 2
+text = "Cheese:"
+
+[node name="CheeseOption" type="OptionButton" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Ingredients/CheeseHBox" unique_id=1718077214]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SaltCheck" type="CheckBox" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Ingredients" unique_id=1466509661]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Include Salt"
+
+[node name="Herbs" type="VBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs" unique_id=614091757]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Herbs" unique_id=541547716]
+layout_mode = 2
+text = "Exclude Specific Herbs:"
+horizontal_alignment = 1
+
+[node name="HerbActions" type="HBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Herbs" unique_id=1194591562]
+layout_mode = 2
+alignment = 1
+
+[node name="AllHerbsBtn" type="Button" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Herbs/HerbActions" unique_id=1274051429]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Exclude All"
+
+[node name="NoHerbsBtn" type="Button" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Herbs/HerbActions" unique_id=52667459]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Clear Exclusions"
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Herbs" unique_id=1534904361]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HerbGrid" type="GridContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/MakerSettingsTabs/Herbs/Scroll" unique_id=43314428]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+
+[node name="BottomResults" type="PanelContainer" parent="Margin/VBox" unique_id=1034800022]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ResultsHBox" type="HBoxContainer" parent="Margin/VBox/BottomResults" unique_id=1726180818]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MoonshineCol" type="VBoxContainer" parent="Margin/VBox/BottomResults/ResultsHBox" unique_id=1316631666]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Margin/VBox/BottomResults/ResultsHBox/MoonshineCol" unique_id=474370072]
+layout_mode = 2
+text = "Moonshine Recipe"
+horizontal_alignment = 1
+
+[node name="MoonshineResults" type="RichTextLabel" parent="Margin/VBox/BottomResults/ResultsHBox/MoonshineCol" unique_id=2132944026]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "..."
+
+[node name="VSeparator" type="VSeparator" parent="Margin/VBox/BottomResults/ResultsHBox" unique_id=369432666]
+layout_mode = 2
+
+[node name="MealsCol" type="VBoxContainer" parent="Margin/VBox/BottomResults/ResultsHBox" unique_id=99695146]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Margin/VBox/BottomResults/ResultsHBox/MealsCol" unique_id=103039392]
+layout_mode = 2
+text = "Meal Recipes (Top 20)"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/VBox/BottomResults/ResultsHBox/MealsCol" unique_id=292638964]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MealResults" type="RichTextLabel" parent="Margin/VBox/BottomResults/ResultsHBox/MealsCol/Scroll" unique_id=1602589001]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Select skills to see recipes..."
+
+[node name="CustomerPopup" type="PopupPanel" parent="." unique_id=851486623]
+unique_name_in_owner = true
+initial_position = 2
+size = Vector2i(400, 250)
+
+[node name="Margin" type="MarginContainer" parent="CustomerPopup" unique_id=1923587019]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 396.0
+offset_bottom = 246.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="CustomerPopup/Margin" unique_id=2143012512]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CustomerPopup/Margin/VBox" unique_id=1589537484]
+layout_mode = 2
+text = "Add New Customer"
+horizontal_alignment = 1
+
+[node name="NewCustomerName" type="LineEdit" parent="CustomerPopup/Margin/VBox" unique_id=826063801]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Enter Customer Name"
+
+[node name="Label2" type="Label" parent="CustomerPopup/Margin/VBox" unique_id=1202536420]
+layout_mode = 2
+text = "Initial Test Affinity:"
+
+[node name="NewCustomerSkill" type="OptionButton" parent="CustomerPopup/Margin/VBox" unique_id=1273279246]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PopupSaveBtn" type="Button" parent="CustomerPopup/Margin/VBox" unique_id=248230564]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save Customer"

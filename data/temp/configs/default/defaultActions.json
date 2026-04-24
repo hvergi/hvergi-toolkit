@@ -1,0 +1,294 @@
+{
+  "actions": [
+    {
+      "actionName": "Dig",
+      "actionId": 144,
+      "subAction": 0,
+      "sourceMask": -4611658530635120628,
+      "sourceId": -10,
+      "targetMask": 2199023255585,
+      "targetId": -10,
+      "mountStatus": 2
+    },
+    {
+      "actionName": "Repair",
+      "actionId": 162,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": -6917501539849601024,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Butcher",
+      "actionId": 120,
+      "subAction": 0,
+      "sourceMask": -4611583763844431860,
+      "sourceId": -10,
+      "targetMask": -4611386951264501694,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Open",
+      "actionId": 3,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": -9223072969692020734,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Cultivate",
+      "actionId": 318,
+      "subAction": 0,
+      "sourceMask": -4611656331611865076,
+      "sourceId": -10,
+      "targetMask": 4611688217450643489,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Bury",
+      "actionId": 119,
+      "subAction": 0,
+      "sourceMask": -4611658530635120628,
+      "sourceId": -10,
+      "targetMask": -4611386951264501694,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Lead",
+      "actionId": 106,
+      "subAction": 0,
+      "sourceMask": -4610554620961357760,
+      "sourceId": -10,
+      "targetMask": 268435456,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Chop up",
+      "actionId": 97,
+      "subAction": 0,
+      "sourceMask": -4611678321844420596,
+      "sourceId": -10,
+      "targetMask": -4611262706450562848,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Cut down",
+      "actionId": 96,
+      "subAction": 0,
+      "sourceMask": -4611678321844420596,
+      "sourceId": -10,
+      "targetMask": 109951162777604,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Take",
+      "actionId": 6,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": -9223096059436072960,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Forage/Botanize",
+      "actionId": 741,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": 98304,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Target",
+      "actionId": 326,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": 17716740096,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Groom",
+      "actionId": 398,
+      "subAction": 0,
+      "sourceMask": -4610974634402381820,
+      "sourceId": -10,
+      "targetMask": 268435456,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Climb ladder",
+      "actionId": 522,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": 13194156310528,
+      "targetId": -10,
+      "mountStatus": 2
+    },
+    {
+      "actionName": "Light",
+      "actionId": 12,
+      "subAction": 0,
+      "sourceMask": -4611528788263043068,
+      "sourceId": -10,
+      "targetMask": -4611488106333863901,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Pick sprout",
+      "actionId": 187,
+      "subAction": 0,
+      "sourceMask": -4611392448821198836,
+      "sourceId": -10,
+      "targetMask": 109951162777604,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Farm",
+      "actionId": 151,
+      "subAction": 0,
+      "sourceMask": -4611656331611602932,
+      "sourceId": -10,
+      "targetMask": 7696581394448,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Harvest",
+      "actionId": 152,
+      "subAction": 0,
+      "sourceMask": -4611392448821198836,
+      "sourceId": -10,
+      "targetMask": 71935548247244808,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Cut down",
+      "actionId": 96,
+      "subAction": 0,
+      "sourceMask": -4611678321844158452,
+      "sourceId": -10,
+      "targetMask": 71935548247244808,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Mine",
+      "actionId": 145,
+      "subAction": 0,
+      "sourceMask": -4611664028193259508,
+      "sourceId": -10,
+      "targetMask": 4398046511168,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Mine forwards",
+      "actionId": 145,
+      "subAction": 0,
+      "sourceMask": -4611664028193259508,
+      "sourceId": -10,
+      "targetMask": 71998220410030080,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Use portal",
+      "actionId": 1909,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": -4609870724729929663,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Travel to Epic",
+      "actionId": 1909,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": -4610881175915331583,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Drink",
+      "actionId": 183,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": -4611017515357175773,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Drink",
+      "actionId": 183,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": -9223231299366419456,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Drag",
+      "actionId": 74,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": -4611481509264086749,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Embark (Commander)",
+      "actionId": 331,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": -4611093381659481821,
+      "targetId": -10,
+      "mountStatus": 2
+    },
+    {
+      "actionName": "Talk",
+      "actionId": 1906,
+      "subAction": 0,
+      "sourceMask": 0,
+      "sourceId": -10,
+      "targetMask": 4611686028091064320,
+      "targetId": -10,
+      "mountStatus": 0
+    },
+    {
+      "actionName": "Destroy",
+      "actionId": 83,
+      "subAction": 0,
+      "sourceMask": -4611678321844158452,
+      "sourceId": -10,
+      "targetMask": -4610882275427483455,
+      "targetId": -10,
+      "mountStatus": 0
+    }
+  ]
+}

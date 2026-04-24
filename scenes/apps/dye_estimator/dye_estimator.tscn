@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://tfdn7chevj5"]
 
 [ext_resource type="Script" uid="uid://bkkgrvpmmr28v" path="res://scenes/apps/dye_estimator/DyeEstimator.cs" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://ba3uxhjkuliwo" path="res://scenes/ui/player_list/player_list.tscn" id="2_7hdq1"]
+[ext_resource type="PackedScene" uid="uid://dp6m0j4w8n3u1" path="res://scenes/ui/player_select_horizontal/player_select_horizontal.tscn" id="2_yj17g"]
 
 [node name="DyeEstimator" type="Window" unique_id=848081874]
 oversampling_override = 1.0
@@ -8,3 +10,19 @@ title = "Dye Estimator"
 initial_position = 4
 size = Vector2i(1152, 648)
 script = ExtResource("1_script")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2033393419]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerSelectHorizontal" parent="VBoxContainer" unique_id=1986874551 instance=ExtResource("2_yj17g")]
+layout_mode = 2
+
+[node name="PlayerList" parent="VBoxContainer" unique_id=695884541 instance=ExtResource("2_7hdq1")]
+layout_mode = 2
+size_flags_vertical = 3

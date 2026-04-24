@@ -81,6 +81,7 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace" unique_id=533046519]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="WorkspaceLabel" type="Label" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer" unique_id=1137417375]
 layout_mode = 2
@@ -90,8 +91,50 @@ horizontal_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer" unique_id=639267437]
 layout_mode = 2
 
+[node name="SelectedPlayerLabel" type="Label" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer" unique_id=1634701727]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Select a player to edit"
+horizontal_alignment = 1
+
+[node name="SettingsGrid" type="GridContainer" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer" unique_id=1035686562]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="FavLabel" type="Label" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer/SettingsGrid" unique_id=190123282]
+layout_mode = 2
+text = "Favorite:"
+
+[node name="FavCheck" type="CheckBox" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer/SettingsGrid" unique_id=540726893]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HiddenLabel" type="Label" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer/SettingsGrid" unique_id=103119340]
+layout_mode = 2
+text = "Hidden:"
+
+[node name="HiddenCheck" type="CheckBox" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer/SettingsGrid" unique_id=2097991223]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="PathContextMenu" type="PopupMenu" parent="." unique_id=325389878]
 unique_name_in_owner = true
 item_count = 1
 item_0/text = "Remove Path"
 item_0/id = 0
+
+[node name="FolderDialog" type="FileDialog" parent="." unique_id=1000002]
+unique_name_in_owner = true
+title = "Open a Directory"
+initial_position = 2
+size = Vector2i(700, 500)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+show_hidden_files = true
+use_native_dialog = true
