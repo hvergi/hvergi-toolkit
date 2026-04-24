@@ -1,10 +1,270 @@
-[gd_scene format=3 uid="uid://rq4xlan056j0"]
+[gd_scene load_steps=3 format=3 uid="uid://rq4xlan056j0"]
 
 [ext_resource type="Script" uid="uid://brno3q3r6axt" path="res://scenes/apps/skill_tracker/SkillTracker.cs" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dp6m0j4w8n3u1" path="res://scenes/ui/player_select_horizontal/player_select_horizontal.tscn" id="2_player_select"]
 
 [node name="SkillTracker" type="Window" unique_id=238528204]
 oversampling_override = 1.0
 title = "Skill Tracker"
-initial_position = 4
-size = Vector2i(1152, 648)
+initial_position = 2
+size = Vector2i(1100, 700)
 script = ExtResource("1_script")
+
+[node name="Background" type="Panel" parent="." unique_id=302057593]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Background" unique_id=1074481068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HSplit" type="HSplitContainer" parent="Background/Margin" unique_id=2056851629]
+layout_mode = 2
+split_offset = 300
+
+[node name="LeftPane" type="VBoxContainer" parent="Background/Margin/HSplit" unique_id=2041517077]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ControlsPanel" type="PanelContainer" parent="Background/Margin/HSplit/LeftPane" unique_id=634368465]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/Margin/HSplit/LeftPane/ControlsPanel" unique_id=1267587488]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin" unique_id=816229667]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlayerSelect" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox" unique_id=1986874551 instance=ExtResource("2_player_select")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SkillSelectLabel" type="Label" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox" unique_id=1109119634]
+layout_mode = 2
+text = "Primary Skill:"
+
+[node name="PrimarySkillSelect" type="OptionButton" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox" unique_id=1663637512]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FilterLabel" type="Label" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox" unique_id=1830075038]
+layout_mode = 2
+text = "Action Start Filter:"
+
+[node name="ActionFilterEdit" type="LineEdit" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox" unique_id=1287798048]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "e.g. You start to chop"
+
+[node name="HSeparator" type="HSeparator" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox" unique_id=123456]
+layout_mode = 2
+
+[node name="PlaybackControls" type="HBoxContainer" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox" unique_id=7314539]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StartButton" type="Button" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox/PlaybackControls" unique_id=2074657651]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Start"
+
+[node name="PauseButton" type="Button" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox/PlaybackControls" unique_id=100851850]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pause"
+
+[node name="StopButton" type="Button" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox/PlaybackControls" unique_id=1700616097]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stop"
+
+[node name="ResetButton" type="Button" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox/PlaybackControls" unique_id=1982285626]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reset"
+
+[node name="StatsPanel" type="PanelContainer" parent="Background/Margin/HSplit/LeftPane" unique_id=1743934250]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/Margin/HSplit/LeftPane/StatsPanel" unique_id=1866245047]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Background/Margin/HSplit/LeftPane/StatsPanel/Margin" unique_id=965894181]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ActionsLabel" type="Label" parent="Background/Margin/HSplit/LeftPane/StatsPanel/Margin/VBox" unique_id=62618200]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Actions: 0"
+
+[node name="SessionTimerLabel" type="Label" parent="Background/Margin/HSplit/LeftPane/StatsPanel/Margin/VBox" unique_id=955666208]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Session: 00:00:00"
+
+[node name="GoalPanel" type="PanelContainer" parent="Background/Margin/HSplit/LeftPane" unique_id=531911749]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/Margin/HSplit/LeftPane/GoalPanel" unique_id=997869807]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Background/Margin/HSplit/LeftPane/GoalPanel/Margin" unique_id=739421809]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="GoalTitle" type="Label" parent="Background/Margin/HSplit/LeftPane/GoalPanel/Margin/VBox" unique_id=2133920189]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Goal Tracking"
+
+[node name="HBox" type="HBoxContainer" parent="Background/Margin/HSplit/LeftPane/GoalPanel/Margin/VBox" unique_id=922607903]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/Margin/HSplit/LeftPane/GoalPanel/Margin/VBox/HBox" unique_id=111]
+layout_mode = 2
+text = "Goal Level:"
+
+[node name="GoalLevelSpinBox" type="SpinBox" parent="Background/Margin/HSplit/LeftPane/GoalPanel/Margin/VBox/HBox" unique_id=478829401]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 99.9999
+step = 1e-06
+value = 99.0
+
+[node name="StpToGoalLabel" type="Label" parent="Background/Margin/HSplit/LeftPane/GoalPanel/Margin/VBox" unique_id=112]
+unique_name_in_owner = true
+layout_mode = 2
+text = "STP to Goal: --"
+
+[node name="EstTimeToGoalLabel" type="Label" parent="Background/Margin/HSplit/LeftPane/GoalPanel/Margin/VBox" unique_id=113]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Est. Time: --"
+
+[node name="RightPane" type="VBoxContainer" parent="Background/Margin/HSplit" unique_id=1947974248]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PrimarySkillCard" type="PanelContainer" parent="Background/Margin/HSplit/RightPane" unique_id=1694492383]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard" unique_id=1881232066]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBox" type="VBoxContainer" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin" unique_id=993350548]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SkillNameLabel" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox" unique_id=221]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Skill Name"
+
+[node name="Grid" type="GridContainer" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox" unique_id=222]
+layout_mode = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="L1" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox/Grid" unique_id=223]
+layout_mode = 2
+text = "Ticks:"
+
+[node name="TicksLabel" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox/Grid" unique_id=224]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="L2" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox/Grid" unique_id=225]
+layout_mode = 2
+text = "Success %:"
+
+[node name="SuccessRateLabel" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox/Grid" unique_id=226]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.0%"
+
+[node name="L3" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox/Grid" unique_id=227]
+layout_mode = 2
+text = "Gained:"
+
+[node name="GainedLabel" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox/Grid" unique_id=228]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.0000"
+
+[node name="L4" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox/Grid" unique_id=229]
+layout_mode = 2
+text = "Range:"
+
+[node name="LevelRangeLabel" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox/Grid" unique_id=230]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.0 -> 0.0"
+
+[node name="L5" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox/Grid" unique_id=231]
+layout_mode = 2
+text = "Session STP:"
+
+[node name="SessionStpLabel" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox/Grid" unique_id=232]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.0"
+
+[node name="L6" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox/Grid" unique_id=233]
+layout_mode = 2
+text = "STP / Hr:"
+
+[node name="StpPerHourLabel" type="Label" parent="Background/Margin/HSplit/RightPane/PrimarySkillCard/Margin/VBox/Grid" unique_id=234]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.0"
+
+[node name="SecondarySkillsHeader" type="Label" parent="Background/Margin/HSplit/RightPane" unique_id=1565294733]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Other Skills Gained"
+
+[node name="OtherSkillsTree" type="Tree" parent="Background/Margin/HSplit/RightPane" unique_id=301501601]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+column_titles_visible = true
+hide_root = true
+select_mode = 1
