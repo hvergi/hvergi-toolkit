@@ -19,8 +19,13 @@ public partial class AffinityFoodPlanner : Window
     
     private OptionButton _stationOption;
     private OptionButton _rarityOption;
+    private OptionButton _meatOption;
     private OptionButton _cheeseOption;
     private CheckBox _saltCheck;
+    private GridContainer _herbGrid;
+    private Button _allHerbsBtn;
+    private Button _noHerbsBtn;
+    private List<CheckBox> _herbCheckBoxes = new List<CheckBox>();
 
     private OptionButton _testSkillOption;
     private OptionButton _wantSkillOption;
@@ -44,8 +49,12 @@ public partial class AffinityFoodPlanner : Window
 
         _stationOption = GetNode<OptionButton>("%StationOption");
         _rarityOption = GetNode<OptionButton>("%RarityOption");
+        _meatOption = GetNode<OptionButton>("%MeatOption");
         _cheeseOption = GetNode<OptionButton>("%CheeseOption");
         _saltCheck = GetNode<CheckBox>("%SaltCheck");
+        _herbGrid = GetNode<GridContainer>("%HerbGrid");
+        _allHerbsBtn = GetNode<Button>("%AllHerbsBtn");
+        _noHerbsBtn = GetNode<Button>("%NoHerbsBtn");
 
         _testSkillOption = GetNode<OptionButton>("%TestSkillOption");
         _wantSkillOption = GetNode<OptionButton>("%WantSkillOption");
@@ -57,6 +66,8 @@ public partial class AffinityFoodPlanner : Window
         PopulateSkills();
         PopulateCustomers();
         PopulateCheeses();
+        PopulateMeats();
+        PopulateHerbs();
 
         // Reactive Inputs
         _testSkillOption.ItemSelected += (idx) => Calculate();
@@ -64,6 +75,7 @@ public partial class AffinityFoodPlanner : Window
         _makerSelect.PlayerSelected += (name) => Calculate();
         _stationOption.ItemSelected += (idx) => Calculate();
         _rarityOption.ItemSelected += (idx) => Calculate();
+        _meatOption.ItemSelected += (idx) => Calculate();
         _cheeseOption.ItemSelected += (idx) => Calculate();
         _saltCheck.Toggled += (toggled) => Calculate();
         
@@ -77,6 +89,9 @@ public partial class AffinityFoodPlanner : Window
         _deleteCustomerBtn.Pressed += OnDeleteCustomerPressed;
         _popupSaveBtn.Pressed += OnPopupSaveCustomerPressed;
         _saveAffinityBtn.Pressed += OnSaveAffinityPressed;
+        
+        _allHerbsBtn.Pressed += () => ToggleAllHerbs(true);
+        _noHerbsBtn.Pressed += () => ToggleAllHerbs(false);
 
         this.CloseRequested += () => CallDeferred(MethodName.QueueFree);
     }
@@ -121,7 +136,47 @@ public partial class AffinityFoodPlanner : Window
             _cheeseOption.AddItem(AffinityHelper.CheeseNames[i]);
             _cheeseOption.SetItemMetadata(i, AffinityHelper.Cheeses[i]);
         }
-        _cheeseOption.Selected = 0; // None
+        _cheeseOption.Selected = 0;
+    }
+
+    private void PopulateMeats()
+    {
+        _meatOption.Clear();
+        _meatOption.AddItem("Any Meat");
+        _meatOption.SetItemMetadata(0, -1);
+        for (int i = 0; i < AffinityHelper.MeatNames.Length; i++)
+        {
+            _meatOption.AddItem(AffinityHelper.MeatNames[i]);
+            _meatOption.SetItemMetadata(i + 1, i);
+        }
+        _meatOption.Selected = 0;
+    }
+
+    private void PopulateHerbs()
+    {
+        foreach (var child in _herbGrid.GetChildren()) child.QueueFree();
+        _herbCheckBoxes.Clear();
+
+        for (int i = 0; i < AffinityHelper.HerbNames.Length; i++)
+        {
+            var cb = new CheckBox();
+            cb.Text = AffinityHelper.HerbNames[i].Replace("Chopped ", "").Replace("Ground ", "");
+            cb.ButtonPressed = false; // Default to NO exclusions
+            cb.Toggled += (toggled) => Calculate();
+            _herbGrid.AddChild(cb);
+            _herbCheckBoxes.Add(cb);
+        }
+    }
+
+    private void ToggleAllHerbs(bool toggled)
+    {
+        foreach (var cb in _herbCheckBoxes)
+        {
+            cb.SetBlockSignals(true);
+            cb.ButtonPressed = toggled;
+            cb.SetBlockSignals(false);
+        }
+        Calculate();
     }
 
     private void OnTargetTabSelected(long tab)
@@ -208,7 +263,6 @@ public partial class AffinityFoodPlanner : Window
                 Players.Save();
                 Terminal.Write($"Saved test affinity for player '{playerName}'.");
 
-                // If this player is also the maker, refresh the calculation
                 if (_makerSelect.GetSelectedPlayer() == playerName)
                 {
                     Calculate();
@@ -244,18 +298,23 @@ public partial class AffinityFoodPlanner : Window
         _moonshineResults.AppendText(moonshineRecipe);
 
         // Meal Calculation with Preferences
-        // Station logic: Oven (0-3 in AffinityHelper.CookingStations), Forge (4-7)
-        // Rarity adds 0-3 to the base index.
         int stationBaseIdx = _stationOption.Selected * 4;
         int stationIdx = stationBaseIdx + _rarityOption.Selected;
         int cheeseIdx = _cheeseOption.Selected;
+        int meatIdx = (int)_meatOption.GetItemMetadata(_meatOption.Selected);
         bool useSalt = _saltCheck.ButtonPressed;
 
-        var mealRecipes = AffinityHelper.GetMealsForAffinity(testID, wantID, stationIdx, cheeseIdx, useSalt);
+        HashSet<int> excludedHerbs = new HashSet<int>();
+        for (int i = 0; i < _herbCheckBoxes.Count; i++)
+        {
+            if (_herbCheckBoxes[i].ButtonPressed) excludedHerbs.Add(i);
+        }
+
+        var mealRecipes = AffinityHelper.GetMealsForAffinity(testID, wantID, stationIdx, cheeseIdx, useSalt, meatIdx, excludedHerbs);
         _mealResults.Clear();
         if (mealRecipes.Count == 0)
         {
-            _mealResults.AppendText("[color=red]No meal recipes found for this combination and preference.[/color]");
+            _mealResults.AppendText("[color=red]No meal recipes found for these preferences.[/color]");
         }
         else
         {

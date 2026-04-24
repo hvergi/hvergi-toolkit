@@ -108,7 +108,15 @@ metadata/_tab_index = 0
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[font_size=30]Beta 1[/font_size]
+text = "[font_size=30]Beta 2[/font_size]
+* [b]Player Editor:[/b] Implemented full directory management with Windows/Steam auto-discovery and character detection.
+* [b]STP Calculator:[/b] Ported full skill difficulty database and math engine for precise skill tick simulations.
+* [b]Affinity Food Planner:[/b] Re-engineered into a modern, fully reactive split-pane tool with advanced filtering for meat, cheese, salt, and herb stock exclusions.
+* [b]Customer Database:[/b] Added a persistent database to track test meal results for external customers.
+* [b]Reusable UI Components:[/b] Created vertical and horizontal player selection components for a consistent experience across all apps.
+* [b]Data Persistence:[/b] Implemented secure JSON storage in the user directory for all paths, players, and customer data.
+
+[font_size=30]Beta 1[/font_size]
 * Added Main UI"
 
 [node name="AppsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=1943042757]

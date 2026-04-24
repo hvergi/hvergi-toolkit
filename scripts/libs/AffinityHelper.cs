@@ -173,7 +173,7 @@ namespace HvergiToolkit.Libs
             }
         }
 
-        public static List<string> GetMealsForAffinity(int testMealSkillID, int wantedSkillID, int preferredStationIdx = -1, int preferredCheeseIdx = -1, bool includeSalt = false)
+        public static List<string> GetMealsForAffinity(int testMealSkillID, int wantedSkillID, int preferredStationIdx = -1, int preferredCheeseIdx = -1, bool includeSalt = false, int preferredMeatIdx = -1, HashSet<int> excludedHerbIndices = null)
         {
             int sTest = 175;
             int sWanted = PositiveMod(wantedSkillID - testMealSkillID + sTest, 138);
@@ -185,6 +185,18 @@ namespace HvergiToolkit.Libs
                 if (preferredStationIdx != -1 && r.StationIdx != preferredStationIdx) continue;
                 if (preferredCheeseIdx != -1 && r.CheeseIdx != preferredCheeseIdx) continue;
                 if (r.HasSalt != includeSalt) continue;
+                if (preferredMeatIdx != -1 && r.MeatIdx != preferredMeatIdx) continue;
+                
+                // Exclusion logic: If any herb in the recipe is excluded, skip it
+                if (excludedHerbIndices != null && excludedHerbIndices.Count > 0)
+                {
+                    if (excludedHerbIndices.Contains(r.Herb1) || 
+                        excludedHerbIndices.Contains(r.Herb2) || 
+                        excludedHerbIndices.Contains(r.Herb3))
+                    {
+                        continue;
+                    }
+                }
 
                 string desc = $"[b]Cooking Station:[/b] {CookingStationNames[r.StationIdx]}\n";
                 desc += $"[b]Cooking Container:[/b] Frying Pan\n";
