@@ -9,6 +9,7 @@ namespace HvergiToolkit.Libs
         public const int Minced = 32;
         public const int Chopped = 16;
         public const int CookingContainer = 75; // Frying Pan / Cauldron
+        public const int SaltID = 99;
 
         public static readonly string[] CookingStationNames = { "Normal Oven", "Rare Oven", "Supreme Oven", "Fantastic Oven", "Normal Forge", "Rare Forge", "Supreme Forge", "Fantastic Forge" };
         public static readonly int[] CookingStations = { 40, 41, 42, 43, 42, 43, 44, 45 };
@@ -33,144 +34,34 @@ namespace HvergiToolkit.Libs
 
         public static readonly Dictionary<string, int> SkillIDs = new Dictionary<string, int>
         {
-            { "Aggressive Fighting", 109 },
-    { "Alchemy", 25 },
-    { "Animal Husbandry", 130 },
-    { "Animal Taming", 129 },
-    { "Archaeology", 120 },
-    { "Archery", 16 },
-    { "Armour Smithing", 22 },
-    { "Axes", 11 },
-    { "Baking", 62 },
-    { "Beverages", 63 },
-    { "Blacksmithing", 59 },
-    { "Blades Smithing", 54 },
-    { "Body", 1 },
-    { "Body Control", 3 },
-    { "Body Stamina", 4 },
-    { "Body Strength", 5 },
-    { "Botanizing", 122 },
-    { "Bowyery", 103 },
-    { "Butchering", 77 },
-    { "Butchering knife", 73 },
-    { "Carpentry", 78 },
-    { "Cartography", 135 },
-    { "Carving Knife", 72 },
-    { "Catapults", 128 },
-    { "Chain Armour Smithing", 56 },
-    { "Channeling", 118 },
-    { "Climbing", 123 },
-    { "Cloth Tailoring", 52 },
-    { "Clubs", 14 },
-    { "Coal-Making", 97 },
-    { "Cooking", 19 },
-    { "Dairy Food Making", 60 },
-    { "Defensive Fighting", 110 },
-    { "Digging", 44 },
-    { "Exorcism", 119 },
-    { "Farming", 33 },
-    { "Fighting", 28 },
-    { "Fine Carpentry", 102 },
-    { "Firemaking", 79 },
-    { "First aid", 112 },
-    { "Fishing", 94 },
-    { "Fletching", 104 },
-    { "Foraging", 121 },
-    { "Forestry", 38 },
-    { "Gardening", 36 },
-    { "Halberd", 70 },
-    { "Hammer", 91 },
-    { "Hammers", 15 },
-    { "Hatchet", 50 },
-    { "Healing", 29 },
-    { "Hot Food Cooking", 61 },
-    { "Huge Axe", 88 },
-    { "Huge Club", 75 },
-    { "Jewelry Smithing", 101 },
-    { "Knives", 12 },
-    { "Large Axe", 87 },
-    { "Large Maul", 65 },
-    { "Large Metal Shield", 85 },
-    { "Large Wooden Shield", 83 },
-    { "Leatherworking", 51 },
-    { "Lock picking", 125 },
-    { "Locksmithing", 95 },
-    { "Long bow", 132 },
-    { "Long Spear", 69 },
-    { "Longsword", 64 },
-    { "Masonry", 53 },
-    { "Mauls", 13 },
-    { "Meditating", 37 },
-    { "Medium Maul", 66 },
-    { "Medium Metal Shield", 86 },
-    { "Medium Wooden Shield", 82 },
-    { "Metallurgy", 99 },
-    { "Milking", 115 },
-    { "Milling", 98 },
-    { "Mind", 0 },
-    { "Mind Logic", 6 },
-    { "Mind Speed", 7 },
-    { "Mining", 43 },
-    { "Miscellaneous Items", 23 },
-    { "Natural Substances", 100 },
-    { "Nature", 26 },
-    { "Normal Fighting", 111 },
-    { "Papyrusmaking", 34 },
-    { "Paving", 92 },
-    { "Pickaxe", 45 },
-    { "Plate Armour Smithing", 57 },
-    { "Polearms", 17 },
-    { "Pottery", 47 },
-    { "Prayer", 117 },
-    { "Preaching", 116 },
-    { "Prospecting", 93 },
-    { "Puppeteering", 106 },
-    { "Rake", 39 },
-    { "Reflex Bow", 133 },
-    { "Religion", 30 },
-    { "Repairing", 96 },
-    { "Restoration", 137 },
-    { "Ropemaking", 48 },
-    { "Saw", 76 },
-    { "Scythe", 40 },
-    { "Shield Bashing", 114 },
-    { "Shield Smithing", 58 },
-    { "Shields", 24 },
-    { "Ship Building", 134 },
-    { "Short Bow", 131 },
-    { "Shortsword", 89 },
-    { "Shovel", 46 },
-    { "Sickle", 41 },
-    { "Small Axe", 42 },
-    { "Small Maul", 67 },
-    { "Small Metal Shield", 84 },
-    { "Small Wooden Shield", 81 },
-    { "Smithing", 20 },
-    { "Soul", 2 },
-    { "Soul Depth", 8 },
-    { "Soul Strength", 9 },
-    { "Staff", 71 },
-    { "Stealing", 126 },
-    { "Stone Chisel", 74 },
-    { "Stone Cutting", 124 },
-    { "Swords", 10 },
-    { "Tailoring", 18 },
-    { "Taunting", 113 },
-    { "Thatching", 35 },
-    { "Thievery", 31 },
-    { "Toymaking", 107 },
-    { "Toys", 27 },
-    { "Tracking", 80 },
-    { "Traps", 127 },
-    { "Trebuchets", 136 },
-    { "Two Handed Sword", 90 },
-    { "War Machines", 32 },
-    { "Warhammer", 68 },
-    { "Weapon Heads Smithing", 55 },
-    { "Weaponless fighting", 108 },
-    { "Weaponsmithing", 21 },
-    { "Woodcutting", 49 },
-    { "Yoyo", 105 }
+            {"Aggressive Fighting", 109}, {"Alchemy", 25}, {"Animal Husbandry", 130}, {"Animal Taming", 129}, {"Archaeology", 120},
+            {"Archery", 16}, {"Armour Smithing", 22}, {"Axes", 11}, {"Baking", 62}, {"Beverages", 63},
+            {"Blacksmithing", 59}, {"Blades Smithing", 54}, {"Body", 1}, {"Body Control", 3}, {"Body Stamina", 4}, {"Body Strength", 5},
+            {"Botanizing", 122}, {"Bowyery", 103}, {"Butchering", 77}, {"Butchering knife", 73}, {"Carpentry", 78},
+            {"Cartography", 135}, {"Carving Knife", 72}, {"Catapults", 128}, {"Chain Armour Smithing", 56}, {"Channeling", 118},
+            {"Climbing", 123}, {"Cloth Tailoring", 52}, {"Clubs", 14}, {"Coal-Making", 97}, {"Cooking", 19},
+            {"Dairy Food Making", 60}, {"Defensive Fighting", 110}, {"Digging", 44}, {"Exorcism", 119}, {"Farming", 33},
+            {"Fighting", 28}, {"Fine Carpentry", 102}, {"Firemaking", 79}, {"First Aid", 112}, {"Fishing", 94},
+            {"Fletching", 104}, {"Foraging", 121}, {"Forestry", 38}, {"Gardening", 36}, {"Halberd", 70}, {"Hammer", 91},
+            {"Hammers", 15}, {"Hatchet", 50}, {"Healing", 29}, {"Hot Food Cooking", 61}, {"Huge Axe", 88}, {"Huge Club", 75},
+            {"Jewelry Smithing", 101}, {"Knives", 12}, {"Large Axe", 87}, {"Large Maul", 65}, {"Large Metal Shield", 85},
+            {"Large Wooden Shield", 83}, {"Leatherworking", 51}, {"Lock picking", 125}, {"Locksmithing", 95},
+            {"Long bow", 132}, {"Long Spear", 69}, {"Longsword", 64}, {"Masonry", 53}, {"Mauls", 13}, {"Meditating", 37},
+            {"Medium Bow", 133}, {"Medium Maul", 66}, {"Medium Metal Shield", 86}, {"Medium Wooden Shield", 82},
+            {"Metallurgy", 99}, {"Milling", 98}, {"Mind", 0}, {"Mind Logic", 6}, {"Mind Speed", 7}, {"Mining", 43},
+            {"Miscellaneous Items", 23}, {"Natural Substances", 100}, {"Nature", 26}, {"Normal Fighting", 111},
+            {"Papyrusmaking", 34}, {"Paving", 92}, {"Pickaxe", 49}, {"Plate Armour Smithing", 57}, {"Polearms", 17},
+            {"Pottery", 45}, {"Prayer", 117}, {"Preaching", 116}, {"Prospecting", 93}, {"Puppeteering", 106},
+            {"Rake", 46}, {"Religion", 30}, {"Repairing", 96}, {"Restoration", 137}, {"Ropemaking", 47}, {"Saw", 76},
+            {"Scythe", 47}, {"Sermon Warden", 116}, {"Settlement Planner", 137}, {"Shield Bashing", 114},
+            {"Shield Smithing", 58}, {"Shields", 24}, {"Ship Building", 134}, {"Short Bow", 131}, {"Shortsword", 89},
+            {"Sickle", 48}, {"Small Axe", 49}, {"Small Maul", 67}, {"Small Metal Shield", 84}, {"Small Wooden Shield", 81},
+            {"Smithing", 21}, {"Soul", 2}, {"Soul Depth", 8}, {"Soul Strength", 9}, {"Staff", 71}, {"Stealing", 126},
+            {"Stone Chisel", 74}, {"Stone Cutting", 124}, {"Swords", 10}, {"Tailoring", 18}, {"Taunting", 113},
+            {"Thatching", 35}, {"Thievery", 31}, {"Toy Making", 107}, {"Toys", 27}, {"Tracking", 80}, {"Traps", 127},
+            {"Trebuchets", 136}, {"Two Handed Sword", 90}, {"War Machines", 32}, {"Warhammer", 68},
+            {"Weapon Heads Smithing", 55}, {"Weapon Smithing", 20}, {"Weaponless Fighting", 108}, {"Woodcutting", 48},
+            {"Yoyo", 105}
         };
 
         // Moonshine Data
@@ -211,12 +102,28 @@ namespace HvergiToolkit.Libs
             new[] {23, 16, 188, 43, 16}, new[] {23, 16, 141, 91, 16}, new[] {23, 6, 235, 46, 16}, new[] {23, 6, 235, 47, 16}
         };
 
-        private static List<int[]>[] _listOfMeals = new List<int[]>[138];
+        private struct MealData
+        {
+            public int StationIdx;
+            public int MeatIdx;
+            public int CheeseIdx;
+            public int LargeVegIdx;
+            public int Med1, Med2, Med3;
+            public int Herb1, Herb2, Herb3;
+            public bool HasSalt;
+        }
+
+        private static List<MealData>[] _listOfMeals = new List<MealData>[138];
 
         static AffinityHelper()
         {
-            for (int i = 0; i < 138; i++) _listOfMeals[i] = new List<int[]>();
+            for (int i = 0; i < 138; i++) _listOfMeals[i] = new List<MealData>();
             PrecalculateMeals();
+        }
+
+        private static int PositiveMod(int n, int m)
+        {
+            return (n % m + m) % m;
         }
 
         private static void PrecalculateMeals()
@@ -247,12 +154,15 @@ namespace HvergiToolkit.Libs
                                     {
                                         for (int h3 = h2 + 1; h3 < Herbs.Length; h3++)
                                         {
-                                            int finalVal = medVal + Herbs[h1] + Chopped + Herbs[h2] + Chopped + Herbs[h3] + Chopped;
-                                            int id = finalVal % 138;
-                                            if (_listOfMeals[id].Count < 20)
-                                            {
-                                                _listOfMeals[id].Add(new int[] { iStation, iMeat, iCheese, iLarge, range[0], range[1], range[2], h1, h2, h3 });
-                                            }
+                                            int finalBaseVal = medVal + Herbs[h1] + Chopped + Herbs[h2] + Chopped + Herbs[h3] + Chopped;
+                                            
+                                            // No Salt
+                                            int idNoSalt = PositiveMod(finalBaseVal, 138);
+                                            _listOfMeals[idNoSalt].Add(new MealData { StationIdx = iStation, MeatIdx = iMeat, CheeseIdx = iCheese, LargeVegIdx = iLarge, Med1 = range[0], Med2 = range[1], Med3 = range[2], Herb1 = h1, Herb2 = h2, Herb3 = h3, HasSalt = false });
+
+                                            // With Salt (ID -99)
+                                            int idWithSalt = PositiveMod(finalBaseVal + SaltID, 138);
+                                            _listOfMeals[idWithSalt].Add(new MealData { StationIdx = iStation, MeatIdx = iMeat, CheeseIdx = iCheese, LargeVegIdx = iLarge, Med1 = range[0], Med2 = range[1], Med3 = range[2], Herb1 = h1, Herb2 = h2, Herb3 = h3, HasSalt = true });
                                         }
                                     }
                                 }
@@ -266,35 +176,26 @@ namespace HvergiToolkit.Libs
         public static List<string> GetMealsForAffinity(int testMealSkillID, int wantedSkillID, int preferredStationIdx = -1, int preferredCheeseIdx = -1, bool includeSalt = false)
         {
             int sTest = 175;
-            int sWanted = (wantedSkillID - testMealSkillID + sTest) % 138;
-            if (sWanted < 0) sWanted += 138;
+            int sWanted = PositiveMod(wantedSkillID - testMealSkillID + sTest, 138);
 
             var results = new List<string>();
-            int saltVal = includeSalt ? 60 : 0; // Salt ID is 60
 
             foreach (var r in _listOfMeals[sWanted])
             {
-                // Filter by preferred station if specified
-                if (preferredStationIdx != -1 && r[0] != preferredStationIdx) continue;
-                
-                // Filter by preferred cheese if specified
-                if (preferredCheeseIdx != -1 && r[2] != preferredCheeseIdx) continue;
+                if (preferredStationIdx != -1 && r.StationIdx != preferredStationIdx) continue;
+                if (preferredCheeseIdx != -1 && r.CheeseIdx != preferredCheeseIdx) continue;
+                if (r.HasSalt != includeSalt) continue;
 
-                // Adjust description based on salt (calculation-wise salt is added to the sum)
-                // Note: The precalculation needs to account for salt if we want precise ID matching.
-                // However, since salt is optional, we might need a more dynamic calc or a larger list.
-                // For now, we will assume the recipes found are the base ones.
-                
-                string desc = $"[b]Cooking Station:[/b] {CookingStationNames[r[0]]}\n";
+                string desc = $"[b]Cooking Station:[/b] {CookingStationNames[r.StationIdx]}\n";
                 desc += $"[b]Cooking Container:[/b] Frying Pan\n";
-                desc += $"[b]Meat:[/b] {MeatNames[r[1]]}\n";
-                if (r[2] > 0) desc += $"[b]Cheese:[/b] {CheeseNames[r[2]]}\n";
+                desc += $"[b]Meat:[/b] {MeatNames[r.MeatIdx]}\n";
+                if (r.CheeseIdx > 0) desc += $"[b]Cheese:[/b] {CheeseNames[r.CheeseIdx]}\n";
                 
-                string allVeggies = $"{LargeVegNames[r[3]]}, {MedVegNames[r[4]]}, {MedVegNames[r[5]]}, {MedVegNames[r[6]]}, {string.Join(", ", SmallVegNames)}";
+                string allVeggies = $"{LargeVegNames[r.LargeVegIdx]}, {MedVegNames[r.Med1]}, {MedVegNames[r.Med2]}, {MedVegNames[r.Med3]}, {string.Join(", ", SmallVegNames)}";
                 desc += $"[b]Veggies:[/b] {allVeggies}\n";
                 
-                desc += $"[b]Herbs & Spices:[/b] {HerbNames[r[7]]}, {HerbNames[r[8]]}, {HerbNames[r[9]]}";
-                if (includeSalt) desc += ", Salt";
+                desc += $"[b]Herbs & Spices:[/b] {HerbNames[r.Herb1]}, {HerbNames[r.Herb2]}, {HerbNames[r.Herb3]}";
+                if (r.HasSalt) desc += ", Salt";
                 
                 results.Add(desc);
                 if (results.Count >= 20) break;
@@ -305,8 +206,7 @@ namespace HvergiToolkit.Libs
         public static string GetMoonshineForAffinity(int testMealSkillID, int wantedSkillID)
         {
             int sTest = 175;
-            int playerID = (wantedSkillID - testMealSkillID + sTest) % 138;
-            if (playerID < 0) playerID += 138;
+            int playerID = PositiveMod(wantedSkillID - testMealSkillID + sTest, 138);
 
             if (playerID >= MoonshineRecipes.Length) return "No moonshine recipe found for this ID.";
 
@@ -321,12 +221,8 @@ namespace HvergiToolkit.Libs
 
         public static int GetMakerAffinityForID(int makerTestMealSkillID, int targetID)
         {
-            // ID_maker = (S_wanted - S_test + ID_maker_test) % 138
-            // S_wanted here is the targetID (Barrel ID or Meal ID)
             int sTest = 175;
-            int makerID = (targetID - sTest + makerTestMealSkillID) % 138;
-            if (makerID < 0) makerID += 138;
-            return makerID;
+            return PositiveMod(targetID - sTest + makerTestMealSkillID, 138);
         }
 
         public static string GetSkillNameByID(int skillID)
