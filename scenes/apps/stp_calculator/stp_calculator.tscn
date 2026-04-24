@@ -1,14 +1,15 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://d333nhyh2p0xp"]
 
-[ext_resource type="Script" path="res://scenes/apps/stp_calculator/STPCalculator.cs" id="1_script"]
+[ext_resource type="Script" uid="uid://who3iyf6di4q" path="res://scenes/apps/stp_calculator/STPCalculator.cs" id="1_script"]
 
-[node name="STPCalculator" type="Window"]
+[node name="STPCalculator" type="Window" unique_id=1742232191]
+oversampling_override = 1.0
 title = "STP Calculator"
 initial_position = 4
 size = Vector2i(800, 600)
 script = ExtResource("1_script")
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="." unique_id=1287353862]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,269 +20,267 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBox" type="VBoxContainer" parent="Margin"]
+[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=223404614]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="MainInputs" type="HBoxContainer" parent="Margin/VBox"]
+[node name="MainInputs" type="HBoxContainer" parent="Margin/VBox" unique_id=2054479068]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="LeftCol" type="VBoxContainer" parent="Margin/VBox/MainInputs"]
+[node name="LeftCol" type="VBoxContainer" parent="Margin/VBox/MainInputs" unique_id=1044314390]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="SkillRow" type="HBoxContainer" parent="Margin/VBox/MainInputs/LeftCol"]
+[node name="SkillRow" type="HBoxContainer" parent="Margin/VBox/MainInputs/LeftCol" unique_id=1527555291]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Margin/VBox/MainInputs/LeftCol/SkillRow"]
+[node name="Label" type="Label" parent="Margin/VBox/MainInputs/LeftCol/SkillRow" unique_id=868636647]
 layout_mode = 2
 text = "Select Skill:"
 
-[node name="SkillOption" type="OptionButton" parent="Margin/VBox/MainInputs/LeftCol/SkillRow"]
+[node name="SkillOption" type="OptionButton" parent="Margin/VBox/MainInputs/LeftCol/SkillRow" unique_id=1312706153]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CreationRow" type="HBoxContainer" parent="Margin/VBox/MainInputs/LeftCol"]
+[node name="CreationRow" type="HBoxContainer" parent="Margin/VBox/MainInputs/LeftCol" unique_id=1508909011]
 layout_mode = 2
 
-[node name="IsCreationCheck" type="CheckBox" parent="Margin/VBox/MainInputs/LeftCol/CreationRow"]
+[node name="IsCreationCheck" type="CheckBox" parent="Margin/VBox/MainInputs/LeftCol/CreationRow" unique_id=282055608]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Is this a creation skill?"
 
-[node name="LevelRow" type="HBoxContainer" parent="Margin/VBox/MainInputs/LeftCol"]
+[node name="LevelRow" type="HBoxContainer" parent="Margin/VBox/MainInputs/LeftCol" unique_id=1925666567]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Margin/VBox/MainInputs/LeftCol/LevelRow"]
+[node name="Label" type="Label" parent="Margin/VBox/MainInputs/LeftCol/LevelRow" unique_id=2011960434]
 layout_mode = 2
 text = "Current Level:"
 
-[node name="CurrentLevelSpin" type="SpinBox" parent="Margin/VBox/MainInputs/LeftCol/LevelRow"]
+[node name="CurrentLevelSpin" type="SpinBox" parent="Margin/VBox/MainInputs/LeftCol/LevelRow" unique_id=1364861179]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
-max_value = 100.0
 step = 0.0001
 value = 1.0
 allow_greater = true
 
-[node name="TargetRow" type="HBoxContainer" parent="Margin/VBox/MainInputs/LeftCol"]
+[node name="TargetRow" type="HBoxContainer" parent="Margin/VBox/MainInputs/LeftCol" unique_id=1049471272]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Margin/VBox/MainInputs/LeftCol/TargetRow"]
+[node name="Label" type="Label" parent="Margin/VBox/MainInputs/LeftCol/TargetRow" unique_id=1909613945]
 layout_mode = 2
 text = "Target Level:"
 
-[node name="TargetLevelSpin" type="SpinBox" parent="Margin/VBox/MainInputs/LeftCol/TargetRow"]
+[node name="TargetLevelSpin" type="SpinBox" parent="Margin/VBox/MainInputs/LeftCol/TargetRow" unique_id=520669442]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
-max_value = 100.0
 step = 0.0001
 value = 1.0
 allow_greater = true
 
-[node name="SubmitSTPBtn" type="Button" parent="Margin/VBox/MainInputs/LeftCol"]
+[node name="SubmitSTPBtn" type="Button" parent="Margin/VBox/MainInputs/LeftCol" unique_id=1759866450]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Calculate STP"
 
-[node name="RightCol" type="VBoxContainer" parent="Margin/VBox/MainInputs"]
+[node name="RightCol" type="VBoxContainer" parent="Margin/VBox/MainInputs" unique_id=925474416]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Margin/VBox/MainInputs/RightCol"]
+[node name="Label" type="Label" parent="Margin/VBox/MainInputs/RightCol" unique_id=1518218930]
 layout_mode = 2
 text = "Level after STP gained"
 horizontal_alignment = 1
 
-[node name="TicksRow" type="HBoxContainer" parent="Margin/VBox/MainInputs/RightCol"]
+[node name="TicksRow" type="HBoxContainer" parent="Margin/VBox/MainInputs/RightCol" unique_id=1363089291]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Margin/VBox/MainInputs/RightCol/TicksRow"]
+[node name="Label" type="Label" parent="Margin/VBox/MainInputs/RightCol/TicksRow" unique_id=808018585]
 layout_mode = 2
 text = "STP to add:"
 
-[node name="TargetTicksSpin" type="SpinBox" parent="Margin/VBox/MainInputs/RightCol/TicksRow"]
+[node name="TargetTicksSpin" type="SpinBox" parent="Margin/VBox/MainInputs/RightCol/TicksRow" unique_id=1333793580]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 1e+09
+max_value = 1000000000.0
 value = 10000.0
 allow_greater = true
 
-[node name="SubmitTicksBtn" type="Button" parent="Margin/VBox/MainInputs/RightCol"]
+[node name="SubmitTicksBtn" type="Button" parent="Margin/VBox/MainInputs/RightCol" unique_id=1116493272]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Calculate Level"
 
-[node name="HSeparator" type="HSeparator" parent="Margin/VBox"]
+[node name="HSeparator" type="HSeparator" parent="Margin/VBox" unique_id=374707504]
 layout_mode = 2
 
-[node name="ResultsTable" type="GridContainer" parent="Margin/VBox"]
+[node name="ResultsTable" type="GridContainer" parent="Margin/VBox" unique_id=1096726079]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 10
 columns = 4
 
-[node name="Header1" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Header1" type="Label" parent="Margin/VBox/ResultsTable" unique_id=675822747]
 layout_mode = 2
 text = "Target Level"
 horizontal_alignment = 1
 
-[node name="Header2" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Header2" type="Label" parent="Margin/VBox/ResultsTable" unique_id=413776643]
 layout_mode = 2
 text = "Goal STP"
 horizontal_alignment = 1
 
-[node name="Header3" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Header3" type="Label" parent="Margin/VBox/ResultsTable" unique_id=1438569565]
 layout_mode = 2
 text = "% to Goal"
 horizontal_alignment = 1
 
-[node name="Header4" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Header4" type="Label" parent="Margin/VBox/ResultsTable" unique_id=725968505]
 layout_mode = 2
 text = "STP Left"
 horizontal_alignment = 1
 
-[node name="TargetLabel" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="TargetLabel" type="Label" parent="Margin/VBox/ResultsTable" unique_id=1527787978]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Custom"
 horizontal_alignment = 1
 
-[node name="TargetSTP" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="TargetSTP" type="Label" parent="Margin/VBox/ResultsTable" unique_id=434559971]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="TargetPer" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="TargetPer" type="Label" parent="Margin/VBox/ResultsTable" unique_id=1150305728]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0%"
 horizontal_alignment = 1
 
-[node name="TargetLeft" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="TargetLeft" type="Label" parent="Margin/VBox/ResultsTable" unique_id=1870536902]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="Label50" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Label50" type="Label" parent="Margin/VBox/ResultsTable" unique_id=270080828]
 layout_mode = 2
 text = "50"
 horizontal_alignment = 1
 
-[node name="STP50" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="STP50" type="Label" parent="Margin/VBox/ResultsTable" unique_id=1392961915]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="Per50" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Per50" type="Label" parent="Margin/VBox/ResultsTable" unique_id=1327332489]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0%"
 horizontal_alignment = 1
 
-[node name="Left50" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Left50" type="Label" parent="Margin/VBox/ResultsTable" unique_id=2091020506]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="Label70" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Label70" type="Label" parent="Margin/VBox/ResultsTable" unique_id=1004221941]
 layout_mode = 2
 text = "70"
 horizontal_alignment = 1
 
-[node name="STP70" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="STP70" type="Label" parent="Margin/VBox/ResultsTable" unique_id=72014038]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="Per70" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Per70" type="Label" parent="Margin/VBox/ResultsTable" unique_id=1781511246]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0%"
 horizontal_alignment = 1
 
-[node name="Left70" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Left70" type="Label" parent="Margin/VBox/ResultsTable" unique_id=73834461]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="Label90" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Label90" type="Label" parent="Margin/VBox/ResultsTable" unique_id=284559141]
 layout_mode = 2
 text = "90"
 horizontal_alignment = 1
 
-[node name="STP90" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="STP90" type="Label" parent="Margin/VBox/ResultsTable" unique_id=1214767477]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="Per90" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Per90" type="Label" parent="Margin/VBox/ResultsTable" unique_id=1564608553]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0%"
 horizontal_alignment = 1
 
-[node name="Left90" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Left90" type="Label" parent="Margin/VBox/ResultsTable" unique_id=1332322462]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="Label100" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Label100" type="Label" parent="Margin/VBox/ResultsTable" unique_id=972239913]
 layout_mode = 2
 text = "100"
 horizontal_alignment = 1
 
-[node name="STP100" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="STP100" type="Label" parent="Margin/VBox/ResultsTable" unique_id=1056614243]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="Per100" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Per100" type="Label" parent="Margin/VBox/ResultsTable" unique_id=404544984]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0%"
 horizontal_alignment = 1
 
-[node name="Left100" type="Label" parent="Margin/VBox/ResultsTable"]
+[node name="Left100" type="Label" parent="Margin/VBox/ResultsTable" unique_id=705733342]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="SummaryRow" type="HBoxContainer" parent="Margin/VBox"]
+[node name="SummaryRow" type="HBoxContainer" parent="Margin/VBox" unique_id=480641456]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="DifficultyLabel" type="Label" parent="Margin/VBox/SummaryRow"]
+[node name="DifficultyLabel" type="Label" parent="Margin/VBox/SummaryRow" unique_id=161264381]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Difficulty: 0"
 
-[node name="CurrentSTPLabel" type="Label" parent="Margin/VBox/SummaryRow"]
+[node name="CurrentSTPLabel" type="Label" parent="Margin/VBox/SummaryRow" unique_id=1927113292]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Current STP: 0"
 
-[node name="OutLVLLabel" type="Label" parent="Margin/VBox/SummaryRow"]
+[node name="OutLVLLabel" type="Label" parent="Margin/VBox/SummaryRow" unique_id=1987578310]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Level: 0"

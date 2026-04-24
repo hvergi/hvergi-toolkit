@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://pd2xx5lapec4"]
 
 [ext_resource type="Script" uid="uid://3rbt873eh0b8" path="res://scenes/hvergi_toolkit/HvergiToolkit.cs" id="1_uexwx"]
-[ext_resource type="Theme" path="res://darkmode.tres" id="1_v14n5"]
+[ext_resource type="Theme" uid="uid://44k28fj5f4t7" path="res://darkmode.tres" id="1_v14n5"]
 
 [node name="HvergiToolkit" type="Control" unique_id=1602896807 node_paths=PackedStringArray("terminalOutput", "contentTabContainer", "newsButton", "appsButton", "settingsButton", "playerEditorButton", "moiTrackerButton", "skillTrackerButton", "tradeWatcherButton", "stpCalcButton", "skillCompareButton", "sermonButton", "logAlertButton", "logSearchButton", "affinityFoodPlannerButton", "dyeEstimatorButton", "settlementPlannerButton")]
 layout_mode = 3
@@ -110,7 +110,17 @@ metadata/_tab_index = 0
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[font_size=30]Beta 2[/font_size]
+text = "[font_size=30]Beta 3[/font_size]
+* [b]Log Reader Utility:[/b] Created a robust, multi-character log monitoring engine with intelligent day-rollover support and position tracking.
+* [b]Moi Tracker:[/b] Fully implemented the \"Moment of Inspiration\" tracking suite.
+    * [b]Team Management:[/b] Drag-and-drop team building with distinct Leader and Member roles.
+    * [b]Team Presets:[/b] Save and load your crafting team configurations permanently.
+    * [b]Modern UI:[/b] HTML-inspired responsive player cards with real-time stat tracking (MOIs, Crafts, CPM).
+    * [b]Smart Timers:[/b] Interval-based crafting pacing with visual alerts and log-driven reset based on leader activity.
+    * [b]Synchronization:[/b] Real-time global state syncing across multiple open tracker instances.
+* [b]Player List Improvements:[/b] Enhanced the shared selection component with team-aware filtering and global update notifications.
+
+[font_size=30]Beta 2[/font_size]
 * [b]Player Editor:[/b] Implemented full directory management with Windows/Steam auto-discovery and character detection.
 * [b]STP Calculator:[/b] Ported full skill difficulty database and math engine for precise skill tick simulations.
 * [b]Affinity Food Planner:[/b] Re-engineered into a modern, fully reactive split-pane tool with advanced filtering for meat, cheese, salt, and herb stock exclusions.

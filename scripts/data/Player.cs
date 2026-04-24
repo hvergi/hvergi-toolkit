@@ -9,6 +9,7 @@ public class Player
     public string Path { get; set; }
     public bool IsHidden { get; set; }
     public bool IsFav { get; set; }
+    public bool IsOnTeam { get; set; }
     public int AffinitySkillID { get; set; } = -1; // Default to -1 (none)
     
     public enum LogType
@@ -44,7 +45,7 @@ public class Player
         return GetLogPath("_Skills");
     }
 
-    private string GetLogPath(string prefix)
+    public string GetLogPath(string prefix)
     {
         UpdateLogType();
 
