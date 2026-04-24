@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7dhd1rtmmtdm"]
+[gd_scene format=3 uid="uid://b7dhd1rtmmtdm"]
 
-[ext_resource type="Script" path="res://scenes/apps/affinity_food_planner/AffinityFoodPlanner.cs" id="1_script"]
-[ext_resource type="PackedScene" uid="uid://dp6m0j4w8n3u1" path="res://scenes/ui/player_select_horizontal.tscn" id="2_ui"]
+[ext_resource type="Script" uid="uid://cskc1324ogvld" path="res://scenes/apps/affinity_food_planner/AffinityFoodPlanner.cs" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dp6m0j4w8n3u1" path="res://scenes/ui/player_select_horizontal/player_select_horizontal.tscn" id="2_ui"]
 
-[node name="AffinityFoodPlanner" type="Window"]
+[node name="AffinityFoodPlanner" type="Window" unique_id=1084310515]
+oversampling_override = 1.0
 title = "Affinity Food Planner"
 initial_position = 4
 size = Vector2i(1000, 750)
 script = ExtResource("1_script")
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="." unique_id=1176290341]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,83 +21,253 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBox" type="VBoxContainer" parent="Margin"]
+[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=287991637]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="SplitPanels" type="HBoxContainer" parent="Margin/VBox"]
+[node name="SplitPanels" type="HBoxContainer" parent="Margin/VBox" unique_id=1529990737]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="TargetPanel" type="PanelContainer" parent="Margin/VBox/SplitPanels"]
+[node name="TargetPanel" type="PanelContainer" parent="Margin/VBox/SplitPanels" unique_id=2142664079]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBox" type="VBoxContainer" parent="Margin/VBox/SplitPanels/TargetPanel"]
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/SplitPanels/TargetPanel" unique_id=1731121594]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/TargetPanel/VBox"]
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=1487898060]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Target Setup"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Margin/VBox/SplitPanels/TargetPanel/VBox"]
+[node name="HSeparator" type="HSeparator" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=74077069]
 layout_mode = 2
 
-[node name="TargetTabs" type="TabContainer" parent="Margin/VBox/SplitPanels/TargetPanel/VBox"]
+[node name="TargetTabs" type="TabContainer" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=4262484]
 unique_name_in_owner = true
 layout_mode = 2
 current_tab = 0
 
-[node name="Players" type="VBoxContainer" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs"]
+[node name="Players" type="VBoxContainer" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs" unique_id=1408148466]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
 metadata/_tab_index = 0
 
-[node name="PlayerSelect" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Players" instance=ExtResource("2_ui")]
+[node name="PlayerSelect" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Players" unique_id=1469069817 instance=ExtResource("2_ui")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Customers" type="VBoxContainer" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs"]
+[node name="Customers" type="VBoxContainer" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs" unique_id=1871948834]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
 metadata/_tab_index = 1
 
-[node name="CustomerHBox" type="HBoxContainer" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Customers"]
+[node name="CustomerHBox" type="HBoxContainer" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Customers" unique_id=285454762]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="CustomerOption" type="OptionButton" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Customers/CustomerHBox"]
+[node name="CustomerOption" type="OptionButton" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Customers/CustomerHBox" unique_id=1962859077]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AddCustomerBtn" type="Button" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Customers/CustomerHBox"]
+[node name="AddCustomerBtn" type="Button" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Customers/CustomerHBox" unique_id=1828231271]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Add New Customer..."
 
-[node name="DeleteCustomerBtn" type="Button" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Customers/CustomerHBox"]
+[node name="DeleteCustomerBtn" type="Button" parent="Margin/VBox/SplitPanels/TargetPanel/VBox/TargetTabs/Customers/CustomerHBox" unique_id=1592877583]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Delete"
 
-[node name="CustomerPopup" type="PopupPanel" parent="."]
+[node name="Spacer" type="Control" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=639960077]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="LabelTest" type="Label" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=814759220]
+layout_mode = 2
+text = "Their Test Meal Result (Current Affinity):"
+
+[node name="TestSkillOption" type="OptionButton" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=840479194]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SaveAffinityBtn" type="Button" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=91510776]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save Test Result to Profile"
+
+[node name="LabelWant" type="Label" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=100932065]
+layout_mode = 2
+text = "Desired Affinity Skill:"
+
+[node name="WantSkillOption" type="OptionButton" parent="Margin/VBox/SplitPanels/TargetPanel/VBox" unique_id=1901930663]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MakerPanel" type="PanelContainer" parent="Margin/VBox/SplitPanels" unique_id=1116069791]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel" unique_id=1544361339]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=110595220]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Cook / Maker Setup"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=1901275271]
+layout_mode = 2
+
+[node name="MakerSelect" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=1484004725 instance=ExtResource("2_ui")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PredictionPanel" type="PanelContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=149127557]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/PredictionPanel" unique_id=853315525]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/PredictionPanel/VBox" unique_id=1493659965]
+layout_mode = 2
+text = "Maker's Test Affinity:"
+horizontal_alignment = 1
+
+[node name="MakerResultLabel" type="RichTextLabel" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/PredictionPanel/VBox" unique_id=1215187049]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][color=gray]Select Maker and Skills[/color][/center]"
+fit_content = true
+
+[node name="Label2" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=1069262673]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Meal Options"
+horizontal_alignment = 1
+
+[node name="StationHBox" type="HBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=165529730]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/StationHBox" unique_id=926158586]
+layout_mode = 2
+text = "Station Type:"
+
+[node name="StationOption" type="OptionButton" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/StationHBox" unique_id=1326604973]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Oven"
+popup/item_0/id = 0
+popup/item_1/text = "Forge"
+popup/item_1/id = 1
+
+[node name="RarityHBox" type="HBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=1138400589]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/RarityHBox" unique_id=204373597]
+layout_mode = 2
+text = "Station Rarity:"
+
+[node name="RarityOption" type="OptionButton" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/RarityHBox" unique_id=1793030253]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 4
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Rare"
+popup/item_1/id = 1
+popup/item_2/text = "Supreme"
+popup/item_2/id = 2
+popup/item_3/text = "Fantastic"
+popup/item_3/id = 3
+
+[node name="CheeseHBox" type="HBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=2061908002]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/CheeseHBox" unique_id=424550929]
+layout_mode = 2
+text = "Use Cheese:"
+
+[node name="CheeseOption" type="OptionButton" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/CheeseHBox" unique_id=2030120789]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SaltCheck" type="CheckBox" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=2039362006]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Include Salt"
+
+[node name="HSeparator2" type="HSeparator" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" unique_id=64841667]
+layout_mode = 2
+
+[node name="BottomResults" type="PanelContainer" parent="Margin/VBox" unique_id=1505296125]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ResultsHBox" type="HBoxContainer" parent="Margin/VBox/BottomResults" unique_id=1829159740]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MoonshineCol" type="VBoxContainer" parent="Margin/VBox/BottomResults/ResultsHBox" unique_id=1162555080]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Margin/VBox/BottomResults/ResultsHBox/MoonshineCol" unique_id=233519116]
+layout_mode = 2
+text = "Moonshine Recipe"
+horizontal_alignment = 1
+
+[node name="MoonshineResults" type="RichTextLabel" parent="Margin/VBox/BottomResults/ResultsHBox/MoonshineCol" unique_id=1036961879]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "..."
+
+[node name="VSeparator" type="VSeparator" parent="Margin/VBox/BottomResults/ResultsHBox" unique_id=1685396468]
+layout_mode = 2
+
+[node name="MealsCol" type="VBoxContainer" parent="Margin/VBox/BottomResults/ResultsHBox" unique_id=116148989]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Margin/VBox/BottomResults/ResultsHBox/MealsCol" unique_id=1182415058]
+layout_mode = 2
+text = "Meal Recipes (Top 20)"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/VBox/BottomResults/ResultsHBox/MealsCol" unique_id=282839216]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MealResults" type="RichTextLabel" parent="Margin/VBox/BottomResults/ResultsHBox/MealsCol/Scroll" unique_id=524777593]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Select skills to see recipes..."
+
+[node name="CustomerPopup" type="PopupPanel" parent="." unique_id=1071543849]
 unique_name_in_owner = true
 initial_position = 2
 size = Vector2i(400, 200)
 
-[node name="Margin" type="MarginContainer" parent="CustomerPopup"]
+[node name="Margin" type="MarginContainer" parent="CustomerPopup" unique_id=595515672]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 396.0
@@ -106,144 +277,29 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="CustomerPopup/Margin"]
+[node name="VBox" type="VBoxContainer" parent="CustomerPopup/Margin" unique_id=1728362227]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="CustomerPopup/Margin/VBox"]
+[node name="Label" type="Label" parent="CustomerPopup/Margin/VBox" unique_id=2089069935]
 layout_mode = 2
 text = "Add New Customer"
 horizontal_alignment = 1
 
-[node name="NewCustomerName" type="LineEdit" parent="CustomerPopup/Margin/VBox"]
+[node name="NewCustomerName" type="LineEdit" parent="CustomerPopup/Margin/VBox" unique_id=1745029392]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Enter Customer Name"
 
-[node name="Label2" type="Label" parent="CustomerPopup/Margin/VBox"]
+[node name="Label2" type="Label" parent="CustomerPopup/Margin/VBox" unique_id=807562823]
 layout_mode = 2
 text = "Initial Test Affinity:"
 
-[node name="NewCustomerSkill" type="OptionButton" parent="CustomerPopup/Margin/VBox"]
+[node name="NewCustomerSkill" type="OptionButton" parent="CustomerPopup/Margin/VBox" unique_id=1229246071]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PopupSaveBtn" type="Button" parent="CustomerPopup/Margin/VBox"]
+[node name="PopupSaveBtn" type="Button" parent="CustomerPopup/Margin/VBox" unique_id=995842872]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Save Customer"
-
-[node name="Spacer" type="Control" parent="Margin/VBox/SplitPanels/TargetPanel/VBox"]
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-
-[node name="LabelTest" type="Label" parent="Margin/VBox/SplitPanels/TargetPanel/VBox"]
-layout_mode = 2
-text = "Their Test Meal Result (Current Affinity):"
-
-[node name="TestSkillOption" type="OptionButton" parent="Margin/VBox/SplitPanels/TargetPanel/VBox"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="SaveAffinityBtn" type="Button" parent="Margin/VBox/SplitPanels/TargetPanel/VBox"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Save Test Result to Profile"
-
-[node name="LabelWant" type="Label" parent="Margin/VBox/SplitPanels/TargetPanel/VBox"]
-layout_mode = 2
-text = "Desired Affinity Skill:"
-
-[node name="WantSkillOption" type="OptionButton" parent="Margin/VBox/SplitPanels/TargetPanel/VBox"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="MakerPanel" type="PanelContainer" parent="Margin/VBox/SplitPanels"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBox" type="VBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "Cook / Maker Setup"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="Margin/VBox/SplitPanels/MakerPanel/VBox"]
-layout_mode = 2
-
-[node name="MakerSelect" parent="Margin/VBox/SplitPanels/MakerPanel/VBox" instance=ExtResource("2_ui")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="HSeparator2" type="HSeparator" parent="Margin/VBox/SplitPanels/MakerPanel/VBox"]
-layout_mode = 2
-
-[node name="PredictionPanel" type="PanelContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox"]
-layout_mode = 2
-
-[node name="VBox" type="VBoxContainer" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/PredictionPanel"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/PredictionPanel/VBox"]
-layout_mode = 2
-text = "Maker's Test Affinity:"
-horizontal_alignment = 1
-
-[node name="MakerResultLabel" type="RichTextLabel" parent="Margin/VBox/SplitPanels/MakerPanel/VBox/PredictionPanel/VBox"]
-unique_name_in_owner = true
-layout_mode = 2
-bbcode_enabled = true
-text = "[center][color=gray]Select Maker and Skills[/color][/center]"
-fit_content = true
-
-[node name="BottomResults" type="PanelContainer" parent="Margin/VBox"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ResultsHBox" type="HBoxContainer" parent="Margin/VBox/BottomResults"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="MoonshineCol" type="VBoxContainer" parent="Margin/VBox/BottomResults/ResultsHBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Margin/VBox/BottomResults/ResultsHBox/MoonshineCol"]
-layout_mode = 2
-text = "Moonshine Recipe"
-horizontal_alignment = 1
-
-[node name="MoonshineResults" type="RichTextLabel" parent="Margin/VBox/BottomResults/ResultsHBox/MoonshineCol"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "..."
-
-[node name="VSeparator" type="VSeparator" parent="Margin/VBox/BottomResults/ResultsHBox"]
-layout_mode = 2
-
-[node name="MealsCol" type="VBoxContainer" parent="Margin/VBox/BottomResults/ResultsHBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Margin/VBox/BottomResults/ResultsHBox/MealsCol"]
-layout_mode = 2
-text = "Meal Recipes (Top 20)"
-horizontal_alignment = 1
-
-[node name="Scroll" type="ScrollContainer" parent="Margin/VBox/BottomResults/ResultsHBox/MealsCol"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MealResults" type="RichTextLabel" parent="Margin/VBox/BottomResults/ResultsHBox/MealsCol/Scroll"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "Select skills to see recipes..."

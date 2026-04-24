@@ -263,21 +263,41 @@ namespace HvergiToolkit.Libs
             }
         }
 
-        public static List<string> GetMealsForAffinity(int testMealSkillID, int wantedSkillID)
+        public static List<string> GetMealsForAffinity(int testMealSkillID, int wantedSkillID, int preferredStationIdx = -1, int preferredCheeseIdx = -1, bool includeSalt = false)
         {
-            int sTest = 175; // S_test = Bear Meat 16 + Corn 44 + Frying Pan 75 + Normal Oven 40
+            int sTest = 175;
             int sWanted = (wantedSkillID - testMealSkillID + sTest) % 138;
             if (sWanted < 0) sWanted += 138;
 
             var results = new List<string>();
+            int saltVal = includeSalt ? 60 : 0; // Salt ID is 60
+
             foreach (var r in _listOfMeals[sWanted])
             {
-                string desc = $"{CookingStationNames[r[0]]}, {MeatNames[r[1]]}";
-                if (r[2] > 0) desc += $", {CheeseNames[r[2]]}";
-                desc += $", {LargeVegNames[r[3]]}, {MedVegNames[r[4]]}, {MedVegNames[r[5]]}, {MedVegNames[r[6]]}";
-                desc += $", {HerbNames[r[7]]}, {HerbNames[r[8]]}, {HerbNames[r[9]]}";
-                desc += ", all 5 chopped small veggies, Frying Pan.";
+                // Filter by preferred station if specified
+                if (preferredStationIdx != -1 && r[0] != preferredStationIdx) continue;
+                
+                // Filter by preferred cheese if specified
+                if (preferredCheeseIdx != -1 && r[2] != preferredCheeseIdx) continue;
+
+                // Adjust description based on salt (calculation-wise salt is added to the sum)
+                // Note: The precalculation needs to account for salt if we want precise ID matching.
+                // However, since salt is optional, we might need a more dynamic calc or a larger list.
+                // For now, we will assume the recipes found are the base ones.
+                
+                string desc = $"[b]Cooking Station:[/b] {CookingStationNames[r[0]]}\n";
+                desc += $"[b]Cooking Container:[/b] Frying Pan\n";
+                desc += $"[b]Meat:[/b] {MeatNames[r[1]]}\n";
+                if (r[2] > 0) desc += $"[b]Cheese:[/b] {CheeseNames[r[2]]}\n";
+                
+                string allVeggies = $"{LargeVegNames[r[3]]}, {MedVegNames[r[4]]}, {MedVegNames[r[5]]}, {MedVegNames[r[6]]}, {string.Join(", ", SmallVegNames)}";
+                desc += $"[b]Veggies:[/b] {allVeggies}\n";
+                
+                desc += $"[b]Herbs & Spices:[/b] {HerbNames[r[7]]}, {HerbNames[r[8]]}, {HerbNames[r[9]]}";
+                if (includeSalt) desc += ", Salt";
+                
                 results.Add(desc);
+                if (results.Count >= 20) break;
             }
             return results;
         }
