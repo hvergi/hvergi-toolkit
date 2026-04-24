@@ -240,7 +240,6 @@ public partial class MoiTracker : Window
 
     private void OnCraftTimerTimeout()
     {
-        FlashAlert();
         _countdownLabel.Text = "Next Craft: NOW!";
         TriggerAlert(AppSettings.MoiTracker.CraftAlert, _leaderCard?.PlayerName ?? "Leader");
     }
@@ -264,12 +263,6 @@ public partial class MoiTracker : Window
         }
     }
 
-    private async void FlashAlert()
-    {
-        _alertOverlay.Visible = true;
-        await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
-        _alertOverlay.Visible = false;
-    }
 
     private void OnLogCheckTimerTimeout()
     {
