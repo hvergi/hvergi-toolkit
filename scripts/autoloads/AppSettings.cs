@@ -13,6 +13,14 @@ public static class AppSettings
         public string SoundPath { get; set; } = "";
         public float Volume { get; set; } = 1.0f;
         public string TTSMessage { get; set; } = "";
+
+        public void ResetToDefaults(int mode, string soundPath, float volume, string ttsMessage)
+        {
+            Mode = mode;
+            SoundPath = soundPath;
+            Volume = volume;
+            TTSMessage = ttsMessage;
+        }
     }
 
     public class MoiTrackerSettings
@@ -28,6 +36,13 @@ public static class AppSettings
             TTSMessage = "{player} has had an M.O.I." 
         };
         public string TtsVoiceId { get; set; } = "";
+
+        public void ResetToDefaults()
+        {
+            CraftAlert.ResetToDefaults(0, "res://assets/sounds/craft.wav", 1.0f, "Crafting interval reached.");
+            MoiAlert.ResetToDefaults(0, "res://assets/sounds/moi.wav", 1.0f, "{player} has had an M.O.I.");
+            TtsVoiceId = "";
+        }
     }
 
     public class SkillTrackerSettings

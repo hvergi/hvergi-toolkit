@@ -252,6 +252,11 @@ layout_mode = 2
 layout_mode = 2
 text = "Global TTS Voice: "
 
+[node name="MoiVoiceReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/VoiceSettings"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset"
+
 [node name="MoiVoiceSelect" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/VoiceSettings"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -260,10 +265,19 @@ size_flags_horizontal = 3
 [node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox"]
 layout_mode = 2
 
-[node name="CraftAlertTitle" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox"]
+[node name="CraftAlertHeader" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox"]
 layout_mode = 2
+
+[node name="CraftAlertTitle" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftAlertHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_type_variation = &"HeaderMedium"
 text = "Craft Alert"
+
+[node name="CraftAlertReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftAlertHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset to Defaults"
 
 [node name="CraftAlertMode" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox"]
 unique_name_in_owner = true
@@ -350,10 +364,19 @@ text = "Test TTS"
 [node name="HSeparator2" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox"]
 layout_mode = 2
 
-[node name="MoiAlertTitle" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox"]
+[node name="MoiAlertHeader" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox"]
 layout_mode = 2
+
+[node name="MoiAlertTitle" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiAlertHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_type_variation = &"HeaderMedium"
 text = "Moi Alert"
+
+[node name="MoiAlertReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiAlertHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset to Defaults"
 
 [node name="MoiAlertMode" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox"]
 unique_name_in_owner = true

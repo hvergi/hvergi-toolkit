@@ -291,3 +291,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0.117647)
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=987654321]
+unique_name_in_owner = true

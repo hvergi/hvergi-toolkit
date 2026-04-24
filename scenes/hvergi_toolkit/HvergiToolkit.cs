@@ -83,25 +83,39 @@ namespace HvergiToolkit
         {
             var voiceSelect = GetNode<OptionButton>("%MoiVoiceSelect");
             var voices = DisplayServer.TtsGetVoices();
-            int selectedIndex = -1;
+            
+            Action updateVoiceSelect = () => {
+                int selectedIndex = -1;
+                for (int i = 0; i < voices.Count; i++)
+                {
+                    if ((string)voices[i]["id"] == AppSettings.MoiTracker.TtsVoiceId)
+                        selectedIndex = i;
+                }
+                voiceSelect.Selected = selectedIndex;
+            };
+
             for (int i = 0; i < voices.Count; i++)
             {
                 voiceSelect.AddItem($"{voices[i]["name"]} ({voices[i]["language"]})");
-                if ((string)voices[i]["id"] == AppSettings.MoiTracker.TtsVoiceId)
-                    selectedIndex = i;
             }
-            if (selectedIndex != -1) voiceSelect.Selected = selectedIndex;
+            updateVoiceSelect();
+
             voiceSelect.ItemSelected += (id) => {
                 AppSettings.MoiTracker.TtsVoiceId = (string)voices[(int)id]["id"];
             };
 
-            SetupAlertGroup("Craft", AppSettings.MoiTracker.CraftAlert);
-            SetupAlertGroup("Moi", AppSettings.MoiTracker.MoiAlert);
+            GetNode<Button>("%MoiVoiceReset").Pressed += () => {
+                AppSettings.MoiTracker.TtsVoiceId = "";
+                updateVoiceSelect();
+            };
+
+            SetupAlertGroup("Craft", AppSettings.MoiTracker.CraftAlert, 0, "res://assets/sounds/craft.wav", 1.0f, "Crafting interval reached.");
+            SetupAlertGroup("Moi", AppSettings.MoiTracker.MoiAlert, 0, "res://assets/sounds/moi.wav", 1.0f, "{player} has had an M.O.I.");
 
             GetNode<FileDialog>("%SoundPicker").FileSelected += OnSoundFileSelected;
         }
 
-        private void SetupAlertGroup(string prefix, AppSettings.AlertSettings settings)
+        private void SetupAlertGroup(string prefix, AppSettings.AlertSettings settings, int defMode, string defPath, float defVol, string defMsg)
         {
             var modeBtn = GetNode<OptionButton>($"%{prefix}AlertMode");
             var soundSettings = GetNode<Control>($"%{prefix}SoundSettings");
@@ -110,13 +124,16 @@ namespace HvergiToolkit
             var volSlider = GetNode<HSlider>($"%{prefix}SoundVolume");
             var msgInput = GetNode<LineEdit>($"%{prefix}TTSMessage");
 
-            modeBtn.Selected = settings.Mode;
-            soundSettings.Visible = settings.Mode == 0;
-            ttsSettings.Visible = settings.Mode == 1;
+            Action updateUI = () => {
+                modeBtn.Selected = settings.Mode;
+                soundSettings.Visible = settings.Mode == 0;
+                ttsSettings.Visible = settings.Mode == 1;
+                pathLabel.Text = settings.SoundPath;
+                volSlider.Value = settings.Volume;
+                msgInput.Text = settings.TTSMessage;
+            };
 
-            pathLabel.Text = settings.SoundPath;
-            volSlider.Value = settings.Volume;
-            msgInput.Text = settings.TTSMessage;
+            updateUI();
 
             modeBtn.ItemSelected += (id) => {
                 settings.Mode = (int)id;
@@ -132,18 +149,19 @@ namespace HvergiToolkit
             volSlider.ValueChanged += (val) => settings.Volume = (float)val;
             msgInput.TextChanged += (text) => settings.TTSMessage = text;
 
+            GetNode<Button>($"%{prefix}AlertReset").Pressed += () => {
+                settings.ResetToDefaults(defMode, defPath, defVol, defMsg);
+                updateUI();
+            };
+
             GetNode<Button>($"%{prefix}SoundTest").Pressed += () => {
                 var player = GetNode<AudioStreamPlayer>("%AudioPlayer");
-                if (Godot.FileAccess.FileExists(settings.SoundPath))
+                var stream = AudioHelper.LoadAudio(settings.SoundPath);
+                if (stream != null)
                 {
-                    var stream = GD.Load<AudioStream>(settings.SoundPath);
                     player.Stream = stream;
                     player.VolumeDb = Mathf.LinearToDb(settings.Volume);
                     player.Play();
-                }
-                else
-                {
-                    Terminal.WriteError($"Sound file not found: {settings.SoundPath}");
                 }
             };
 

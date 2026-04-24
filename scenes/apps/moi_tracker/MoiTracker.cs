@@ -45,6 +45,7 @@ public partial class MoiTracker : Window
 
     private Timer _craftTimer;
     private Timer _logCheckTimer;
+    private AudioStreamPlayer _audioPlayer;
     
     private int _totalCrafts = 0;
     private int _totalMois = 0;
@@ -93,6 +94,7 @@ public partial class MoiTracker : Window
 
         _leaderPlaceholder = GetNode<Label>("%LeaderPlaceholder");
         _membersPlaceholder = GetNode<Label>("%MembersPlaceholder");
+        _audioPlayer = GetNode<AudioStreamPlayer>("%AudioPlayer");
 
         if (_leaderZone is DropZone dzLeader)
             dzLeader.PlayerDropped += (name) => OnPlayerDropped(name, true);
@@ -240,6 +242,26 @@ public partial class MoiTracker : Window
     {
         FlashAlert();
         _countdownLabel.Text = "Next Craft: NOW!";
+        TriggerAlert(AppSettings.MoiTracker.CraftAlert, _leaderCard?.PlayerName ?? "Leader");
+    }
+
+    private void TriggerAlert(AppSettings.AlertSettings settings, string playerName)
+    {
+        if (settings.Mode == 0) // Sound
+        {
+            var stream = AudioHelper.LoadAudio(settings.SoundPath);
+            if (stream != null)
+            {
+                _audioPlayer.Stream = stream;
+                _audioPlayer.VolumeDb = Mathf.LinearToDb(settings.Volume);
+                _audioPlayer.Play();
+            }
+        }
+        else // TTS
+        {
+            string msg = settings.TTSMessage.Replace("{player}", playerName);
+            DisplayServer.TtsSpeak(msg, AppSettings.MoiTracker.TtsVoiceId);
+        }
     }
 
     private async void FlashAlert()
@@ -268,6 +290,7 @@ public partial class MoiTracker : Window
         string timestamp = Time.GetTimeStringFromSystem();
         _eventLog.AppendText($"[{timestamp}] [b]{playerName}[/b]: Moment of Inspiration!\n");
         
+        TriggerAlert(AppSettings.MoiTracker.MoiAlert, playerName);
         UpdateUI();
     }
 
