@@ -42,10 +42,13 @@ namespace HvergiToolkit
         [Export]
         public Button settlementPlannerButton;
 
+        private string _currentPickerTarget = "";
+
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
         {
             Terminal.Output = terminalOutput;
+            AppSettings.Load();
             
             if (!Players.Load())
             {
@@ -72,11 +75,110 @@ namespace HvergiToolkit
             affinityFoodPlannerButton.Pressed += () => onAppButtonPressed("res://scenes/apps/affinity_food_planner/affinity_food_planner.tscn");
             dyeEstimatorButton.Pressed += () => onAppButtonPressed("res://scenes/apps/dye_estimator/dye_estimator.tscn");
             settlementPlannerButton.Pressed += () => onAppButtonPressed("res://scenes/apps/settlement_planner/settlement_planner.tscn");
+
+            InitializeMoiSettings();
+        }
+
+        private void InitializeMoiSettings()
+        {
+            var voiceSelect = GetNode<OptionButton>("%MoiVoiceSelect");
+            var voices = DisplayServer.TtsGetVoices();
+            int selectedIndex = -1;
+            for (int i = 0; i < voices.Count; i++)
+            {
+                voiceSelect.AddItem($"{voices[i]["name"]} ({voices[i]["language"]})");
+                if ((string)voices[i]["id"] == AppSettings.MoiTracker.TtsVoiceId)
+                    selectedIndex = i;
+            }
+            if (selectedIndex != -1) voiceSelect.Selected = selectedIndex;
+            voiceSelect.ItemSelected += (id) => {
+                AppSettings.MoiTracker.TtsVoiceId = (string)voices[(int)id]["id"];
+            };
+
+            SetupAlertGroup("Craft", AppSettings.MoiTracker.CraftAlert);
+            SetupAlertGroup("Moi", AppSettings.MoiTracker.MoiAlert);
+
+            GetNode<FileDialog>("%SoundPicker").FileSelected += OnSoundFileSelected;
+        }
+
+        private void SetupAlertGroup(string prefix, AppSettings.AlertSettings settings)
+        {
+            var modeBtn = GetNode<OptionButton>($"%{prefix}AlertMode");
+            var soundSettings = GetNode<Control>($"%{prefix}SoundSettings");
+            var ttsSettings = GetNode<Control>($"%{prefix}TTSSettings");
+            var pathLabel = GetNode<Label>($"%{prefix}SoundPath");
+            var volSlider = GetNode<HSlider>($"%{prefix}SoundVolume");
+            var msgInput = GetNode<LineEdit>($"%{prefix}TTSMessage");
+
+            modeBtn.Selected = settings.Mode;
+            soundSettings.Visible = settings.Mode == 0;
+            ttsSettings.Visible = settings.Mode == 1;
+
+            pathLabel.Text = settings.SoundPath;
+            volSlider.Value = settings.Volume;
+            msgInput.Text = settings.TTSMessage;
+
+            modeBtn.ItemSelected += (id) => {
+                settings.Mode = (int)id;
+                soundSettings.Visible = id == 0;
+                ttsSettings.Visible = id == 1;
+            };
+
+            GetNode<Button>($"%{prefix}SoundChange").Pressed += () => {
+                _currentPickerTarget = prefix;
+                GetNode<FileDialog>("%SoundPicker").PopupCentered();
+            };
+
+            volSlider.ValueChanged += (val) => settings.Volume = (float)val;
+            msgInput.TextChanged += (text) => settings.TTSMessage = text;
+
+            GetNode<Button>($"%{prefix}SoundTest").Pressed += () => {
+                var player = GetNode<AudioStreamPlayer>("%AudioPlayer");
+                if (Godot.FileAccess.FileExists(settings.SoundPath))
+                {
+                    var stream = GD.Load<AudioStream>(settings.SoundPath);
+                    player.Stream = stream;
+                    player.VolumeDb = Mathf.LinearToDb(settings.Volume);
+                    player.Play();
+                }
+                else
+                {
+                    Terminal.WriteError($"Sound file not found: {settings.SoundPath}");
+                }
+            };
+
+            GetNode<Button>($"%{prefix}TTSTest").Pressed += () => {
+                string msg = settings.TTSMessage.Replace("{player}", "TestPlayer");
+                DisplayServer.TtsSpeak(msg, AppSettings.MoiTracker.TtsVoiceId);
+            };
+        }
+
+        private void OnSoundFileSelected(string path)
+        {
+            if (_currentPickerTarget == "Craft")
+            {
+                AppSettings.MoiTracker.CraftAlert.SoundPath = path;
+                GetNode<Label>("%CraftSoundPath").Text = path;
+            }
+            else if (_currentPickerTarget == "Moi")
+            {
+                AppSettings.MoiTracker.MoiAlert.SoundPath = path;
+                GetNode<Label>("%MoiSoundPath").Text = path;
+            }
         }
 
         // Called every frame. 'delta' is the elapsed time since the previous frame.
         public override void _Process(double delta)
         {
+        }
+
+        public override void _Notification(int what)
+        {
+            if (what == NotificationWMCloseRequest)
+            {
+                AppSettings.Save();
+                Players.Save();
+            }
         }
 
         private void OnNewsButtonPressed()
