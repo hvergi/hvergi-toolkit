@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://pd2xx5lapec4"]
 
 [ext_resource type="Script" uid="uid://3rbt873eh0b8" path="res://scenes/hvergi_toolkit/HvergiToolkit.cs" id="1_uexwx"]
+[ext_resource type="Theme" path="res://darkmode.tres" id="1_v14n5"]
 
 [node name="HvergiToolkit" type="Control" unique_id=1602896807 node_paths=PackedStringArray("terminalOutput", "contentTabContainer", "newsButton", "appsButton", "settingsButton", "playerEditorButton", "moiTrackerButton", "skillTrackerButton", "tradeWatcherButton", "stpCalcButton", "skillCompareButton", "sermonButton", "logAlertButton", "logSearchButton", "affinityFoodPlannerButton", "dyeEstimatorButton", "settlementPlannerButton")]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_v14n5")
 script = ExtResource("1_uexwx")
 terminalOutput = NodePath("Layout/Terminal/TerminalLog")
 contentTabContainer = NodePath("Layout/HBoxContainer/SectionTab")
