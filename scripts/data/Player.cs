@@ -45,6 +45,11 @@ public class Player
         return GetLogPath("_Skills");
     }
 
+    public string GetDumpsPath()
+    {
+        return System.IO.Path.Combine(Path, "dumps");
+    }
+
     public string GetLogPath(string prefix)
     {
         UpdateLogType();
