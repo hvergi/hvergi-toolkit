@@ -33,7 +33,7 @@ public class LogReader
         { LogFileType.Trade, "Trade" },
         { LogFileType.Local, "_Local" },
         { LogFileType.Skills, "_Skills" },
-        { LogFileType.PM, "PM_" },
+        { LogFileType.PM, "PM__" },
         { LogFileType.Alliance, "Alliance" },
         { LogFileType.Support, "_Support" },
         { LogFileType.CAHelp, "CA_HELP" },

@@ -34,6 +34,8 @@ public partial class LogSearch : Window
     private int _viewStartLine;
     private int _viewEndLine;
 
+    private int _lastChunckCount;
+
     public override void _Ready()
     {
         this.CloseRequested += OnCloseRequested;
@@ -185,7 +187,7 @@ public partial class LogSearch : Window
         public string LineText;
     }
 
-    private const int MaxResultsToDisplay = 5000;
+    private const int MaxResultsToDisplay = 500;
 
     private void SearchLogsAsync(Player player, LogReader.LogFileType type, string query, bool useFilter, DateTime start, DateTime end, CancellationToken token)
     {
@@ -393,7 +395,7 @@ public partial class LogSearch : Window
     {
         if (string.IsNullOrEmpty(_currentViewPath)) return;
         _viewStartLine = Math.Max(0, _viewStartLine - 50);
-        UpdateFileViewer(false);
+        UpdateFileViewer(false,true);
     }
 
     private void OnLoadNextPressed()
@@ -403,24 +405,25 @@ public partial class LogSearch : Window
         UpdateFileViewer(false);
     }
 
-    private void UpdateFileViewer(bool initialLoad)
+    private void UpdateFileViewer(bool initialLoad, bool prev=false )
     {
         try
         {
             string query = _searchEdit.Text.Trim();
-            string[] allLines = SafeReadAllLines(_currentViewPath);
             
             // Capture state to prevent jumping
             int oldStart = _viewStartLine;
             double oldVScroll = _fileViewer.ScrollVertical;
             int oldCaret = _fileViewer.GetCaretLine();
 
-            _viewEndLine = Math.Min(_viewEndLine, allLines.Length - 1);
+            List<string> chunkLines = SafeReadLinesChunk(_currentViewPath, _viewStartLine, out int totalLinesInFile);
+            _viewEndLine = Math.Min(_viewEndLine, totalLinesInFile - 1);
             
             System.Text.StringBuilder sb = new();
-            for (int i = _viewStartLine; i <= _viewEndLine; i++)
+            for (int i = 0; i < chunkLines.Count; i++)
             {
-                sb.AppendLine($"[L{i + 1}] {allLines[i]}");
+                int actualLineIdx = _viewStartLine + i;
+                sb.AppendLine($"[L{actualLineIdx + 1}] {chunkLines[i]}");
             }
 
             _fileViewer.Text = sb.ToString();
@@ -428,7 +431,7 @@ public partial class LogSearch : Window
             _fileViewer.SetSearchFlags(0); 
 
             _loadPrevButton.Visible = _viewStartLine > 0;
-            _loadNextButton.Visible = _viewEndLine < allLines.Length - 1;
+            _loadNextButton.Visible = _viewEndLine < totalLinesInFile - 1;
 
             if (initialLoad)
             {
@@ -438,14 +441,20 @@ public partial class LogSearch : Window
             }
             else
             {
-                // Adjust caret and scroll to maintain position
-                int lineShift = oldStart - _viewStartLine;
-                _fileViewer.SetCaretLine(oldCaret + lineShift);
-                
-                // We use SetDeferred for ScrollVertical to allow TextEdit to process the new text layout first
-                double targetScroll = oldVScroll + (lineShift * _fileViewer.GetLineHeight());
-                _fileViewer.SetDeferred(TextEdit.PropertyName.ScrollVertical, targetScroll);
+                if (prev)
+                {
+                    int diff = chunkLines.Count - _lastChunckCount;
+                    _fileViewer.SetCaretLine(oldCaret + diff);
+                    _fileViewer.ScrollVertical = oldVScroll + diff;
+                }
+                else
+                {
+                    _fileViewer.SetCaretLine(oldCaret);
+                    _fileViewer.ScrollVertical = oldVScroll;
+                }
+
             }
+            _lastChunckCount = chunkLines.Count;
         }
         catch (Exception e)
         {
@@ -453,15 +462,33 @@ public partial class LogSearch : Window
         }
     }
 
-    private string[] SafeReadAllLines(string path)
+    private List<string> SafeReadLinesChunk(string path, int startLine, out int totalLines)
     {
-        using var fs = new FileStream(path, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-        using var sr = new StreamReader(fs);
-        List<string> lines = new List<string>();
-        while (!sr.EndOfStream)
+        var lines = new List<string>();
+        totalLines = 0;
+
+        try
         {
-            lines.Add(sr.ReadLine());
+            using var fs = new FileStream(path, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
+            using var sr = new StreamReader(fs);
+            
+            int currentLine = 0;
+            while (!sr.EndOfStream)
+            {
+                string line = sr.ReadLine();
+                if (currentLine >= startLine && currentLine <= _viewEndLine)
+                {
+                    lines.Add(line);
+                }
+                currentLine++;
+            }
+            totalLines = currentLine;
         }
-        return lines.ToArray();
+        catch (Exception e)
+        {
+            Terminal.WriteError($"LogSearch: Error streaming lines: {e.Message}");
+        }
+
+        return lines;
     }
 }
