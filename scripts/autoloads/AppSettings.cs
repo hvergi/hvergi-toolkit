@@ -84,9 +84,18 @@ public static class AppSettings
         // Boilerplate for future settings
     }
 
+    public class LogFilter
+    {
+        public LogReader.LogFileType LogType { get; set; } = LogReader.LogFileType.Event;
+        public string Pattern { get; set; } = "";
+        public string TtsMessage { get; set; } = "";
+    }
+
     public class LogAlertSettings
     {
-        // Boilerplate for future settings
+        public bool EnableTts { get; set; } = true;
+        public string TtsVoiceId { get; set; } = "";
+        public System.Collections.Generic.List<LogFilter> Filters { get; set; } = new();
     }
 
     public class LogSearchSettings

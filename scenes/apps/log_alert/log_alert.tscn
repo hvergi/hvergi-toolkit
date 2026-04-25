@@ -1,10 +1,118 @@
-[gd_scene format=3 uid="uid://6asf4qnb02rg"]
+[gd_scene load_steps=3 format=3 uid="uid://6asf4qnb02rg"]
 
 [ext_resource type="Script" uid="uid://cy2j2qhip7oli" path="res://scenes/apps/log_alert/LogAlert.cs" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://ba3uxhjkuliwo" path="res://scenes/ui/player_list/player_list.tscn" id="2_player_list"]
 
 [node name="LogAlert" type="Window" unique_id=1523459657]
 oversampling_override = 1.0
 title = "Log Alert"
-initial_position = 4
-size = Vector2i(1152, 648)
+initial_position = 2
+size = Vector2i(1100, 700)
 script = ExtResource("1_script")
+
+[node name="Background" type="Panel" parent="." unique_id=302057593]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplit" type="HSplitContainer" parent="Background" unique_id=1074481068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 250
+
+[node name="PlayerList" parent="Background/HSplit" unique_id=499699518 instance=ExtResource("2_player_list")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSplit" type="VSplitContainer" parent="Background/HSplit" unique_id=2056851629]
+layout_mode = 2
+split_offset = 350
+
+[node name="FeedSection" type="PanelContainer" parent="Background/HSplit/VSplit" unique_id=2041517077]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/HSplit/VSplit/FeedSection" unique_id=1267587488]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AlertFeed" type="RichTextLabel" parent="Background/HSplit/VSplit/FeedSection/Margin" unique_id=1]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+scroll_following = true
+
+[node name="FilterSection" type="PanelContainer" parent="Background/HSplit/VSplit" unique_id=531911749]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/HSplit/VSplit/FilterSection" unique_id=997869807]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="FilterVBox" type="VBoxContainer" parent="Background/HSplit/VSplit/FilterSection/Margin" unique_id=601]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SettingsHBox" type="HBoxContainer" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox" unique_id=602]
+layout_mode = 2
+
+[node name="EnableTtsCheck" type="CheckBox" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/SettingsHBox" unique_id=2]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enable TTS Alerts"
+
+[node name="AddFilterTitle" type="Label" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox" unique_id=603]
+layout_mode = 2
+text = "Add New Regex Alert:"
+horizontal_alignment = 1
+
+[node name="AddFormHBox" type="HBoxContainer" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox" unique_id=604]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LogTypeSelect" type="OptionButton" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/AddFormHBox" unique_id=3]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PatternEdit" type="LineEdit" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/AddFormHBox" unique_id=4]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Regex Pattern"
+
+[node name="TtsEdit" type="LineEdit" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/AddFormHBox" unique_id=5]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "TTS Message"
+
+[node name="AddButton" type="Button" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/AddFormHBox" unique_id=6]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add Alert"
+
+[node name="ActiveFiltersTitle" type="Label" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox" unique_id=605]
+layout_mode = 2
+text = "Active Alerts:"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox" unique_id=606]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FilterList" type="VBoxContainer" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/Scroll" unique_id=7]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5

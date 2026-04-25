@@ -592,6 +592,26 @@ layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Log Alert Settings"
 
+[node name="LogAlertVoiceSettings" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=2083919150]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox/LogAlertVoiceSettings" unique_id=2083919151]
+layout_mode = 2
+text = "Global TTS Voice: "
+
+[node name="LogAlertVoiceReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox/LogAlertVoiceSettings" unique_id=2083919152]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset"
+
+[node name="LogAlertVoiceSelect" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox/LogAlertVoiceSettings" unique_id=2083919153]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=2083919154]
+layout_mode = 2
+
 [node name="Log Search" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=465707810]
 visible = false
 layout_mode = 2

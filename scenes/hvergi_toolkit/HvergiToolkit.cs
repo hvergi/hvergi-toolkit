@@ -93,6 +93,11 @@ namespace HvergiToolkit
                 () => AppSettings.TradeWatcher.TtsVoiceId, 
                 (id) => AppSettings.TradeWatcher.TtsVoiceId = id);
 
+            // Initialize Log Alert Voice
+            SetupVoiceSelection("%LogAlertVoiceSelect", "%LogAlertVoiceReset", voices, 
+                () => AppSettings.LogAlert.TtsVoiceId, 
+                (id) => AppSettings.LogAlert.TtsVoiceId = id);
+
             SetupAlertGroup("Craft", AppSettings.MoiTracker.CraftAlert, 0, "res://assets/sounds/craft.wav", 1.0f, "Crafting interval reached.");
             SetupAlertGroup("Moi", AppSettings.MoiTracker.MoiAlert, 0, "res://assets/sounds/moi.wav", 1.0f, "{player} has had an M.O.I.");
 
