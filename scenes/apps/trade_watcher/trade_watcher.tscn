@@ -99,6 +99,42 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Pattern (* wildcards for items)"
 
+[node name="ItemBuilderHBox" type="HBoxContainer" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox" unique_id=607]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ItemRarityEdit" type="LineEdit" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/ItemBuilderHBox" unique_id=608]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Rarity"
+
+[node name="ItemNameEdit" type="LineEdit" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/ItemBuilderHBox" unique_id=609]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Name"
+
+[node name="ItemQlEdit" type="LineEdit" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/ItemBuilderHBox" unique_id=610]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "QL"
+
+[node name="ItemDmgEdit" type="LineEdit" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/ItemBuilderHBox" unique_id=611]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "DMG"
+
+[node name="ItemWtEdit" type="LineEdit" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/ItemBuilderHBox" unique_id=612]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "WT"
+
 [node name="TtsEdit" type="LineEdit" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/AddFormHBox" unique_id=7]
 unique_name_in_owner = true
 layout_mode = 2

@@ -18,12 +18,20 @@ public partial class TradeWatcher : Window
     private Button _addButton;
     private VBoxContainer _filterList;
 
+    // Item Builder UI
+    private HBoxContainer _itemBuilderHBox;
+    private LineEdit _itemRarityEdit;
+    private LineEdit _itemNameEdit;
+    private LineEdit _itemQlEdit;
+    private LineEdit _itemDmgEdit;
+    private LineEdit _itemWtEdit;
+
     private string _selectedPlayerName;
     private string _currentLogPath;
     private long _lastPos = 0;
     private Timer _pollTimer;
 
-    private readonly Regex _logRegex = new(@"^\[(?<time>\d{2}:\d{2}:\d{2})\] <(?<name>.+?)>(?: \((?<server>\w+?)\))? (?<category>WTB|WTS|WTT|PC) (?<msg>.*)$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+    private readonly Regex _logRegex = new(@"^\[(?<time>\d{2}:\d{2}:\d{2})\] <(?<name>.+?)>(?: \((?<server>\w+?)\))? (?<category>WTB|WTS|WTT|PC|@) (?<msg>.*)$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
     private readonly Regex _itemRegex = new(@"\[(?<item>.+?)\]", RegexOptions.Compiled);
 
     public override void _Ready()
@@ -41,9 +49,17 @@ public partial class TradeWatcher : Window
         _addButton = GetNode<Button>("%AddButton");
         _filterList = GetNode<VBoxContainer>("%FilterList");
 
+        _itemBuilderHBox = GetNode<HBoxContainer>("%ItemBuilderHBox");
+        _itemRarityEdit = GetNode<LineEdit>("%ItemRarityEdit");
+        _itemNameEdit = GetNode<LineEdit>("%ItemNameEdit");
+        _itemQlEdit = GetNode<LineEdit>("%ItemQlEdit");
+        _itemDmgEdit = GetNode<LineEdit>("%ItemDmgEdit");
+        _itemWtEdit = GetNode<LineEdit>("%ItemWtEdit");
+
         _playerList.PlayerSelected += OnPlayerSelected;
         _addButton.Pressed += OnAddFilterPressed;
         _enableTtsCheck.Toggled += (toggled) => { AppSettings.TradeWatcher.EnableTts = toggled; AppSettings.Save(); };
+        _modeSelect.ItemSelected += OnModeSelected;
 
         SetupDropdowns();
         LoadSettings();
@@ -84,6 +100,13 @@ public partial class TradeWatcher : Window
         RefreshFilterList();
     }
 
+    private void OnModeSelected(long index)
+    {
+        bool isItem = (AppSettings.MatchMode)index == AppSettings.MatchMode.ItemTemplate;
+        _patternEdit.Visible = !isItem;
+        _itemBuilderHBox.Visible = isItem;
+    }
+
     private void RefreshFilterList()
     {
         foreach (Node child in _filterList.GetChildren()) child.QueueFree();
@@ -91,9 +114,11 @@ public partial class TradeWatcher : Window
         foreach (var filter in AppSettings.TradeWatcher.Filters)
         {
             var hbox = new HBoxContainer();
+            string ttsPart = string.IsNullOrEmpty(filter.TtsMessage) ? "" : $" (TTS: {filter.TtsMessage})";
             var label = new Label { 
-                Text = $"{(filter.IsExclude ? "[EXCL]" : "[INC]")} {filter.Category} | {filter.Mode}: {filter.Pattern}",
-                SizeFlagsHorizontal = Control.SizeFlags.ExpandFill
+                Text = $"{(filter.IsExclude ? "[EXCL]" : "[INC]")} {filter.Category} | {filter.Mode}: {filter.Pattern}{ttsPart}",
+                SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+                ClipText = true
             };
             var removeBtn = new Button { Text = "X" };
             removeBtn.Pressed += () => {
@@ -110,14 +135,37 @@ public partial class TradeWatcher : Window
 
     private void OnAddFilterPressed()
     {
-        string pattern = _patternEdit.Text.Trim();
-        if (string.IsNullOrEmpty(pattern)) return;
+        string pattern = "";
+        var mode = (AppSettings.MatchMode)_modeSelect.Selected;
+
+        if (mode == AppSettings.MatchMode.ItemTemplate)
+        {
+            string rarity = string.IsNullOrWhiteSpace(_itemRarityEdit.Text) ? "*" : _itemRarityEdit.Text.Trim();
+            string name = string.IsNullOrWhiteSpace(_itemNameEdit.Text) ? "*" : _itemNameEdit.Text.Trim();
+            string ql = string.IsNullOrWhiteSpace(_itemQlEdit.Text) ? "*" : _itemQlEdit.Text.Trim();
+            string dmg = string.IsNullOrWhiteSpace(_itemDmgEdit.Text) ? "*" : _itemDmgEdit.Text.Trim();
+            string wt = string.IsNullOrWhiteSpace(_itemWtEdit.Text) ? "*" : _itemWtEdit.Text.Trim();
+            
+            pattern = $"*{rarity}*{name}*QL:{ql}*DMG:{dmg}*WT:{wt}*";
+
+            _itemRarityEdit.Text = "";
+            _itemNameEdit.Text = "";
+            _itemQlEdit.Text = "";
+            _itemDmgEdit.Text = "";
+            _itemWtEdit.Text = "";
+        }
+        else
+        {
+            pattern = _patternEdit.Text.Trim();
+            if (string.IsNullOrEmpty(pattern)) return;
+            _patternEdit.Text = "";
+        }
 
         var filter = new AppSettings.TradeFilter
         {
             IsExclude = _typeSelect.Selected == 1,
             Category = (AppSettings.TradeCategory)_categorySelect.Selected,
-            Mode = (AppSettings.MatchMode)_modeSelect.Selected,
+            Mode = mode,
             Pattern = pattern,
             TtsMessage = _ttsEdit.Text.Trim()
         };
@@ -126,7 +174,6 @@ public partial class TradeWatcher : Window
         AppSettings.Save();
         RefreshFilterList();
 
-        _patternEdit.Text = "";
         _ttsEdit.Text = "";
     }
 
@@ -140,7 +187,7 @@ public partial class TradeWatcher : Window
             if (File.Exists(_currentLogPath))
             {
                 using var fs = new FileStream(_currentLogPath, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-                _lastPos = fs.Length; // Start from end of log
+                _lastPos = fs.Length; 
             }
             _tradeFeed.Clear();
             _tradeFeed.AppendText($"[color=gray]Monitoring Trade log for {playerName}...[/color]\n");
@@ -154,7 +201,7 @@ public partial class TradeWatcher : Window
         try
         {
             using var fs = new FileStream(_currentLogPath, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-            if (fs.Length < _lastPos) _lastPos = 0; // Log rotation or truncate
+            if (fs.Length < _lastPos) _lastPos = 0; 
             if (fs.Length == _lastPos) return;
 
             fs.Seek(_lastPos, SeekOrigin.Begin);
@@ -179,7 +226,11 @@ public partial class TradeWatcher : Window
     private void ProcessLogLine(string line)
     {
         var match = _logRegex.Match(line);
-        if (!match.Success) return;
+        if (!match.Success)
+		{
+			 Terminal.Write(line);
+			 return;	
+		}
 
         string name = match.Groups["name"].Value;
         string categoryStr = match.Groups["category"].Value.ToUpper();
@@ -187,6 +238,17 @@ public partial class TradeWatcher : Window
         string time = match.Groups["time"].Value;
 
         if (!Enum.TryParse(categoryStr, out AppSettings.TradeCategory lineCategory)) return;
+
+        // Auto-check for mentions
+        if (!string.IsNullOrEmpty(_selectedPlayerName) && message.Contains(_selectedPlayerName, StringComparison.OrdinalIgnoreCase))
+        {
+            _tradeFeed.AppendText($"[{time}] [color=yellow][b]<{name}> {categoryStr} {message}[/b][/color]\n");
+            if (AppSettings.TradeWatcher.EnableTts)
+            {
+                DisplayServer.TtsSpeak($"You were mentioned in trade by {name}", AppSettings.TradeWatcher.TtsVoiceId);
+            }
+            return;
+        }
 
         var items = new List<string>();
         var itemMatches = _itemRegex.Matches(message);
@@ -230,10 +292,8 @@ public partial class TradeWatcher : Window
 
     private bool IsMatch(AppSettings.TradeFilter filter, string playerName, AppSettings.TradeCategory lineCategory, string message, List<string> items)
     {
-        // Category Check
         if (filter.Category != AppSettings.TradeCategory.Any && filter.Category != lineCategory) return false;
 
-        // Pattern Check
         switch (filter.Mode)
         {
             case AppSettings.MatchMode.Player:
