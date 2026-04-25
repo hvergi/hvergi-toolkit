@@ -1,0 +1,666 @@
+Logging started 2026-04-01
+[12:43:05] MOTD:Send <Beastwolf> his daily mail.
+[15:40:25] <Hvergi> haven't picked up shards yet
+[15:42:38] <Lilychaos> ok
+[15:43:19] <Hvergi> it might not look done, but it is low enough the part left in the air is road tiles and it is down enough for them
+[15:45:49] <Lilychaos> lmk if you need ash, I have a bit
+[15:48:20] <Lilychaos> I'll get wagon and put away shards
+[15:51:37] <Hvergi> should have enough
+[15:52:11] <Lilychaos> ? enough shards?
+[15:52:17] <Hvergi> ash
+[15:52:22] <Lilychaos> ah
+[15:53:04] <Lilychaos> been stashing it at random for awhile now
+[15:55:30] <Hvergi> settup the concrete creation down at the stone so I can make some and use it at the same time
+[15:55:43] <Lilychaos> nice
+[16:03:58] <Hvergi> without the road I have todo math :/
+[16:04:44] <Lilychaos> lol
+[16:04:51] <Lilychaos> anything I can help with?
+[16:05:45] <Hvergi> not yet, need to get it level where the rock needs to be before roads
+[16:06:09] <Lilychaos> I thought the rock was going to be much lower than it is now
+[16:06:16] <Hvergi> nope
+[16:07:15] <Lilychaos> lol just noticed my mules look at each other while riding
+[16:07:38] <Lilychaos> ...even when stopped. they're all looking at each other
+[16:07:45] <Hvergi> april first
+[16:07:49] <Lilychaos> ah ok
+[16:25:54] <Hvergi> now for the tricky part
+[16:36:30] <Lilychaos> ?
+[16:36:45] <Hvergi> placing the dirt
+[16:36:50] <Hvergi> for the road
+[16:37:23] <Lilychaos> leveling the road back?
+[16:37:26] <Hvergi> drop it in the wrong spot while I am setting up and I have to backtrack and fix it across as many tiles as I dropped
+[16:37:34] <Lilychaos> that sucks
+[16:42:24] <Hvergi> you know what, this corner wont be flat. I am not cleaning new tiles to lower it by 3
+[16:42:57] <Hvergi> that or I make the road slightly higher then the rock, that will work
+[16:43:30] <Lilychaos> is this project worth doing the right way? or can it be fudged a bit
+[16:44:43] <Lilychaos> some things are worth doing the right way (even tho it may be a giant PITA)
+[16:44:57] <Lilychaos> but some are worth fudging a bit
+[16:45:31] <Hvergi> it would be a corner of a turn hidden in the back 3 off
+[16:45:52] <Lilychaos> pfft, let it go then
+[16:45:53] <Hvergi> or I can just make the road be 5 higher then the rock
+[16:46:19] <Lilychaos> your decision.  you know we'll all make it happen
+[16:47:29] <Hvergi> I am going 5 higher, then I dont need to worry about dealing with rock pockets for the dirt for the road
+[16:47:43] <Lilychaos> ok. so what's needed now
+[16:47:52] <Hvergi> diry
+[16:48:10] <Lilychaos> how much do you need?
+[16:48:41] <Hvergi> lots
+[16:48:47] <Lilychaos> more than we have?
+[16:48:57] <Hvergi> no
+[16:49:04] <Hvergi> just more then I grabbed atm
+[16:49:21] <Lilychaos> mind getting in vc?
+[18:40:55] <Lilychaos> not sure if I should lvl another tile West or not
+[21:48:11] Evea has reached 91 Faith with Fo!
+Logging started 2026-04-03
+[19:37:18] MOTD:Send <Beastwolf> his daily mail.
+[19:37:50] Gibbs has reached 40 First aid!
+[21:28:59] <Hvergi> [supreme iron file blade QL:13.6602 DMG:0.0 WT:0.3 ][supreme iron butchering knife blade QL:9.70646 DMG:0.0 WT:1.1 ][supreme iron carving knife blade QL:13.3864 DMG:0.0 WT:0.3 ][supreme iron leather knife blade QL:12.3173 DMG:0.0 WT:0.3 ][supreme iron pitchfork fork QL:13.4089 DMG:0.0 WT:0.4 ]
+[21:29:04] <Hvergi> [supreme iron saw QL:12.5032 DMG:0.0 WT:1.2 ][supreme iron saw QL:10.5386 DMG:0.0 WT:1.2 ]
+[22:12:21] Evea has reached 93 Faith with Fo!
+[00:17:20] <Lilychaos> tbf, Haze has gone to bed so I can't speak in vc now
+[00:17:33] <Hvergi> kk
+[00:17:51] <Lilychaos> still wearing headset so I can hear tho
+[00:46:02] <Gibbs> what ql is baby staff
+[00:46:14] <Hvergi> [common adamantine staff QL:85.9468 DMG:0.0 WT:3.0 ]
+[01:05:43] <Gibbs> 5x TK blood 3 x 80+ql butcher potions and coin to value of 25s  for item 3
+[01:05:53] <Gibbs> what is that value
+[01:06:26] <Hvergi> so 10 and 9 for pot
+[01:07:02] <Gibbs> hmm that bid out bid me at 25s
+[01:28:35] <Gibbs> what would a good grind for body control be
+[01:29:02] <Hvergi> pen training
+[01:29:38] <Gibbs> hmm nice just do it like normal
+[01:34:30] <Gibbs> mean needs to be 25 correct
+[01:34:55] <Hvergi> yes
+[01:37:50] <Gibbs> damm i need a ql 20 shield lol
+[01:39:01] <Hvergi> Body Control - Archery or Longsword+shield shield training in pen(requires your attention but great gains), Archaeology(afkable)
+[01:43:36] <Gibbs> wouldn;'t a longsword kill the scropions
+[01:43:52] <Hvergi> 1ql I think, you want it for the parry
+[01:44:04] <Gibbs> k
+[01:52:29] <Gibbs> [common iron longsword QL:7.183193 DMG:0.0 WT:3.0 ]
+[01:52:50] <Hvergi> that should be fine, just need to do a test with it
+[01:53:27] <Gibbs> putting it on lava to make sure its lvl one i don;t want to kill your scropions
+[01:53:41] <Hvergi> they can be healed
+[01:54:02] <Gibbs> ok on my way
+[01:56:17] <Gibbs> they take damage
+[01:56:33] <Hvergi> how much?
+[01:56:47] <Gibbs> its a very small amount
+[01:56:55] <Hvergi> that is fine
+[01:57:21] <Gibbs> getting pads to make me weaker
+[01:57:36] <Hvergi> aslong as none of the wounds go past 20ish dmg I think, it will heal them
+[02:08:15] <Gibbs> [common null yellow tea leaves QL:93.4614 DMG:0.0 WT:5825.088 ]
+[02:08:28] <Gibbs> [common null yellow tea leaves QL:98.4723 DMG:0.0 WT:4108.08 ]
+[02:16:46] <Gibbs> [common empyrean empyrean lumps QL:96.4207 DMG:0.0 WT:345.12 ]
+Logging started 2026-04-04
+[12:51:41] MOTD:Send <Beastwolf> his daily mail.
+[13:21:48] Missty has reached 90 Cloth tailoring!
+[14:12:49] <Gibbs> 48.48 water
+[14:12:56] <Gibbs> pumkin 12
+[14:21:08] Hvergi has reached 95 Shield smithing!
+[14:22:12] <Gibbs> [13:20:37] <Hcedzeb> 48 oven 178 cauldron 351 water 6 sugar 47 wheat 25 wheat 25 barley 23 barley 23 roasted pea 62 roasted corn 48 roasted garlic 96 roasted tomato 47 roasted pea pods 50 roasted carrot 45 roasted cucumber 21 roasted onion 95 roasted potato 51 roasted potato 51 fried lettuce 46 fried pumpkin 46 fried pumpkin 46 fried cabbage 43
+[15:10:57] <Hvergi> fried cabbage, fried pumpkin, fried lettuce
+[15:11:41] <Gibbs> 2d 13
+Logging started 2026-04-04
+[15:34:57] MOTD:Send <Beastwolf> his daily mail.
+[16:13:43] Chaoshaze has reached 10 Large wooden shield!
+[16:16:52] <Gibbs> [common iron cauldron QL:19.6371 DMG:0.0 WT:69.3 ] no fire roasted not good
+[16:18:03] <Lilychaos> [common null carrot QL:75.7987 DMG:0.0 WT:9.9 ] at Shepherd's Rest, FYI
+[16:34:58] Chaoshaze has reached 20 Large wooden shield!
+[17:09:05] Chaoshaze has reached 30 Large wooden shield!
+[17:30:28] Missty has reached 10 Plate armour smithing!
+[17:45:48] <Chaoshaze> https://www.youtube.com/watch?v=yRCTbtfUMvs
+[17:57:20] <Missty> https://www.bing.com/videos/riverview/relatedvideo?q=the+madison&&mid=8A860624BE500592E5308A860624BE500592E530&FORM=VAMGZC
+[18:16:06] <Hvergi> https://suno.com/s/BpUOstzqYOz0WVuQ
+[18:16:27] Chaoshaze has reached 40 Large wooden shield!
+[18:17:13] Missty has reached 20 Plate armour smithing!
+[18:17:20] <Lilychaos> grats
+[18:17:27] Chaoshaze has reached 40 Shields!
+[18:28:01] <Hvergi> https://suno.com/s/f7Uy8H9FcW01M9tR
+[18:45:01] Gibbs has reached 10 Large wooden shield!
+[18:45:35] Missty has reached 20 Defensive fighting!
+[19:00:23] Gibbs has reached 20 Large wooden shield!
+[19:23:43] Gibbs has reached 30 Large wooden shield!
+[19:49:37] Gibbs has reached 80 Shields!
+[19:57:05] <Hvergi> https://suno.com/s/hlbHg6ssiIunQWKJ
+[20:09:55] Missty has reached 30 Defensive fighting!
+[20:12:03] <Lilychaos> grats
+[20:13:09] Gibbs has reached 40 Large wooden shield!
+[20:24:54] <Hvergi> https://suno.com/s/YLKqw97Z7pin2zg9
+[20:56:15] <Hvergi> https://suno.com/s/9SAxVIeUnytLukGw
+[21:19:46] Gibbs has reached 50 Large wooden shield!
+[21:44:12] <Hvergi> https://suno.com/s/OfRsHTv6VqlfDPqt
+[21:55:30] Lilychaos has reached 10 Large metal shield!
+[22:25:58] Chaoshaze has reached 50 Large wooden shield!
+[22:32:35] Chaoshaze has reached 40 Body control!
+[22:41:43] <Hvergi> [common steel longsword QL:1.0 DMG:5.620575 WT:3.0 LT 72]
+[22:42:57] Lilychaos has reached 20 Defensive fighting!
+[23:00:32] Lilychaos has reached 20 Large metal shield!
+[23:05:30] Chaoshaze has reached 60 Defensive fighting!
+[23:27:36] Hvergi has reached 50 Large wooden shield!
+[23:34:53] Lilychaos has reached 10 Shields!
+[00:28:44] Hvergi has reached 10 Small metal shield!
+Logging started 2026-04-05
+[13:08:35] MOTD:Send <Beastwolf> his daily mail.
+[13:24:30] Drakons has reached 50 Ropemaking!
+[13:42:10] Evea has reached 94 Faith with Fo!
+[14:09:50] Lilychaos has reached 50 Foraging!
+[14:48:08] Elska has reached 10 Ropemaking!
+[14:59:35] Drisdal has reached 10 Ropemaking!
+[14:59:43] Dredoor has reached 10 Ropemaking!
+[15:13:04] Chaoshaze has reached 50 Shields!
+[15:17:07] Chaoshaze has reached 60 Large wooden shield!
+[15:27:58] <Lilychaos> grats
+[15:45:47] Hvergi has reached 93 Miscellaneous items!
+[15:50:16] Missty has reached 50 Defensive fighting!
+[15:51:13] Missty has reached 20 Shields!
+[16:17:14] Hvergi has reached 99 Mining!
+[16:41:45] <Lilychaos> [15:41:29] Gibbz shows his teeth and snarls at you.
+[16:41:49] <Lilychaos> crazy F'er
+[16:43:56] Missty has reached 30 Plate armour smithing!
+[17:40:29] Elska has reached 20 Ropemaking!
+[17:46:06] Nest has reached 30 Ropemaking!
+[17:46:12] Dredoor has reached 20 Ropemaking!
+[17:48:14] Drisdal has reached 20 Ropemaking!
+[17:59:55] Elska has reached 10 Mind!
+[18:17:46] Chaoshaze has reached 10 Hot food cooking!
+[18:18:03] Chaoshaze has reached 20 Hot food cooking!
+[18:18:16] Chaoshaze has reached 20 Cooking!
+[18:18:22] Chaoshaze has reached 30 Hot food cooking!
+[18:18:45] Chaoshaze has reached 40 Hot food cooking!
+[18:19:21] Chaoshaze has reached 50 Hot food cooking!
+[18:19:25] Chaoshaze has reached 30 Cooking!
+[18:20:06] Chaoshaze has reached 60 Hot food cooking!
+[18:20:06] Gibbz has reached 80 Ropemaking!
+[18:20:31] Chaoshaze has reached 40 Cooking!
+[18:21:41] Chaoshaze has reached 70 Hot food cooking!
+[18:22:05] Chaoshaze has reached 60 Mind logic!
+[18:22:20] Chaoshaze has reached 50 Cooking!
+[18:22:48] Chaoshaze has reached 30 Soul depth!
+[18:26:11] Chaoshaze has reached 75 Hot food cooking!
+[18:56:11] Missty has reached 30 Large metal shield!
+[19:02:31] Chaoshaze has reached 80 Hot food cooking!
+[21:30:44] <Gibbs> base warmachines
+[21:31:00] <Gibbs> ws blade weapon head
+[21:32:06] <Gibbs> trraps
+[21:55:33] MOTD:Send <Beastwolf> his daily mail.
+[22:04:10] Lunalily has reached 10 Climbing!
+[00:36:37] Elska has reached 30 Ropemaking!
+[00:56:35] Drisdal has reached 30 Ropemaking!
+[00:57:45] Dredoor has reached 30 Ropemaking!
+[02:25:01] <Hvergi> [common leather blue dragon scale sleeve QL:88.26465 DMG:0.0 WT:0.4 WA 103][common leather blue dragon scale sleeve QL:88.0965 DMG:0.0 WT:0.4 WA 98]
+[02:25:18] <Hvergi> [common leather blue dragon scale jacket QL:82.7471 DMG:0.0 WT:2.2 WA 96][common leather blue dragon scale pants QL:87.4681 DMG:0.0 WT:1.2 WA 104]
+Logging started 2026-04-06
+[15:56:10] MOTD:Send <Beastwolf> his daily mail.
+[18:18:32] Nest has reached 40 Ropemaking!
+[18:59:01] Evea has reached 95 Faith with Fo!
+[19:28:55] Chaoshaze has reached 40 Soul!
+[19:38:06] Missty has reached 40 Plate armour smithing!
+[19:44:20] Chaoshaze has reached 60 Cooking!
+[19:57:39] Chaoshaze has reached 85 Hot food cooking!
+[22:02:53] Nest has reached 10 Mind!
+[23:02:35] <Lilychaos> placed 3 carrots over each nest
+[23:02:46] <Lilychaos> ty Hvergi <3
+[23:03:11] Elska has reached 40 Ropemaking!
+[23:03:25] <Lilychaos> grats
+[23:03:27] <Lilychaos> yes
+[23:06:50] <Hvergi> ty
+[23:07:09] Drisdal has reached 40 Ropemaking!
+[23:12:22] <Lilychaos> rare sprouts are good for fruit press and what else?
+[23:14:27] <Hvergi> cheese drill
+[23:14:51] <Lilychaos> ok ty
+[23:15:31] <Lilychaos> trade isn't biting, neither is Shrimpiie.  anyone want my rare lumps or sprouts?
+[23:15:54] <Hvergi> all good on lumps/sprouts
+[23:16:02] <Hvergi> unless it is a supreme sprout
+[23:16:06] <Lilychaos> free to good home
+[23:16:10] <Lilychaos> nah, just rares
+[23:16:31] <Lilychaos> going to sac them otherwise
+[23:16:58] <Lilychaos> this MC has lost it's use for gibby so going to use it for myself and gotta make room
+[23:38:17] <Lilychaos> I wasn't aware I HAD to say 'keep your mouth shut' if it was in a pm
+[23:40:12] <Gibbs> you might if you are saying you are not using a mic
+[23:50:14] <Lilychaos> cant find my spindle
+[23:56:06] Dredoor has reached 40 Ropemaking!
+[00:08:02] Gibbs has reached 94 Fine carpentry!
+[00:09:43] <Lilychaos> since I have 2 nests, going to experiment
+[00:10:01] <Lilychaos> 1 carrot in one nest, 2 carrots in the 2nd
+[00:10:19] <Lilychaos> we'll see what happens by morning
+[00:13:22] <Hvergi> let me knoiw
+[00:13:34] <Lilychaos> <3 of course
+[00:20:42] <Lilychaos> thought I'd work on ropemaking tonight but can't find my spindle
+[00:20:54] <Lilychaos> did I loan it to someone?
+[00:21:58] <Lilychaos> found Ryver's old spindle [common pinewood spindle QL:5.54413 DMG:0.0 WT:0.6 ]
+[00:32:00] <Lilychaos> agreed
+[00:34:42] <Lilychaos> nothing new in nests yet (with carrots placed, rather than put in one at a time)
+Logging started 2026-04-07
+[18:04:18] MOTD:Send <Beastwolf> his daily mail.
+[18:25:11] Missty has reached 50 Plate armour smithing!
+[19:48:25] Missty has reached 40 Large metal shield!
+[20:03:07] Missty has reached 20 Weaponless fighting!
+[23:27:04] Evea has reached 96 Faith with Fo!
+Logging started 2026-04-08
+[15:36:06] MOTD:Send <Beastwolf> his daily mail.
+[15:55:48] Missty has reached 30 Shields!
+[18:30:05] <Nest> [rare oakenwood spindle QL:91.4147 DMG:0.0 WT:0.6 CoC 102]
+[18:30:12] <Lilychaos> nice
+[18:30:56] <Lunalily> ty
+[20:00:52] <Lilychaos> https://www.zillow.com/homedetails/3295-Middle-Rd-Keokuk-IA-52632/86999711_zpid/
+Logging started 2026-04-09
+[14:30:29] MOTD:Send <Beastwolf> his daily mail.
+[15:26:45] Lilychaos has reached 70 Ropemaking!
+[16:09:15] Missty has reached 50 Shield smithing!
+[17:30:59] Missty has reached 30 Mind speed!
+[17:54:53] Missty has reached 50 Large metal shield!
+[19:31:08] <Lilychaos> Missty do you want a rooster?
+[19:49:42] <Lilychaos> [18:49:24] Archaeology increased by 0.0017 to 86.4985 how hard would I have to push to hit 90 during event?
+[01:22:02] Gibbz has reached 60 Religion!
+Logging started 2026-04-10
+[15:12:41] MOTD:Send <Beastwolf> his daily mail.
+[18:02:02] <Lilychaos> looking at 3 different houses tomorrow
+[18:02:09] <Hvergi> Nice
+[18:22:40] Evea has reached 97 Faith with Fo!
+[18:24:48] <Lilychaos> damn. sorry I missed it
+[18:24:51] <Lilychaos> grats
+[18:25:27] <Hvergi> no worries plenty of time left for 3 morew levels
+[18:43:14] <Lilychaos> when is next sermon?
+[18:44:26] <Hvergi> whenever shrimp gets back
+[18:44:40] <Hvergi> or 3 hours from the last one
+[18:44:54] <Lilychaos> ok
+[19:38:42] Missty has reached 20 Large wooden shield!
+[20:00:25] <Lilychaos> https://www.zillow.com/homedetails/3295-Middle-Rd-Keokuk-IA-52632/86999711_zpid/
+[20:22:33] Chaoshaze has reached 50 Archaeology!
+[20:41:15] Missty has reached 70 Defensive fighting!
+[20:42:26] <Lilychaos> btw, been filling a bsb in 'Farming' level of warehouse with junk strings
+[21:03:58] Missty has reached 80 Ropemaking!
+[21:25:06] Chaoshaze has reached 60 Stone chisel!
+[21:56:56] MOTD:Send <Beastwolf> his daily mail.
+[00:02:41] Drakons has reached 10 Miscellaneous items!
+[00:05:01] <Hvergi> That color better?
+[00:06:54] Gibbz has reached 40 Mind!
+[00:10:17] <Gibbs> kormolos
+[00:10:44] <Hvergi> hmm
+[00:42:53] <Lilychaos> [fantastic null recipe "horseburger and chips" QL:38.0 DMG:0.0 WT:0.01 ] from Shrimpiie. should I make copies?
+[00:44:25] <Lilychaos> anyone need?
+[00:45:21] <Hvergi> loot drop, can't copy
+[00:45:43] <Lilychaos> :/
+Logging started 2026-04-11
+[14:50:20] MOTD:Send <Beastwolf> his daily mail.
+[14:52:59] <Gibbs> https://forum.wurmonline.com/index.php?/topic/211064-set-of-5-humongous-easter-eggs/
+[15:04:36] <Chaoshaze> https://www.zillow.com/homedetails/1322-Blondeau-St-Keokuk-IA-52632/87001195_zpid/
+[15:37:15] <Gibbs> 5
+[15:37:58] <Gibbs> 2
+[15:46:10] <Lilychaos> https://www.zillow.com/homedetails/1630-Avenue-I-Fort-Madison-IA-52627/86997109_zpid/
+[15:46:19] <Lilychaos> house I grew up in
+[15:48:26] <Gibbs> 2
+[15:48:31] <Gibbs> 2
+[15:48:35] <Gibbs> 2
+[15:48:38] <Gibbs> 7
+[15:48:41] <Gibbs> 2
+[15:48:46] <Gibbs> 3
+[15:48:49] <Gibbs> 2
+[15:48:52] <Gibbs> 7
+[15:54:13] <Gibbs> 10
+[15:55:15] <Gibbs> [14:55:00] <Blaz> ok cool - the large lind, wyvern, drake please send to Nirav if you get those
+[16:00:14] <Hvergi> dibbs on large lind
+[16:14:01] <Gibbs> got you i wish i would have known
+[16:16:07] <Gibbs> 44
+[16:16:40] <Gibbs> T44
+[16:17:53] <Gibbs> i get done imping and selling i will come up and do maps
+[16:19:38] <Gibbs> [15:19:08] <Goldfinch> (Pri) WTB gold drake easter eggs, any size
+[16:19:46] <Gibbs> damm now i have to check colors
+[16:27:59] <Gibbs> i need those gold
+[16:28:48] <Hvergi> [16:28:39] You start to brush the small wyvern easter egg.
+[17:06:18] <Gibbs> T46
+[17:55:17] <Gibbs> t56
+[17:55:21] <Gibbs> T56
+[19:01:31] Chaoshaze has reached 95 Hammer!
+[19:04:00] Evea has reached 98 Faith with Fo!
+[20:08:45] <Lilychaos> hopefully with living in town we won't get drunk @holes barreling through the lawn
+[20:09:26] <Lilychaos> or stupid kids shooting across the front lawn while hunting
+[01:37:59] <Hvergi> https://independence.yaga.host/#2258,1075
+[01:39:58] <Gibbs> https://independence.yaga.host/#2215,1190
+[03:09:05] <Gibbs> 11.5 steel
+[03:09:27] <Gibbs> supreme 11
+[03:09:35] <Gibbs> rare 9
+[03:09:42] <Gibbs> noramal 5
+[04:09:57] <Hvergi> https://www.reddit.com/r/generativeAI/comments/1sbqq99/harry_potter_drip_ep13_timeline_official/
+[05:52:46] <Gibbs> [04:51:13] You receive a meditation path change. You can use it at a mediation rug.
+[06:09:48] Duckys has reached 20 Masonry!
+Logging started 2026-04-12
+[15:03:59] MOTD:Send <Beastwolf> his daily mail.
+[15:20:02] Evea has reached 99 Faith with Fo!
+[15:52:46] Duckys has reached 10 Meditating!
+[17:23:04] Duckys has reached 20 Meditating!
+[17:43:19] <Elska> [supreme iron pickaxe QL:96.24056 DMG:0.0 WT:2.0 BoTD 1]
+[17:43:41] <Elska> [supreme iron pickaxe QL:96.24056 DMG:0.0 WT:2.0 BoTD 96]
+[17:45:30] <Elska> [supreme iron pickaxe QL:96.24056 DMG:0.0 WT:2.0 BoTD 97]
+[18:00:59] <Gibbs> dang sorry
+[18:01:08] <Gibbs> you need 100+ rifght
+[18:01:24] <Gibbs> charge him 3* the price
+[18:06:14] <Lilychaos> do we get Baby's opinion on new ppl joining alliance?
+[18:06:47] <Elska> only on conflicts
+[18:06:58] <Lilychaos> k
+[18:07:18] <Lilychaos> should we give her a heads up on new ppl joining?
+[18:07:30] <Hvergi> you can
+[18:07:51] <Hvergi> techanlly shrimps job
+[18:30:17] <Elska> [supreme iron pickaxe QL:96.24056 DMG:0.0 WT:2.0 BoTD 107]
+[18:42:11] <Gibbs> bad ass
+[18:42:25] <Gibbs> 4g
+[18:43:01] <Hvergi> ?
+[18:43:12] <Gibbs> make him pay for a cast like that lol
+[18:43:19] <Hvergi> ahh
+[18:54:16] <Lilychaos> nice cast!
+[19:21:20] <Lilychaos> have to make dinner and discuss next moves with Haze about house tonight
+[19:21:30] <Hvergi> kk
+[19:22:53] <Lunalily> [18:22:25] Bank balance: 8s, 92c, 51i   this one running out of prem soon
+[19:22:59] <Lunalily> :/
+[21:24:47] Evea has reached 100 Faith with Fo!
+[21:35:28] <Lilychaos> \o/
+[21:35:40] <Hvergi> ty
+Logging started 2026-04-13
+[17:35:18] MOTD:Send <Beastwolf> his daily mail.
+[17:44:09] <Hvergi> I think that may have been a translation fail maybe lol
+[17:47:21] <Lilychaos> was about to say we have an alliance member from Germany, but if they're from Poland...I don't blame them for not liking Germans
+[17:47:51] <Hvergi> aye
+[17:48:40] <Lilychaos> my ignorance is showing...thought most of Poland spoke German, but apparently not
+[17:48:50] <Lilychaos> Polish is close to German, but not the same
+[17:52:05] <Hvergi> ok, I am killing some enchanted grass
+[17:52:13] <Lilychaos> where?
+[17:52:22] <Hvergi> in my house, it keeps healing me
+[17:52:27] <Lilychaos> lol
+[17:54:24] <Hvergi> I added fenceing to the front of my house and locked one of them off as it has hellhorses in it
+[17:54:43] <Hvergi> not related to the grass healing me
+[17:55:16] <Lilychaos> at SR rn, I'll see it when I get back to deed
+[18:01:21] <Hvergi> I only locked the hellhorse side so people didn't wanter in and get attacked
+[18:01:32] <Lilychaos> makes sense
+[18:03:07] <Lilychaos> random..made an offer on Saturday, they countered this morning, I countered back and now waiting to hear
+[18:03:45] <Lilychaos> damn nerve wracking
+[18:03:56] <Hvergi> yup
+[18:06:29] <Lilychaos> afk a few
+[18:17:48] <Lilychaos> back
+[18:51:55] <Lilychaos> just got a call. sellers came back with 172  :/
+[18:52:23] <Lilychaos> I came back with standing firm at 169 and the only furniture I want left is the piano
+[18:53:37] <Lilychaos> I think they might make me sweat for a few days to see who breaks first
+[18:53:50] <Lilychaos> I did add that we're looking at other properties
+[18:55:04] <Hvergi> ahh, yeah hopefully they break
+[18:55:18] <Lilychaos> we'll see if they're more stubborn than smart
+[18:55:35] <Lilychaos> 3 months, no offers as good as ours yet
+[18:56:42] <Lilychaos> LOL my mom said if they say no for now, they'll prob come back and want our offer
+[18:56:54] <Lilychaos> I said in which case, my offer goes down to 167.5
+[18:57:57] <Lilychaos> all this back and forth has me in a FAFO mood
+[18:58:43] <Lilychaos> sounds like Haze is home
+[18:59:04] <Lilychaos> brb
+[19:30:33] <Missty> d[rare oakenwood spindle QL:92.4052 DMG:0.9838629 WT:0.6 WoA 92 • ImTailoring 96 • RGsM]
+[19:30:44] <Hvergi> kk
+[23:29:36] <Hvergi> 5.3
+[23:29:51] <Hvergi> 4.8
+[01:45:22] Duckys has reached 40 Channeling!
+Logging started 2026-04-14
+[17:09:32] MOTD:Send <Beastwolf> his daily mail.
+[22:24:29] <Hvergi> https://suno.com/s/NxfDQixAn2LYRsqF
+[22:31:42] <Gibbs> 9.31
+[22:40:06] <Hvergi> https://www.wurmpedia.com/index.php/Meditating_answers
+Logging started 2026-04-15
+[07:08:48] MOTD:Send <Beastwolf> his daily mail.
+Logging started 2026-04-15
+[17:16:09] MOTD:Send <Beastwolf> his daily mail.
+[22:27:37] <Lilychaos> just now noticed that we have others in ally chat
+[22:27:44] <Lilychaos> would you prefer that I chat here?
+[22:27:57] <Lilychaos> figured they were afk
+[22:28:40] <Lilychaos> okay, going back to terraform the old corn fields
+[22:28:58] <Lilychaos> ty for assistance <3
+[22:29:50] <Lilychaos> stop and smell the roses Gibby
+[22:30:15] <Lilychaos> ?? my faves in game
+[22:30:29] <Lilychaos> they DO kinda suck
+[22:30:35] <Lilychaos> sparsely planted :/
+[22:31:02] <Lilychaos> and greenish-yellow
+[22:31:32] <Lilychaos> keep your eyes peeled for spotted white flowers.  those sell for decent $
+[22:31:46] <Lilychaos> I've found a few
+[22:32:01] <Lilychaos> can those spread?
+[22:32:37] <Lilychaos> thought it was random for flowers
+[22:32:52] <Lilychaos> dude, no
+[22:33:10] <Lilychaos> yellow is most common (in my exp)
+[22:33:24] <Lilychaos> then orange-yellow, then purple
+[22:33:32] <Lilychaos> sorry, orange red, you're right
+[22:33:43] <Runfur> [common null bouquets of orange-red flowers QL:90.1211 DMG:0.0 WT:0.014 ][common null bouquets of dotted flowers QL:59.7634 DMG:0.0 WT:0.002 ][common null bouquets of blue flowers QL:63.3663 DMG:0.0 WT:0.003 ][common null bouquets of greenish-yellow flowers QL:93.8617 DMG:0.0 WT:0.005 ][common null bouquets of white flowers QL:59.1531 DMG:0.0 WT:0.005 ]
+[22:33:53] <Runfur> [common null bouquets of yellow flowers QL:73.0744 DMG:0.0 WT:0.008 ][common null bouquets of purple flowers QL:69.8837 DMG:0.0 WT:0.007 ]
+[22:34:29] <Lilychaos> do you need certain colors?
+[22:46:45] <Lilychaos> ty for heads up. I'll replenish my flower supply
+[22:49:19] <Lilychaos> tbf, if you're making a 'park' I would do marble planters or lavender plantations instead of flowerbeds
+[22:51:15] <Lilychaos> just more aesthetically pleasing
+[22:56:26] <Lilychaos> I still think Wurm needs to make all 'wreaths' available to hang on walls
+[22:56:39] <Lilychaos> that's some BS that they only lay flat
+[22:58:09] <Lilychaos> Easter colored rug? you mean mostly pastel pinks and purples?
+[22:59:09] <Lilychaos> oh ok,with some greens as well
+[22:59:35] <Lilychaos> did you dye those?
+[23:00:31] <Lilychaos> do you like those color combos?
+[23:01:37] <Lilychaos> tbf I think our color recognition differs
+[23:02:17] <Lilychaos> first one, appeared to me as bright green and purple
+[23:02:41] <Lilychaos> could be settings tho
+[23:02:56] <Lilychaos> yeah, you said green and blue
+[23:03:06] <Lilychaos> no
+[23:03:19] <Lilychaos> yes
+[23:03:38] <Lilychaos> that's a definite purple/violet blue
+[23:04:06] <Lilychaos> now THAT is more blue
+[23:04:09] <Lilychaos> wait, go back
+[23:04:20] <Lilychaos> no they're not
+[23:11:17] <Lilychaos> odd that upon examination they're EXACTLY the same color in game.  so it has to be the trim color
+[23:12:01] <Lilychaos> I don't really care for the wurm flowerbeds
+[23:12:15] <Lilychaos> too sparsely planted
+[23:12:50] <Lilychaos> moss spreads tho
+[23:15:14] <Lilychaos> can always do thatch
+[23:15:23] <Lilychaos> or ench. grass
+[23:15:48] <Lilychaos> can u do paved or gravel under bridge?
+[23:17:56] <Lilychaos> you want oiled boards or no?
+[23:18:42] <Lilychaos> yes
+[23:19:10] <Lilychaos> I prefer the look of the oiled floor boards, just bc they're darker in color
+[23:19:24] <Lilychaos> ah shit...it's under a bridge
+[23:19:35] <Lilychaos> gotta do that before the bridge is built
+[23:19:39] <Lilychaos> oh no :(
+[23:20:09] <Lilychaos> can't even investigate under a bridge
+[23:20:28] <Lilychaos> sorry bud, don't think you can change/pave those tiles
+[23:21:00] <Lilychaos> I stand corrected
+[23:42:42] <Lilychaos> what gnome are we supposed to put down to claim as our own?
+[23:43:40] <Hvergi> https://radiostationusa.fm/online/981-kmbz there you go gibbs
+[23:45:52] <Lilychaos> random. I did score a few good boxes from the grocery store today
+[23:46:29] <Lilychaos> was informed to NOT break these kind down so can only take a few at a time
+[23:47:22] <Lilychaos> can u break them down?
+[23:48:22] <Lilychaos> would be cheaper for you to stockpile boxes and pay for your gas
+[23:48:36] <Lilychaos> to deliver them, rather than buy boxes
+[23:49:14] <Lilychaos> buying boxes online they're minimum dollars and change each
+[23:49:31] <Lilychaos> for smallish boxes
+[23:49:42] <Lilychaos> ok
+[23:50:27] <Lilychaos> wb
+[23:50:45] <Lilychaos> I can
+[23:51:19] <Lilychaos> breaking up bad
+[23:51:47] <Lilychaos> 24x12x14
+[23:52:04] <Lilychaos> good sized box
+[23:52:26] <Lilychaos> wb
+[23:52:39] <Gibbs> 24*12*12
+[23:52:47] <Lilychaos> you said 14
+[23:52:56] <Lilychaos> then came back and said 12 x 12
+[23:53:07] <Lilychaos> ok
+[23:53:21] <Lilychaos> bigger than what I have now
+[23:53:37] <Lilychaos> so maybe not for books, but can hold other stuff
+[23:54:43] <Lilychaos> dude, neither of us are in the 30s range anymore.  the less weight the better
+[23:55:08] <Lilychaos> he's in the 50s range and Im pushing 50
+[23:55:28] <Lilychaos> tbf, he gets winded coming up the stairs
+[23:55:47] <Lilychaos> yet he's convinced that he can move us all on his own
+[23:56:13] <Lilychaos> I mentioned hiring movers..
+[23:56:50] <Lilychaos> same, but...
+[23:57:18] <Lilychaos> I can't help move large furniture down stairs
+[23:57:30] <Lilychaos> still need a cane just to get down the stairs
+[23:57:45] <Lilychaos> lol I'd end up killing us both
+[23:58:01] <Lilychaos> <3 Hvergi
+[23:58:19] <Lilychaos> closing is May 29
+[23:58:36] <Lilychaos> sellers wanted to move it up a bit
+[23:59:04] <Lilychaos> XD Gibby
+[23:59:09] <Lilychaos> Memorial Day in May
+[00:00:12] <Lilychaos> original closing would have been June 5, but sellers changed it a week earlier
+[00:00:47] <Lilychaos> takes too long for abstract, insurance, taxes, etc.
+[00:01:05] <Lilychaos> holiday weekends they're all off
+[00:01:27] <Lilychaos> real estate agent, loan officer, underwriter, etc.
+[00:01:41] <Lilychaos> ouch
+[00:02:16] <Lilychaos> gas is still 3.58 here
+[00:02:40] <Lilychaos> dayumm
+[00:02:48] <Lilychaos> wait...
+[00:03:10] <Lilychaos> would cost you $100 for trip here and back?
+[00:03:26] <Lilychaos> what about time?
+[00:03:57] <Lilychaos> :( okaky
+[00:04:04] <Lilychaos> okay*
+[00:04:40] <Lilychaos> ouch
+[00:04:49] <Lilychaos> which is BS
+[00:05:10] <Lilychaos> diesel is a byproduct of producing gasoline
+[00:05:35] <Lilychaos> I call BS
+[00:06:32] <Lilychaos> most ppl can't afford it tho
+[00:07:40] <Lilychaos> my car is a 'flex fuel' type
+[00:07:57] <Lilychaos> agreed
+[00:08:18] <Lilychaos> monthly gas bills disagree
+[00:08:33] <Lilychaos> tbf, he drives 2 hrs every day
+[00:08:48] <Lilychaos> his miles/gallon is less than mine
+[00:09:26] <Lilychaos> somehow last month's cc bill was $1640+
+[00:09:42] <Lilychaos> for March, yes
+[00:10:14] <Lilychaos> I don't hve access to that cc
+[00:10:22] <Lilychaos> all on his phone
+[00:10:43] <Lilychaos> he claims it's Netflix, Hulu, Missty's internet, etc.
+Logging started 2026-04-16
+[16:07:03] MOTD:Send <Beastwolf> his daily mail.
+[17:54:37] <Lilychaos> out of pizza in the smokehouse. I can make more food, if need be
+[17:57:52] <Hvergi> I can make more pizza to stick on top later if you want to make a meal to stick there for now
+[20:05:32] Efreid has reached 40 Blades smithing!
+[20:43:05] <Gibbs> baby blacksmith
+[21:42:20] <Lilychaos> is she cutting in and out for anyone else? just me?
+[21:42:29] <Gibbs> no
+[22:17:59] <Lilychaos> oh that's all
+[22:18:22] <Lilychaos> per year?
+[22:18:27] <Hvergi> yes
+[22:18:32] <Lilychaos> dayumm
+[22:19:00] <Lilychaos> lol oh ok that's all :P
+[22:19:39] <Lilychaos> grateful for Shepherd's Rest and temp fields*
+[22:20:03] <Lilychaos> yah
+[22:20:10] <Lilychaos> insane amount
+[22:39:02] <Lilychaos> leaving my horse parked on a grass tile by the corn fields for tonight
+Logging started 2026-04-17
+[18:11:03] MOTD:Send <Beastwolf> his daily mail.
+[18:19:10] <Lilychaos> some decent storms moving through here tonight. If I pop offline suddenly we lost power
+[18:19:43] <Lilychaos> fingers crossed NO tornadoes*
+[18:20:29] <Hvergi> kk, hopefully not
+[18:40:19] <Hvergi> The fencing wagon will be making the rounds tonight
+[18:47:27] <Lilychaos> fencing?
+[18:47:37] <Lilychaos> ah, bc dropping templar?
+[18:47:52] <Hvergi> aye, it is going this weekend
+[18:47:56] <Lilychaos> ok
+[18:48:46] <Lilychaos> looking at different types now
+[18:49:16] <Lilychaos> do hedges stop trolls, etc.?
+[18:49:21] <Hvergi> yes
+[18:49:41] <Hvergi> if it stops you, it stops them :)
+[18:49:47] <Lilychaos> can you build a gate with hedge?
+[18:49:50] <Hvergi> just not bridges
+[18:50:00] <Hvergi> You have to make stone gates
+[18:51:19] <Lilychaos> thinking camellia hedge with high iron stone gates
+[20:55:19] Gibbs has reached 92 Hammer!
+[20:55:34] <Lilychaos> grats
+[22:51:35] <Lilychaos> planning on rift tomorrow on Pristine?
+[23:29:58] <Hvergi> 200 fence
+[23:30:06] <Hvergi> 400 bars
+[03:16:01] <Hvergi> 428591
+[03:16:30] <Hvergi> 91181
+[03:17:09] <Hvergi> 95234
+Logging started 2026-04-18
+[10:06:33] MOTD:Send <Beastwolf> his daily mail.
+[12:58:45] <Lilychaos> o/
+[12:59:05] <Lilychaos> looking for best route to get boat to rift
+[16:13:27] MOTD:Send <Beastwolf> his daily mail.
+Logging started 2026-04-18
+[22:10:19] MOTD:Send <Beastwolf> his daily mail.
+[23:37:23] Lilychaos has reached 30 Large metal shield!
+[23:51:44] Gibbs has reached 96 Large metal shield!
+[00:57:58] Duckys has reached 20 Large metal shield!
+Logging started 2026-04-19
+[12:34:19] MOTD:Send <Beastwolf> his daily mail.
+[13:38:28] <Gibbs> steel rune of vyn
+[14:32:23] Duckys has reached 20 Pickaxe!
+[14:47:09] Duckys has reached 20 Mining!
+[15:37:19] <Lilychaos> [14:22:12] Large metal shield increased by 0.0803 to 36.4954 start
+[15:53:34] Duckys has reached 20 Miscellaneous items!
+[16:23:19] Lilychaos has reached 30 Defensive fighting!
+[16:52:38] Lilychaos has reached 40 Large metal shield!
+[18:41:47] <Lilychaos> [17:41:37] Large metal shield increased by 0.0168 to 44.9559
+[18:59:21] <Lilychaos> afk
+[20:26:53] <Lilychaos> [19:26:47] The items silently disappear from the spirit cottage. You expect them to reach Hvergi in less than ten minutes.
+[20:27:10] <Hvergi> do you want it reimped and sent back?
+[20:27:19] <Lilychaos> yes plz
+[20:27:31] <Lilychaos> ty
+[20:27:35] <Hvergi> np
+[21:00:38] <Hvergi> [21:00:10] <Blazecraze> for this recipe you will need any ypasta of your choice, brown mushrooms, buffalo cheese, water and a bouquet of purple flowers
+[22:45:51] MOTD:Send <Beastwolf> his daily mail.
+[22:53:42] <Lilychaos> <3 ty
+[22:54:09] <Hvergi> np
+Logging started 2026-04-20
+[20:53:22] MOTD:Send <Beastwolf> his daily mail.
+[20:53:48] <Hvergi> gah long day
+[22:43:42] <Lilychaos> you ok?
+[22:43:59] <Hvergi> aye, just lots of paperwork done todau
+[22:44:21] <Lilychaos> paperwork always sucks :
+[22:44:24] <Lilychaos> :/
+[22:45:10] <Lilychaos> termite inspection today came back with active problem
+[22:45:22] <Hvergi> Ouch
+[22:45:31] <Lilychaos> eh, sellers should pay to fix it
+[22:46:00] <Lilychaos> hope so at least
+[22:47:09] <Hvergi> hopefully
+[22:55:19] <Hvergi> I have found when making comics, I need a massive prompt
+[23:07:01] <Lilychaos> how do you mean?
+[23:08:38] <Hvergi> The one for the test image was 4500 characters
+[23:08:45] <Lilychaos> :o
+[23:10:07] <Hvergi> well it is making 2-6 sub images that each have be desribed, and the layout and the art style and referance sheets
+[23:27:26] <Lilychaos> how many sets of bison are you going to order?
+[23:27:45] <Hvergi> That depends on what i can find
+[23:28:24] <Hvergi> If I can just find 4 4output+ males then I'll settle with that
+[23:28:44] <Lilychaos> had the thought...I have the Pristine deed.  if need be, I can start breeding animals there
+[23:29:58] <Hvergi> The downside is  most animal markets only sell what is in demand
+[23:30:24] <Lilychaos> how long for an animal to 'grow up' after it's born?
+[23:30:44] <Hvergi> to able to breed 3-4 weeks
+[23:30:46] <Lilychaos> at least enough to be usable for breeding
+[23:30:48] <Lilychaos> k
+[23:31:46] <Hvergi> within the next month or 2 sheep, horses, cows will be mostly back to full sized
+[23:32:13] <Lilychaos> okay cool. willing to help
+[23:34:06] <Hvergi> the horses where the least worring ones, as I can easly buy more of them whenever to reboot if need be
+[23:34:29] <Hvergi> sheep and cows have a few immortal breeding sets so they will last
+[23:34:56] <Hvergi> The issue was swaping from draft bison to output
+[23:35:06] <Lilychaos> makes sense
+[00:05:18] <Lilychaos> leveling point started at the far NE corner of corn fields, yes?
+[00:05:40] <Hvergi> ?
+[00:06:13] <Lilychaos> the height you wanted started at the NE corner
+[00:06:26] <Hvergi> yes
+[00:07:09] <Lilychaos> I'm double checking
+[00:08:30] <Lilychaos> was trying to fill in the middle as I went, but some tiles has slopes up and got worried that I was doing it wrong
+[00:08:42] <Lilychaos> going to do borders first, then fill in the middle
+[00:27:17] MOTD:Send <Beastwolf> his daily mail.
+[02:31:56] MOTD:Send <Beastwolf> his daily mail.
+Logging started 2026-04-21
+[11:58:37] MOTD:Send <Beastwolf> his daily mail.
+Logging started 2026-04-21
+[17:29:53] MOTD:Send <Beastwolf> his daily mail.
+[17:30:56] <Gibbs> k
+Logging started 2026-04-22
+[06:18:14] MOTD:Send <Beastwolf> his daily mail.
+[10:06:42] <Lilychaos> I pulled 60+ ticks off yesterday
+[10:12:40] <Hvergi> DAM
+[11:16:56] <Gibbs> 12
+[11:17:17] <Gibbs> 3791
+[15:34:23] <Hvergi> 1490 slab platform
+Logging started 2026-04-23
+[22:50:12] MOTD:Send <Beastwolf> his daily mail.
+Logging started 2026-04-24
+[09:15:39] MOTD:Send <Beastwolf> his daily mail.
+[11:04:33] Lilychaos has reached 50 Large metal shield!
+[11:46:29] <Gibbs> [10:24:48] You recently left a cult and need to contemplate the changes for another 1 hour and 32 minutes before embarking on a new philosophical journey.
+[18:17:28] <Lilychaos> apparently my statues poofed
+[18:19:54] <Hvergi> ?
+[18:20:14] <Lilychaos> the girl statues I left on the lava tiles are gone. must have poofed
+[18:20:25] <Hvergi> ahh, yes on tile they go away
+[18:20:29] <Lilychaos> they were good late this morning when I left
+[18:22:00] <Lilychaos> glad they're easy to make
+[18:30:42] <Hvergi> aye
+[19:56:04] <Lilychaos> ty Hvergi
+[19:56:14] <Hvergi> np
+[21:17:41] <Hvergi> https://www.youtube.com/watch?v=aKLW0kQ83qg
+[23:07:55] Duckys has reached 10 Nature!
+Logging started 2026-04-25
+[10:41:54] MOTD:Send <Beastwolf> his daily mail.
+[11:29:50] Lilychaos has reached 40 Defensive fighting!
