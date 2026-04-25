@@ -201,7 +201,9 @@ public partial class LogSearch : Window
         if (!LogReader.Prefixes.TryGetValue(type, out string prefix)) return;
 
         var allFiles = Directory.GetFiles(logsDir, prefix + "*.txt")
-            .OrderByDescending(f => f)
+            .Select(f => new FileInfo(f))
+            .OrderByDescending(fi => fi.LastWriteTime)
+            .Select(fi => fi.FullName) // Convert back to string paths
             .ToList();
 
         List<string> filteredFiles = new();
