@@ -31,7 +31,7 @@ public partial class TradeWatcher : Window
     private long _lastPos = 0;
     private Timer _pollTimer;
 
-    private readonly Regex _logRegex = new(@"^\[(?<time>\d{2}:\d{2}:\d{2})\] <(?<name>.+?)>(?: \((?<server>\w+?)\))? (?<category>WTB|WTS|WTT|PC|@) (?<msg>.*)$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+    private readonly Regex _logRegex = new(@"^\[(?<time>\d{2}:\d{2}:\d{2})\] <(?<name>.+?)>(?: \((?<server>\w+?)\))? (?<category>WTB|WTS|WTT|PC|@)\s*(?<msg>.*)$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
     private readonly Regex _itemRegex = new(@"\[(?<item>.+?)\]", RegexOptions.Compiled);
 
     public override void _Ready()
@@ -226,21 +226,25 @@ public partial class TradeWatcher : Window
     private void ProcessLogLine(string line)
     {
         var match = _logRegex.Match(line);
-        if (!match.Success)
-		{
-			 Terminal.Write(line);
-			 return;	
-		}
+        if (!match.Success) return;
 
         string name = match.Groups["name"].Value;
         string categoryStr = match.Groups["category"].Value.ToUpper();
         string message = match.Groups["msg"].Value;
         string time = match.Groups["time"].Value;
 
-        if (!Enum.TryParse(categoryStr, out AppSettings.TradeCategory lineCategory)) return;
+        // 1. Priority: Mentions (@PlayerName)
+        bool isMention = false;
+        if (!string.IsNullOrEmpty(_selectedPlayerName))
+        {
+            // Check if the category itself is '@' or if the message contains the mention
+            if (categoryStr == "@" || message.Contains("@" + _selectedPlayerName, StringComparison.OrdinalIgnoreCase))
+            {
+                isMention = true;
+            }
+        }
 
-        // Auto-check for mentions
-        if (!string.IsNullOrEmpty(_selectedPlayerName) && message.Contains(_selectedPlayerName, StringComparison.OrdinalIgnoreCase))
+        if (isMention)
         {
             _tradeFeed.AppendText($"[{time}] [color=yellow][b]<{name}> {categoryStr} {message}[/b][/color]\n");
             if (AppSettings.TradeWatcher.EnableTts)
@@ -248,6 +252,13 @@ public partial class TradeWatcher : Window
                 DisplayServer.TtsSpeak($"You were mentioned in trade by {name}", AppSettings.TradeWatcher.TtsVoiceId);
             }
             return;
+        }
+
+        // 2. Standard Trade Logic
+        // Default to 'Any' if the category is non-standard, allowing it to pass 'Any' filters
+        if (!Enum.TryParse(categoryStr, out AppSettings.TradeCategory lineCategory))
+        {
+            lineCategory = AppSettings.TradeCategory.Any;
         }
 
         var items = new List<string>();
@@ -300,7 +311,8 @@ public partial class TradeWatcher : Window
                 return playerName.Equals(filter.Pattern, StringComparison.OrdinalIgnoreCase);
 
             case AppSettings.MatchMode.SimpleText:
-                return message.Contains(filter.Pattern, StringComparison.OrdinalIgnoreCase);
+                string simpleRegex = Regex.Escape(filter.Pattern).Replace("\\*", ".*");
+                return Regex.IsMatch(message, simpleRegex, RegexOptions.IgnoreCase);
 
             case AppSettings.MatchMode.ItemTemplate:
                 string regexPattern = "^" + Regex.Escape(filter.Pattern).Replace("\\*", ".*") + "$";

@@ -98,10 +98,11 @@ text = "Settings"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 1
 tabs_visible = false
 
 [node name="NewsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=582676789]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -114,7 +115,6 @@ text = "[font_size=30]Beta[/font_size]
 "
 
 [node name="AppsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=1943042757]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -161,11 +161,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Skill Compare"
 
-[node name="SermonButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1262834605]
+[node name="LogSearchButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=609761138]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Sermon Warden"
+text = "Log Search"
 
 [node name="LogAlertButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1655472775]
 layout_mode = 2
@@ -173,17 +173,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Log Alert"
 
-[node name="LogSearchButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=609761138]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Log Search"
-
 [node name="AffintyFoodPlannerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=696753583]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Affinty Food Planner"
+
+[node name="SermonButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1262834605]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+text = "Sermon Warden"
 
 [node name="DyeEstimatorButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1385247213]
 layout_mode = 2
