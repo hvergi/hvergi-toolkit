@@ -76,24 +76,46 @@ namespace HvergiToolkit
             dyeEstimatorButton.Pressed += () => onAppButtonPressed("res://scenes/apps/dye_estimator/dye_estimator.tscn");
             settlementPlannerButton.Pressed += () => onAppButtonPressed("res://scenes/apps/settlement_planner/settlement_planner.tscn");
 
-            InitializeMoiSettings();
+            InitializeSettings();
         }
 
-        private void InitializeMoiSettings()
+        private void InitializeSettings()
         {
-            var voiceSelect = GetNode<OptionButton>("%MoiVoiceSelect");
             var voices = DisplayServer.TtsGetVoices();
+            
+            // Initialize MOI Voice
+            SetupVoiceSelection("%MoiVoiceSelect", "%MoiVoiceReset", voices, 
+                () => AppSettings.MoiTracker.TtsVoiceId, 
+                (id) => AppSettings.MoiTracker.TtsVoiceId = id);
+
+            // Initialize Trade Voice
+            SetupVoiceSelection("%TradeVoiceSelect", "%TradeVoiceReset", voices, 
+                () => AppSettings.TradeWatcher.TtsVoiceId, 
+                (id) => AppSettings.TradeWatcher.TtsVoiceId = id);
+
+            SetupAlertGroup("Craft", AppSettings.MoiTracker.CraftAlert, 0, "res://assets/sounds/craft.wav", 1.0f, "Crafting interval reached.");
+            SetupAlertGroup("Moi", AppSettings.MoiTracker.MoiAlert, 0, "res://assets/sounds/moi.wav", 1.0f, "{player} has had an M.O.I.");
+
+            GetNode<FileDialog>("%SoundPicker").FileSelected += OnSoundFileSelected;
+        }
+
+        private void SetupVoiceSelection(string selectName, string resetName, Godot.Collections.Array<Godot.Collections.Dictionary> voices, Func<string> getter, Action<string> setter)
+        {
+            var voiceSelect = GetNode<OptionButton>(selectName);
+            var voiceReset = GetNode<Button>(resetName);
             
             Action updateVoiceSelect = () => {
                 int selectedIndex = -1;
+                string currentId = getter();
                 for (int i = 0; i < voices.Count; i++)
                 {
-                    if ((string)voices[i]["id"] == AppSettings.MoiTracker.TtsVoiceId)
+                    if ((string)voices[i]["id"] == currentId)
                         selectedIndex = i;
                 }
                 voiceSelect.Selected = selectedIndex;
             };
 
+            voiceSelect.Clear();
             for (int i = 0; i < voices.Count; i++)
             {
                 voiceSelect.AddItem($"{voices[i]["name"]} ({voices[i]["language"]})");
@@ -101,18 +123,15 @@ namespace HvergiToolkit
             updateVoiceSelect();
 
             voiceSelect.ItemSelected += (id) => {
-                AppSettings.MoiTracker.TtsVoiceId = (string)voices[(int)id]["id"];
+                setter((string)voices[(int)id]["id"]);
+                AppSettings.Save();
             };
 
-            GetNode<Button>("%MoiVoiceReset").Pressed += () => {
-                AppSettings.MoiTracker.TtsVoiceId = "";
+            voiceReset.Pressed += () => {
+                setter("");
+                AppSettings.Save();
                 updateVoiceSelect();
             };
-
-            SetupAlertGroup("Craft", AppSettings.MoiTracker.CraftAlert, 0, "res://assets/sounds/craft.wav", 1.0f, "Crafting interval reached.");
-            SetupAlertGroup("Moi", AppSettings.MoiTracker.MoiAlert, 0, "res://assets/sounds/moi.wav", 1.0f, "{player} has had an M.O.I.");
-
-            GetNode<FileDialog>("%SoundPicker").FileSelected += OnSoundFileSelected;
         }
 
         private void SetupAlertGroup(string prefix, AppSettings.AlertSettings settings, int defMode, string defPath, float defVol, string defMsg)

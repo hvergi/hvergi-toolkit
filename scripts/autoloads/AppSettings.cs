@@ -50,9 +50,23 @@ public static class AppSettings
         // Boilerplate for future settings
     }
 
+    public enum TradeCategory { Any, WTS, WTB, PC, WTT }
+    public enum MatchMode { SimpleText, ItemTemplate, Player }
+
+    public class TradeFilter
+    {
+        public bool IsExclude { get; set; } = false;
+        public TradeCategory Category { get; set; } = TradeCategory.Any;
+        public MatchMode Mode { get; set; } = MatchMode.SimpleText;
+        public string Pattern { get; set; } = "";
+        public string TtsMessage { get; set; } = "";
+    }
+
     public class TradeWatcherSettings
     {
-        // Boilerplate for future settings
+        public bool EnableTts { get; set; } = true;
+        public string TtsVoiceId { get; set; } = "";
+        public System.Collections.Generic.List<TradeFilter> Filters { get; set; } = new();
     }
 
     public class STPCalculatorSettings

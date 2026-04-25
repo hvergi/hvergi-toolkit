@@ -487,6 +487,26 @@ layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Trade Watcher Settings"
 
+[node name="TradeVoiceSettings" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919138]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox/TradeVoiceSettings" unique_id=2083919139]
+layout_mode = 2
+text = "Global TTS Voice: "
+
+[node name="TradeVoiceReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox/TradeVoiceSettings" unique_id=2083919140]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset"
+
+[node name="TradeVoiceSelect" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox/TradeVoiceSettings" unique_id=2083919141]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919142]
+layout_mode = 2
+
 [node name="STP Calculator" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=480427419]
 visible = false
 layout_mode = 2
