@@ -130,7 +130,7 @@ public partial class SkillCompare : Window
         var skillMap = new Dictionary<string, SkillData>();
         if (!File.Exists(path)) return skillMap;
 
-        var lines = File.ReadAllLines(path);
+        var lines = SafeReadAllLines(path);
         bool startParsing = false;
         
         Stack<SkillData> parentStack = new();
@@ -315,5 +315,17 @@ public partial class SkillCompare : Window
         if (level >= 70) return Colors.Orange;
         if (level >= 50) return Colors.Yellow;
         return Colors.White;
+    }
+
+    private string[] SafeReadAllLines(string path)
+    {
+        using var fs = new FileStream(path, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
+        using var sr = new StreamReader(fs);
+        List<string> lines = new List<string>();
+        while (!sr.EndOfStream)
+        {
+            lines.Add(sr.ReadLine());
+        }
+        return lines.ToArray();
     }
 }

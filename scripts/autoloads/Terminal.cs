@@ -19,7 +19,8 @@ public partial class Terminal : Node
             GD.Print("NO Output: " + text);
             return;
         }
-        Output.AppendText("[" + Time.GetTimeStringFromSystem() + "]: " + text + "\n");
+        string timestamp = Time.GetTimeStringFromSystem();
+        Output.CallDeferred(RichTextLabel.MethodName.AppendText, $"[{timestamp}]: {text}\n");
     }
 
     public static void WriteWarning(string text)
@@ -29,7 +30,8 @@ public partial class Terminal : Node
             GD.Print("NO Output: " + text);
             return;
         }
-        Output.AppendText("[color=yellow][" + Time.GetTimeStringFromSystem() + "]WARNING: " + text + "[/color]\n");
+        string timestamp = Time.GetTimeStringFromSystem();
+        Output.CallDeferred(RichTextLabel.MethodName.AppendText, $"[color=yellow][{timestamp}]WARNING: {text}[/color]\n");
     }
 
     public static void WriteError(string text)
@@ -39,6 +41,7 @@ public partial class Terminal : Node
             GD.PrintErr("NO Output: " + text);
             return;
         }
-        Output.AppendText("[color=red][" + Time.GetTimeStringFromSystem() + "]ERROR: " + text + "[/color]\n");
+        string timestamp = Time.GetTimeStringFromSystem();
+        Output.CallDeferred(RichTextLabel.MethodName.AppendText, $"[color=red][{timestamp}]ERROR: {text}[/color]\n");
     }
 }

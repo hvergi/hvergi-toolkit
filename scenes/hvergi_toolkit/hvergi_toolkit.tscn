@@ -147,7 +147,6 @@ text = "Skill Tracker"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-disabled = true
 text = "Trade Watcher"
 
 [node name="STPCalcButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=506206683]
@@ -166,21 +165,18 @@ text = "Skill Compare"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-disabled = true
 text = "Sermon Warden"
 
 [node name="LogAlertButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1655472775]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-disabled = true
 text = "Log Alert"
 
 [node name="LogSearchButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=609761138]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-disabled = true
 text = "Log Search"
 
 [node name="AffintyFoodPlannerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=696753583]

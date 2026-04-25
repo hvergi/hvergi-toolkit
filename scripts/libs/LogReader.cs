@@ -24,7 +24,7 @@ public class LogReader
         Village
     }
 
-    private static readonly Dictionary<LogFileType, string> _prefixes = new()
+    public static readonly Dictionary<LogFileType, string> Prefixes = new()
     {
         { LogFileType.Event, "_Event" },
         { LogFileType.Combat, "_Combat" },
@@ -126,7 +126,7 @@ public class LogReader
 
     private string GetPath(LogFileType type)
     {
-        if (!_prefixes.TryGetValue(type, out string prefix)) return "";
+        if (!Prefixes.TryGetValue(type, out string prefix)) return "";
         return _player.GetLogPath(prefix);
     }
 

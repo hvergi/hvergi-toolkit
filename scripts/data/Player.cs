@@ -95,9 +95,11 @@ public class Player
             string gamesettingsPath = System.IO.Path.Combine(wurmDir, "configs", configName, "gamesettings.txt");
             if (!File.Exists(gamesettingsPath)) return;
 
-            string[] lines = File.ReadAllLines(gamesettingsPath);
-            foreach (string line in lines)
+            using var fs = new FileStream(gamesettingsPath, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
+            using var sr = new StreamReader(fs);
+            while (!sr.EndOfStream)
             {
+                string line = sr.ReadLine();
                 if (line.StartsWith("event_log_rotation="))
                 {
                     string val = line.Split('=')[1].Trim();

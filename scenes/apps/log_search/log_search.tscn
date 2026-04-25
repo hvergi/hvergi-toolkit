@@ -1,10 +1,206 @@
-[gd_scene format=3 uid="uid://cxkvbgcbdfqgx"]
+[gd_scene load_steps=3 format=3 uid="uid://cxkvbgcbdfqgx"]
 
 [ext_resource type="Script" uid="uid://b74mkk2kfgovr" path="res://scenes/apps/log_search/LogSearch.cs" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://ba3uxhjkuliwo" path="res://scenes/ui/player_list/player_list.tscn" id="2_player_list"]
 
 [node name="LogSearch" type="Window" unique_id=1708122677]
 oversampling_override = 1.0
 title = "Log Search"
-initial_position = 4
-size = Vector2i(1152, 648)
+initial_position = 2
+size = Vector2i(1000, 700)
 script = ExtResource("1_script")
+
+[node name="Background" type="Panel" parent="." unique_id=302057593]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplit" type="HSplitContainer" parent="Background" unique_id=1074481068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 250
+
+[node name="PlayerList" parent="Background/HSplit" unique_id=499699518 instance=ExtResource("2_player_list")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSplit" type="VSplitContainer" parent="Background/HSplit" unique_id=2056851629]
+layout_mode = 2
+split_offset = 350
+
+[node name="SearchSection" type="VBoxContainer" parent="Background/HSplit/VSplit" unique_id=2041517077]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ControlsPanel" type="PanelContainer" parent="Background/HSplit/VSplit/SearchSection" unique_id=634368465]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel" unique_id=1267587488]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MainVBox" type="VBoxContainer" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin" unique_id=157635704]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TopHBox" type="HBoxContainer" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox" unique_id=157635705]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LogTypeLabel" type="Label" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/TopHBox" unique_id=1]
+layout_mode = 2
+text = "Log Type:"
+
+[node name="LogTypeSelect" type="OptionButton" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/TopHBox" unique_id=2]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SearchEdit" type="LineEdit" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/TopHBox" unique_id=3]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search string..."
+
+[node name="SearchButton" type="Button" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/TopHBox" unique_id=4]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Search"
+
+[node name="CancelButton" type="Button" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/TopHBox" unique_id=10]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Cancel"
+
+[node name="DateHBox" type="HBoxContainer" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox" unique_id=157635706]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="UseDateFilterCheck" type="CheckBox" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/DateHBox" unique_id=11]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Filter by Date"
+
+[node name="LabelFrom" type="Label" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/DateHBox" unique_id=12]
+layout_mode = 2
+text = "From:"
+
+[node name="StartYear" type="SpinBox" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/DateHBox" unique_id=13]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 2000.0
+max_value = 2100.0
+value = 2024.0
+
+[node name="StartMonth" type="SpinBox" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/DateHBox" unique_id=14]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 12.0
+value = 1.0
+
+[node name="StartDay" type="SpinBox" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/DateHBox" unique_id=15]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 31.0
+value = 1.0
+
+[node name="LabelTo" type="Label" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/DateHBox" unique_id=16]
+layout_mode = 2
+text = "To:"
+
+[node name="EndYear" type="SpinBox" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/DateHBox" unique_id=17]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 2000.0
+max_value = 2100.0
+value = 2024.0
+
+[node name="EndMonth" type="SpinBox" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/DateHBox" unique_id=18]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 12.0
+value = 1.0
+
+[node name="EndDay" type="SpinBox" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/DateHBox" unique_id=19]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 31.0
+value = 1.0
+
+[node name="StatusHBox" type="HBoxContainer" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox" unique_id=157635707]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StatusLabel" type="Label" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/StatusHBox" unique_id=20]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ready"
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/HSplit/VSplit/SearchSection/ControlsPanel/Margin/MainVBox/StatusHBox" unique_id=21]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ResultsPanel" type="PanelContainer" parent="Background/HSplit/VSplit/SearchSection" unique_id=1743934250]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="Background/HSplit/VSplit/SearchSection/ResultsPanel" unique_id=1866245047]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ResultsList" type="ItemList" parent="Background/HSplit/VSplit/SearchSection/ResultsPanel/Margin" unique_id=5]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ViewerSection" type="PanelContainer" parent="Background/HSplit/VSplit" unique_id=531911749]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="Background/HSplit/VSplit/ViewerSection" unique_id=997869807]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ViewerVBox" type="VBoxContainer" parent="Background/HSplit/VSplit/ViewerSection/Margin" unique_id=601]
+layout_mode = 2
+
+[node name="LoadPrevButton" type="Button" parent="Background/HSplit/VSplit/ViewerSection/Margin/ViewerVBox" unique_id=602]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Load Previous 50 Lines"
+
+[node name="FileViewer" type="TextEdit" parent="Background/HSplit/VSplit/ViewerSection/Margin/ViewerVBox" unique_id=6]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+editable = false
+wrap_mode = 1
+
+[node name="LoadNextButton" type="Button" parent="Background/HSplit/VSplit/ViewerSection/Margin/ViewerVBox" unique_id=603]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Load Next 50 Lines"
