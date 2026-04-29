@@ -11,6 +11,13 @@ public static class Players
     public static List<string> WurmPaths { get; } = new List<string>();
     public static Dictionary<string, Player> PlayerDict { get; } = new Dictionary<string, Player>();
 
+    public static event Action TeamStateChanged;
+
+    public static void NotifyTeamStateChanged()
+    {
+        TeamStateChanged?.Invoke();
+    }
+
     public static bool AddPlayer(string playerName, string path)
     {
         if (PlayerDict.ContainsKey(playerName)) return false;

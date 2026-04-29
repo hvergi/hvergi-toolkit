@@ -1,15 +1,23 @@
-[gd_scene format=3 uid="uid://yrandct5se3l"]
+[gd_scene load_steps=2 format=3 uid="uid://yrandct5se3l"]
 
 [ext_resource type="Script" uid="uid://t3p0i0kettvv" path="res://scenes/apps/player_editor/PlayerEditor.cs" id="1_5nnfm"]
 
 [node name="PlayerEditor" type="Window" unique_id=536692622]
 oversampling_override = 1.0
 title = "Player Editor"
-initial_position = 4
+initial_position = 2
 size = Vector2i(1152, 648)
 script = ExtResource("1_5nnfm")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1615095943]
+[node name="Background" type="Panel" parent="." unique_id=302057593]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=1615095943]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,85 +28,117 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="MainLayout" type="VBoxContainer" parent="MarginContainer" unique_id=1602880143]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="DirectorySection" type="VBoxContainer" parent="MarginContainer/MainLayout" unique_id=1115041291]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 5
-
-[node name="WurmPathsLabel" type="Label" parent="MarginContainer/MainLayout/DirectorySection" unique_id=500038293]
-layout_mode = 2
-text = "Wurm Paths"
-
-[node name="WurmPathsList" type="ItemList" parent="MarginContainer/MainLayout/DirectorySection" unique_id=690074633]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="PathButtons" type="HBoxContainer" parent="MarginContainer/MainLayout/DirectorySection" unique_id=1355830159]
+[node name="MainLayout" type="VBoxContainer" parent="Background/MarginContainer" unique_id=1602880143]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="AutoFindWurmButton" type="Button" parent="MarginContainer/MainLayout/DirectorySection/PathButtons" unique_id=1604082640]
+[node name="DirectoryPanel" type="PanelContainer" parent="Background/MarginContainer/MainLayout" unique_id=111111111]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="Background/MarginContainer/MainLayout/DirectoryPanel" unique_id=111111112]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="DirectorySection" type="VBoxContainer" parent="Background/MarginContainer/MainLayout/DirectoryPanel/Margin" unique_id=1115041291]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="WurmPathsLabel" type="Label" parent="Background/MarginContainer/MainLayout/DirectoryPanel/Margin/DirectorySection" unique_id=500038293]
+layout_mode = 2
+text = "Wurm Installation Paths"
+horizontal_alignment = 1
+
+[node name="WurmPathsList" type="ItemList" parent="Background/MarginContainer/MainLayout/DirectoryPanel/Margin/DirectorySection" unique_id=690074633]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PathButtons" type="HBoxContainer" parent="Background/MarginContainer/MainLayout/DirectoryPanel/Margin/DirectorySection" unique_id=1355830159]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AutoFindWurmButton" type="Button" parent="Background/MarginContainer/MainLayout/DirectoryPanel/Margin/DirectorySection/PathButtons" unique_id=1604082640]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Auto-Find Wurm"
 
-[node name="AutoFindSteamButton" type="Button" parent="MarginContainer/MainLayout/DirectorySection/PathButtons" unique_id=2117927339]
+[node name="AutoFindSteamButton" type="Button" parent="Background/MarginContainer/MainLayout/DirectoryPanel/Margin/DirectorySection/PathButtons" unique_id=2117927339]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Auto-Find Steam"
 
-[node name="ManualAddButton" type="Button" parent="MarginContainer/MainLayout/DirectorySection/PathButtons" unique_id=929437297]
+[node name="ManualAddButton" type="Button" parent="Background/MarginContainer/MainLayout/DirectoryPanel/Margin/DirectorySection/PathButtons" unique_id=929437297]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Manual Add"
 
-[node name="PlayerSection" type="HSplitContainer" parent="MarginContainer/MainLayout" unique_id=584826735]
+[node name="PlayerSection" type="HSplitContainer" parent="Background/MarginContainer/MainLayout" unique_id=584826735]
 layout_mode = 2
 size_flags_vertical = 3
-split_offsets = PackedInt32Array(300)
 split_offset = 300
 
-[node name="PlayerListContainer" type="VBoxContainer" parent="MarginContainer/MainLayout/PlayerSection" unique_id=1780435141]
+[node name="ListPanel" type="PanelContainer" parent="Background/MarginContainer/MainLayout/PlayerSection" unique_id=222222221]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/MarginContainer/MainLayout/PlayerSection/ListPanel" unique_id=222222222]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PlayerListContainer" type="VBoxContainer" parent="Background/MarginContainer/MainLayout/PlayerSection/ListPanel/Margin" unique_id=1780435141]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="DetectedPlayersLabel" type="Label" parent="MarginContainer/MainLayout/PlayerSection/PlayerListContainer" unique_id=608362290]
+[node name="DetectedPlayersLabel" type="Label" parent="Background/MarginContainer/MainLayout/PlayerSection/ListPanel/Margin/PlayerListContainer" unique_id=608362290]
 layout_mode = 2
 text = "Detected Players"
+horizontal_alignment = 1
 
-[node name="PlayerList" type="ItemList" parent="MarginContainer/MainLayout/PlayerSection/PlayerListContainer" unique_id=234821242]
+[node name="PlayerList" type="ItemList" parent="Background/MarginContainer/MainLayout/PlayerSection/ListPanel/Margin/PlayerListContainer" unique_id=234821242]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="EditorWorkspace" type="PanelContainer" parent="MarginContainer/MainLayout/PlayerSection" unique_id=974803653]
+[node name="EditorWorkspace" type="PanelContainer" parent="Background/MarginContainer/MainLayout/PlayerSection" unique_id=974803653]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace" unique_id=533046519]
+[node name="Margin" type="MarginContainer" parent="Background/MarginContainer/MainLayout/PlayerSection/EditorWorkspace" unique_id=333333331]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/MainLayout/PlayerSection/EditorWorkspace/Margin" unique_id=533046519]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="WorkspaceLabel" type="Label" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer" unique_id=1137417375]
+[node name="WorkspaceLabel" type="Label" parent="Background/MarginContainer/MainLayout/PlayerSection/EditorWorkspace/Margin/VBoxContainer" unique_id=1137417375]
 layout_mode = 2
 text = "Editor Workspace"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer" unique_id=639267437]
+[node name="HSeparator" type="HSeparator" parent="Background/MarginContainer/MainLayout/PlayerSection/EditorWorkspace/Margin/VBoxContainer" unique_id=639267437]
 layout_mode = 2
 
-[node name="SelectedPlayerLabel" type="Label" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer" unique_id=1634701727]
+[node name="SelectedPlayerLabel" type="Label" parent="Background/MarginContainer/MainLayout/PlayerSection/EditorWorkspace/Margin/VBoxContainer" unique_id=1634701727]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Select a player to edit"
 horizontal_alignment = 1
 
-[node name="SettingsGrid" type="GridContainer" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer" unique_id=1035686562]
+[node name="SettingsGrid" type="GridContainer" parent="Background/MarginContainer/MainLayout/PlayerSection/EditorWorkspace/Margin/VBoxContainer" unique_id=1035686562]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -106,19 +146,19 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="FavLabel" type="Label" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer/SettingsGrid" unique_id=190123282]
+[node name="FavLabel" type="Label" parent="Background/MarginContainer/MainLayout/PlayerSection/EditorWorkspace/Margin/VBoxContainer/SettingsGrid" unique_id=190123282]
 layout_mode = 2
 text = "Favorite:"
 
-[node name="FavCheck" type="CheckBox" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer/SettingsGrid" unique_id=540726893]
+[node name="FavCheck" type="CheckBox" parent="Background/MarginContainer/MainLayout/PlayerSection/EditorWorkspace/Margin/VBoxContainer/SettingsGrid" unique_id=540726893]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HiddenLabel" type="Label" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer/SettingsGrid" unique_id=103119340]
+[node name="HiddenLabel" type="Label" parent="Background/MarginContainer/MainLayout/PlayerSection/EditorWorkspace/Margin/VBoxContainer/SettingsGrid" unique_id=103119340]
 layout_mode = 2
 text = "Hidden:"
 
-[node name="HiddenCheck" type="CheckBox" parent="MarginContainer/MainLayout/PlayerSection/EditorWorkspace/VBoxContainer/SettingsGrid" unique_id=2097991223]
+[node name="HiddenCheck" type="CheckBox" parent="Background/MarginContainer/MainLayout/PlayerSection/EditorWorkspace/Margin/VBoxContainer/SettingsGrid" unique_id=2097991223]
 unique_name_in_owner = true
 layout_mode = 2
 

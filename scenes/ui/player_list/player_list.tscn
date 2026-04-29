@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ba3uxhjkuliwo"]
 
 [ext_resource type="Script" uid="uid://b6150wncjosot" path="res://scenes/ui/player_list/PlayerList.cs" id="1_script"]
+[ext_resource type="Script" uid="uid://bffcyv2j8h7eg" path="res://scripts/ui/DraggableItemList.cs" id="2_draggable"]
 
 [node name="PlayerList" type="PanelContainer" unique_id=695884541]
 anchors_preset = 15
@@ -32,3 +33,4 @@ text = "Show Hidden"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("2_draggable")

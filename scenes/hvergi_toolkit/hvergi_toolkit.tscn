@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://pd2xx5lapec4"]
 
 [ext_resource type="Script" uid="uid://3rbt873eh0b8" path="res://scenes/hvergi_toolkit/HvergiToolkit.cs" id="1_uexwx"]
-[ext_resource type="Theme" path="res://darkmode.tres" id="1_v14n5"]
+[ext_resource type="Theme" uid="uid://44k28fj5f4t7" path="res://darkmode.tres" id="1_v14n5"]
 
 [node name="HvergiToolkit" type="Control" unique_id=1602896807 node_paths=PackedStringArray("terminalOutput", "contentTabContainer", "newsButton", "appsButton", "settingsButton", "playerEditorButton", "moiTrackerButton", "skillTrackerButton", "tradeWatcherButton", "stpCalcButton", "skillCompareButton", "sermonButton", "logAlertButton", "logSearchButton", "affinityFoodPlannerButton", "dyeEstimatorButton", "settlementPlannerButton")]
 layout_mode = 3
@@ -110,16 +110,9 @@ metadata/_tab_index = 0
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[font_size=30]Beta 2[/font_size]
-* [b]Player Editor:[/b] Implemented full directory management with Windows/Steam auto-discovery and character detection.
-* [b]STP Calculator:[/b] Ported full skill difficulty database and math engine for precise skill tick simulations.
-* [b]Affinity Food Planner:[/b] Re-engineered into a modern, fully reactive split-pane tool with advanced filtering for meat, cheese, salt, and herb stock exclusions.
-* [b]Customer Database:[/b] Added a persistent database to track test meal results for external customers.
-* [b]Reusable UI Components:[/b] Created vertical and horizontal player selection components for a consistent experience across all apps.
-* [b]Data Persistence:[/b] Implemented secure JSON storage in the user directory for all paths, players, and customer data.
-
-[font_size=30]Beta 1[/font_size]
-* Added Main UI"
+text = "[font_size=30]Beta[/font_size]
+* [b]First Demo Release[/b] Report bugs to hvergi.
+"
 
 [node name="AppsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=1943042757]
 layout_mode = 2
@@ -168,11 +161,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Skill Compare"
 
-[node name="SermonButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1262834605]
+[node name="LogSearchButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=609761138]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Sermon Warden"
+text = "Log Search"
 
 [node name="LogAlertButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1655472775]
 layout_mode = 2
@@ -180,34 +173,528 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Log Alert"
 
-[node name="LogSearchButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=609761138]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Log Search"
-
 [node name="AffintyFoodPlannerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=696753583]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Affinty Food Planner"
 
+[node name="SermonButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1262834605]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+text = "Sermon Warden"
+
 [node name="DyeEstimatorButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1385247213]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+disabled = true
 text = "Dye Estimator"
 
 [node name="SettlementPlannerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=481683656]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+disabled = true
 text = "SettlementPlanner"
 
 [node name="SettingsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=1861348102]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="SettingsTabs" type="TabContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer" unique_id=1311410306]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Moi Tracker" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1731227032]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker" unique_id=1619848392]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin" unique_id=2059754235]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1519821552]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Moi Tracker Settings"
+
+[node name="VoiceSettings" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1684054032]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/VoiceSettings" unique_id=2147191878]
+layout_mode = 2
+text = "Global TTS Voice: "
+
+[node name="MoiVoiceReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/VoiceSettings" unique_id=1891321069]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset"
+
+[node name="MoiVoiceSelect" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/VoiceSettings" unique_id=1685323556]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=123207499]
+layout_mode = 2
+
+[node name="CraftAlertHeader" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1690964090]
+layout_mode = 2
+
+[node name="CraftAlertTitle" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftAlertHeader" unique_id=1499899796]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderMedium"
+text = "Craft Alert"
+
+[node name="CraftAlertReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftAlertHeader" unique_id=1929905578]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset to Defaults"
+
+[node name="CraftAlertMode" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=515218962]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Sound"
+popup/item_0/id = 0
+popup/item_1/text = "TTS"
+popup/item_1/id = 1
+
+[node name="CraftSoundSettings" type="GridContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=820543261]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+columns = 2
+
+[node name="PathLabel" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=758398187]
+layout_mode = 2
+text = "Sound File:"
+
+[node name="HBox" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=1052132588]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CraftSoundPath" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings/HBox" unique_id=423112055]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "res://assets/sounds/craft.wav"
+clip_text = true
+
+[node name="CraftSoundChange" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings/HBox" unique_id=1873058838]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Change"
+
+[node name="VolLabel" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=755879554]
+layout_mode = 2
+text = "Volume:"
+
+[node name="CraftSoundVolume" type="HSlider" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=817126691]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Spacer" type="Control" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=733838087]
+layout_mode = 2
+
+[node name="CraftSoundTest" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=279203517]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Test Sound"
+
+[node name="CraftTTSSettings" type="GridContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1033274530]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 10
+columns = 2
+
+[node name="MsgLabel" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftTTSSettings" unique_id=1326747819]
+layout_mode = 2
+text = "Message:"
+
+[node name="CraftTTSMessage" type="LineEdit" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftTTSSettings" unique_id=903702665]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "{player} has crafted."
+
+[node name="Spacer" type="Control" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftTTSSettings" unique_id=87874932]
+layout_mode = 2
+
+[node name="CraftTTSTest" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftTTSSettings" unique_id=4478781]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Test TTS"
+
+[node name="HSeparator2" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1621258694]
+layout_mode = 2
+
+[node name="MoiAlertHeader" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1206601261]
+layout_mode = 2
+
+[node name="MoiAlertTitle" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiAlertHeader" unique_id=1655935228]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderMedium"
+text = "Moi Alert"
+
+[node name="MoiAlertReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiAlertHeader" unique_id=1980499349]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset to Defaults"
+
+[node name="MoiAlertMode" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=282229421]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Sound"
+popup/item_0/id = 0
+popup/item_1/text = "TTS"
+popup/item_1/id = 1
+
+[node name="MoiSoundSettings" type="GridContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1193437127]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+columns = 2
+
+[node name="PathLabel" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=423848036]
+layout_mode = 2
+text = "Sound File:"
+
+[node name="HBox" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=1673984531]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoiSoundPath" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings/HBox" unique_id=571945432]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "res://assets/sounds/moi.wav"
+clip_text = true
+
+[node name="MoiSoundChange" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings/HBox" unique_id=323615092]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Change"
+
+[node name="VolLabel" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=1245056419]
+layout_mode = 2
+text = "Volume:"
+
+[node name="MoiSoundVolume" type="HSlider" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=681549511]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Spacer" type="Control" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=767127388]
+layout_mode = 2
+
+[node name="MoiSoundTest" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=844044630]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Test Sound"
+
+[node name="MoiTTSSettings" type="GridContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1860702564]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 10
+columns = 2
+
+[node name="MsgLabel" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiTTSSettings" unique_id=1904963020]
+layout_mode = 2
+text = "Message:"
+
+[node name="MoiTTSMessage" type="LineEdit" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiTTSSettings" unique_id=550940661]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "{player} has had an M.O.I."
+
+[node name="Spacer" type="Control" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiTTSSettings" unique_id=283393120]
+layout_mode = 2
+
+[node name="MoiTTSTest" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiTTSSettings" unique_id=1743132937]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Test TTS"
+
+[node name="Skill Tracker" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=322011847]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Tracker" unique_id=1401711441]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Tracker/Margin" unique_id=1829819]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Tracker/Margin/VBox" unique_id=1940057465]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Skill Tracker Settings"
+
+[node name="Trade Watcher" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=816255030]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher" unique_id=1828636225]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin" unique_id=120645492]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919137]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Trade Watcher Settings"
+
+[node name="TradeVoiceSettings" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919138]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox/TradeVoiceSettings" unique_id=2083919139]
+layout_mode = 2
+text = "Global TTS Voice: "
+
+[node name="TradeVoiceReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox/TradeVoiceSettings" unique_id=2083919140]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset"
+
+[node name="TradeVoiceSelect" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox/TradeVoiceSettings" unique_id=2083919141]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919142]
+layout_mode = 2
+
+[node name="STP Calculator" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=480427419]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/STP Calculator" unique_id=51860773]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/STP Calculator/Margin" unique_id=675453765]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/STP Calculator/Margin/VBox" unique_id=353110588]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "STP Calculator Settings"
+
+[node name="Skill Compare" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1772808845]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Compare" unique_id=1660734422]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Compare/Margin" unique_id=48966613]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Compare/Margin/VBox" unique_id=1510039103]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Skill Compare Settings"
+
+[node name="Sermon Warden" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=2030772858]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 5
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Sermon Warden" unique_id=270833853]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Sermon Warden/Margin" unique_id=565933466]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Sermon Warden/Margin/VBox" unique_id=1048826622]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Sermon Warden Settings"
+
+[node name="Log Alert" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1516116895]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert" unique_id=297964867]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin" unique_id=1467195990]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=220118292]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Log Alert Settings"
+
+[node name="LogAlertVoiceSettings" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=2083919150]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox/LogAlertVoiceSettings" unique_id=2083919151]
+layout_mode = 2
+text = "Global TTS Voice: "
+
+[node name="LogAlertVoiceReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox/LogAlertVoiceSettings" unique_id=2083919152]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset"
+
+[node name="LogAlertVoiceSelect" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox/LogAlertVoiceSettings" unique_id=2083919153]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=2083919154]
+layout_mode = 2
+
+[node name="Log Search" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=465707810]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 7
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Search" unique_id=965815423]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Search/Margin" unique_id=78888248]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Search/Margin/VBox" unique_id=1124440957]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Log Search Settings"
+
+[node name="Affinity Food" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1448589800]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 8
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Affinity Food" unique_id=460387701]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Affinity Food/Margin" unique_id=673772755]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Affinity Food/Margin/VBox" unique_id=1988654698]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Affinity Food Planner Settings"
+
+[node name="Dye Estimator" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=322384043]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 9
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Dye Estimator" unique_id=1349293426]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Dye Estimator/Margin" unique_id=1367801023]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Dye Estimator/Margin/VBox" unique_id=1226493522]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Dye Estimator Settings"
+
+[node name="Settlement Planner" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=15294218]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 10
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Settlement Planner" unique_id=1264862683]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Settlement Planner/Margin" unique_id=1606835588]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Settlement Planner/Margin/VBox" unique_id=760286135]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Settlement Planner Settings"
 
 [node name="Terminal" type="Panel" parent="Layout" unique_id=1039621438]
 custom_minimum_size = Vector2(0, 200)
@@ -225,3 +712,16 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
+
+[node name="SoundPicker" type="FileDialog" parent="." unique_id=123456789]
+unique_name_in_owner = true
+title = "Open a File"
+initial_position = 2
+size = Vector2i(600, 400)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.wav", "*.mp3", "*.ogg")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=987654321]
+unique_name_in_owner = true

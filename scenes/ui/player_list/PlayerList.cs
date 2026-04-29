@@ -11,6 +11,8 @@ public partial class PlayerList : PanelContainer
     private ItemList _list;
     private CheckBox _showHiddenCheck;
 
+    public bool HidePlayersOnTeam { get; set; } = false;
+
     public override void _Ready()
     {
         _list = GetNode<ItemList>("%List");
@@ -19,6 +21,18 @@ public partial class PlayerList : PanelContainer
         _showHiddenCheck.Toggled += (toggled) => Refresh();
         _list.ItemSelected += OnItemSelected;
 
+        Players.TeamStateChanged += OnTeamStateChanged;
+
+        Refresh();
+    }
+
+    public override void _ExitTree()
+    {
+        Players.TeamStateChanged -= OnTeamStateChanged;
+    }
+
+    private void OnTeamStateChanged()
+    {
         Refresh();
     }
 
@@ -29,7 +43,7 @@ public partial class PlayerList : PanelContainer
 
         // Sort: Favorites first (A-Z), then others (A-Z)
         var sortedPlayers = Players.PlayerDict.Values
-            .Where(p => showHidden || !p.IsHidden)
+            .Where(p => (showHidden || !p.IsHidden) && (!HidePlayersOnTeam || !p.IsOnTeam))
             .OrderByDescending(p => p.IsFav)
             .ThenBy(p => p.Name)
             .ToList();

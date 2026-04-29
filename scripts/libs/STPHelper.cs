@@ -142,7 +142,7 @@ namespace HvergiToolkit.Libs
             {"Animal husbandry", 4000.0},
             {"Short bow", 4000.0},
             {"Long bow", 4000.0},
-            {"Medium bow", 4000.0},
+            {"Reflex bow", 4000.0},
             {"Ship building", 7000.0},
             {"Ballistae", 2000.0},
             {"Trebuchets", 2000.0},

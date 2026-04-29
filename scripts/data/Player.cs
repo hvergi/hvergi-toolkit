@@ -9,6 +9,7 @@ public class Player
     public string Path { get; set; }
     public bool IsHidden { get; set; }
     public bool IsFav { get; set; }
+    public bool IsOnTeam { get; set; }
     public int AffinitySkillID { get; set; } = -1; // Default to -1 (none)
     
     public enum LogType
@@ -44,7 +45,12 @@ public class Player
         return GetLogPath("_Skills");
     }
 
-    private string GetLogPath(string prefix)
+    public string GetDumpsPath()
+    {
+        return System.IO.Path.Combine(Path, "dumps");
+    }
+
+    public string GetLogPath(string prefix)
     {
         UpdateLogType();
 
@@ -89,9 +95,11 @@ public class Player
             string gamesettingsPath = System.IO.Path.Combine(wurmDir, "configs", configName, "gamesettings.txt");
             if (!File.Exists(gamesettingsPath)) return;
 
-            string[] lines = File.ReadAllLines(gamesettingsPath);
-            foreach (string line in lines)
+            using var fs = new FileStream(gamesettingsPath, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
+            using var sr = new StreamReader(fs);
+            while (!sr.EndOfStream)
             {
+                string line = sr.ReadLine();
                 if (line.StartsWith("event_log_rotation="))
                 {
                     string val = line.Split('=')[1].Trim();

@@ -1,10 +1,296 @@
 [gd_scene format=3 uid="uid://nviixs6ypmuu"]
 
 [ext_resource type="Script" uid="uid://nxn0b8fsuhls" path="res://scenes/apps/moi_tracker/MoiTracker.cs" id="1_script"]
+[ext_resource type="Script" uid="uid://bnwfuvwy2rvlf" path="res://scenes/apps/moi_tracker/DropZone.cs" id="2_drop_script"]
+[ext_resource type="PackedScene" uid="uid://ba3uxhjkuliwo" path="res://scenes/ui/player_list/player_list.tscn" id="3_player_list"]
 
-[node name="MoiTracker" type="Window" unique_id=1601958756]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_DropZone"]
+bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25098, 0.25098, 0.25098, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MoiTracker" type="Window" unique_id=636250556]
 oversampling_override = 1.0
 title = "Moi Tracker"
-initial_position = 4
-size = Vector2i(1152, 648)
+initial_position = 2
+size = Vector2i(1000, 600)
 script = ExtResource("1_script")
+
+[node name="Background" type="Panel" parent="." unique_id=302057593]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplit" type="HSplitContainer" parent="Background" unique_id=1074481068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offsets = PackedInt32Array(250)
+split_offset = 250
+
+[node name="PlayerList" parent="Background/HSplit" unique_id=499699518 instance=ExtResource("3_player_list")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSplitRight" type="HSplitContainer" parent="Background/HSplit" unique_id=2056851629]
+layout_mode = 2
+split_offsets = PackedInt32Array(500)
+split_offset = 500
+
+[node name="CenterPanel" type="VBoxContainer" parent="Background/HSplit/HSplitRight" unique_id=2041517077]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GlobalStats" type="PanelContainer" parent="Background/HSplit/HSplitRight/CenterPanel" unique_id=634368465]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/HSplit/HSplitRight/CenterPanel/GlobalStats" unique_id=1267587488]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBox" type="HBoxContainer" parent="Background/HSplit/HSplitRight/CenterPanel/GlobalStats/Margin" unique_id=157635704]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBox1" type="VBoxContainer" parent="Background/HSplit/HSplitRight/CenterPanel/GlobalStats/Margin/HBox" unique_id=816229667]
+layout_mode = 2
+
+[node name="ActiveMembersLabel" type="Label" parent="Background/HSplit/HSplitRight/CenterPanel/GlobalStats/Margin/HBox/VBox1" unique_id=62618200]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Active Members: 0"
+
+[node name="TotalCraftsLabel" type="Label" parent="Background/HSplit/HSplitRight/CenterPanel/GlobalStats/Margin/HBox/VBox1" unique_id=955666208]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Total Crafts: 0"
+
+[node name="VBox2" type="VBoxContainer" parent="Background/HSplit/HSplitRight/CenterPanel/GlobalStats/Margin/HBox" unique_id=808988800]
+layout_mode = 2
+
+[node name="TotalMoisLabel" type="Label" parent="Background/HSplit/HSplitRight/CenterPanel/GlobalStats/Margin/HBox/VBox2" unique_id=565935500]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Total MOIs: 0"
+
+[node name="GlobalCPMLabel" type="Label" parent="Background/HSplit/HSplitRight/CenterPanel/GlobalStats/Margin/HBox/VBox2" unique_id=2133920189]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Global CPM: 0.0"
+
+[node name="LastGlobalMoiLabel" type="Label" parent="Background/HSplit/HSplitRight/CenterPanel/GlobalStats/Margin/HBox" unique_id=922607903]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Last Global MOI: 00:00:00"
+horizontal_alignment = 2
+
+[node name="TeamControls" type="PanelContainer" parent="Background/HSplit/HSplitRight/CenterPanel" unique_id=1743934250]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/HSplit/HSplitRight/CenterPanel/TeamControls" unique_id=1866245047]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBox" type="HBoxContainer" parent="Background/HSplit/HSplitRight/CenterPanel/TeamControls/Margin" unique_id=965894181]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Background/HSplit/HSplitRight/CenterPanel/TeamControls/Margin/HBox" unique_id=1830075038]
+layout_mode = 2
+text = "Presets:"
+
+[node name="TeamSelect" type="OptionButton" parent="Background/HSplit/HSplitRight/CenterPanel/TeamControls/Margin/HBox" unique_id=1663637512]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TeamNameEdit" type="LineEdit" parent="Background/HSplit/HSplitRight/CenterPanel/TeamControls/Margin/HBox" unique_id=1287798048]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+placeholder_text = "Team Name..."
+
+[node name="SaveTeamButton" type="Button" parent="Background/HSplit/HSplitRight/CenterPanel/TeamControls/Margin/HBox" unique_id=1124523364]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save Team"
+
+[node name="DeleteTeamButton" type="Button" parent="Background/HSplit/HSplitRight/CenterPanel/TeamControls/Margin/HBox" unique_id=1781135468]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.301961, 0.301961, 1)
+text = "Delete"
+
+[node name="TimerControls" type="PanelContainer" parent="Background/HSplit/HSplitRight/CenterPanel" unique_id=531911749]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/HSplit/HSplitRight/CenterPanel/TimerControls" unique_id=997869807]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBox" type="HBoxContainer" parent="Background/HSplit/HSplitRight/CenterPanel/TimerControls/Margin" unique_id=7314539]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Background/HSplit/HSplitRight/CenterPanel/TimerControls/Margin/HBox" unique_id=1109119634]
+layout_mode = 2
+text = "Interval (s):"
+
+[node name="IntervalSpinBox" type="SpinBox" parent="Background/HSplit/HSplitRight/CenterPanel/TimerControls/Margin/HBox" unique_id=478829401]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 3600.0
+value = 25.0
+
+[node name="StartButton" type="Button" parent="Background/HSplit/HSplitRight/CenterPanel/TimerControls/Margin/HBox" unique_id=2074657651]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start"
+
+[node name="PauseButton" type="Button" parent="Background/HSplit/HSplitRight/CenterPanel/TimerControls/Margin/HBox" unique_id=100851850]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Pause"
+
+[node name="StopButton" type="Button" parent="Background/HSplit/HSplitRight/CenterPanel/TimerControls/Margin/HBox" unique_id=1700616097]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Stop"
+
+[node name="ResetButton" type="Button" parent="Background/HSplit/HSplitRight/CenterPanel/TimerControls/Margin/HBox" unique_id=1982285626]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset"
+
+[node name="CountdownLabel" type="Label" parent="Background/HSplit/HSplitRight/CenterPanel/TimerControls/Margin/HBox" unique_id=739421809]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next Craft: --"
+horizontal_alignment = 2
+
+[node name="DropZones" type="ScrollContainer" parent="Background/HSplit/HSplitRight/CenterPanel" unique_id=301501601]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="Background/HSplit/HSplitRight/CenterPanel/DropZones" unique_id=1783723027]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/HSplit/HSplitRight/CenterPanel/DropZones/VBox" unique_id=1144085355]
+layout_mode = 2
+
+[node name="LeaderHeader" type="Label" parent="Background/HSplit/HSplitRight/CenterPanel/DropZones/VBox/HBoxContainer" unique_id=359315264]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Team Leader"
+
+[node name="ClearTeamButton" type="Button" parent="Background/HSplit/HSplitRight/CenterPanel/DropZones/VBox/HBoxContainer" unique_id=342152789]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Clear Team"
+
+[node name="LeaderZone" type="PanelContainer" parent="Background/HSplit/HSplitRight/CenterPanel/DropZones/VBox" unique_id=1392056042]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_DropZone")
+script = ExtResource("2_drop_script")
+
+[node name="LeaderPlaceholder" type="Label" parent="Background/HSplit/HSplitRight/CenterPanel/DropZones/VBox/LeaderZone" unique_id=957197027]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+text = "DRAG LEADER HERE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MembersHeader" type="Label" parent="Background/HSplit/HSplitRight/CenterPanel/DropZones/VBox" unique_id=1694403797]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Team Members"
+
+[node name="MembersDropZone" type="PanelContainer" parent="Background/HSplit/HSplitRight/CenterPanel/DropZones/VBox" unique_id=419887577]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_DropZone")
+script = ExtResource("2_drop_script")
+
+[node name="MembersPlaceholder" type="Label" parent="Background/HSplit/HSplitRight/CenterPanel/DropZones/VBox/MembersDropZone" unique_id=9893098]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+text = "DRAG MEMBERS HERE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridMargin" type="MarginContainer" parent="Background/HSplit/HSplitRight/CenterPanel/DropZones/VBox/MembersDropZone" unique_id=1684722415]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="MembersGrid" type="GridContainer" parent="Background/HSplit/HSplitRight/CenterPanel/DropZones/VBox/MembersDropZone/GridMargin" unique_id=864610622]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="EventLogPanel" type="PanelContainer" parent="Background/HSplit/HSplitRight" unique_id=1947974248]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Background/HSplit/HSplitRight/EventLogPanel" unique_id=1694492383]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/HSplit/HSplitRight/EventLogPanel/VBox" unique_id=1881232066]
+layout_mode = 2
+text = "Event Log"
+horizontal_alignment = 1
+
+[node name="EventLog" type="RichTextLabel" parent="Background/HSplit/HSplitRight/EventLogPanel/VBox" unique_id=993350548]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+
+[node name="AlertOverlay" type="ColorRect" parent="Background" unique_id=1565294733]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.117647)
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=987654321]
+unique_name_in_owner = true

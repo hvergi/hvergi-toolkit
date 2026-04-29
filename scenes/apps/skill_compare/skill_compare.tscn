@@ -1,10 +1,95 @@
-[gd_scene format=3 uid="uid://cr4lvkktllics"]
+[gd_scene load_steps=3 format=3 uid="uid://cr4lvkktllics"]
 
 [ext_resource type="Script" uid="uid://cbk71yisgcfi3" path="res://scenes/apps/skill_compare/SkillCompare.cs" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://ba3uxhjkuliwo" path="res://scenes/ui/player_list/player_list.tscn" id="2_player_list"]
 
 [node name="SkillCompare" type="Window" unique_id=298878252]
 oversampling_override = 1.0
 title = "Skill Compare"
-initial_position = 4
-size = Vector2i(1152, 648)
+initial_position = 2
+size = Vector2i(1000, 600)
 script = ExtResource("1_script")
+
+[node name="Background" type="Panel" parent="." unique_id=302057593]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplit" type="HSplitContainer" parent="Background" unique_id=1074481068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 250
+
+[node name="PlayerList" parent="Background/HSplit" unique_id=499699518 instance=ExtResource("2_player_list")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MainContent" type="VBoxContainer" parent="Background/HSplit" unique_id=2041517077]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Controls" type="PanelContainer" parent="Background/HSplit/MainContent" unique_id=634368465]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Background/HSplit/MainContent/Controls" unique_id=1267587488]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBox" type="HBoxContainer" parent="Background/HSplit/MainContent/Controls/Margin" unique_id=157635704]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Dump1Label" type="Label" parent="Background/HSplit/MainContent/Controls/Margin/HBox" unique_id=1]
+layout_mode = 2
+text = "Dump 1 (Older):"
+
+[node name="Dump1Select" type="OptionButton" parent="Background/HSplit/MainContent/Controls/Margin/HBox" unique_id=2]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Dump2Label" type="Label" parent="Background/HSplit/MainContent/Controls/Margin/HBox" unique_id=3]
+layout_mode = 2
+text = "Dump 2 (Newer):"
+
+[node name="Dump2Select" type="OptionButton" parent="Background/HSplit/MainContent/Controls/Margin/HBox" unique_id=4]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CompareButton" type="Button" parent="Background/HSplit/MainContent/Controls/Margin/HBox" unique_id=5]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Compare"
+
+[node name="TabContainer" type="TabContainer" parent="Background/HSplit/MainContent" unique_id=301501601]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Skills" type="Tree" parent="Background/HSplit/MainContent/TabContainer" unique_id=6]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 5
+column_titles_visible = true
+hide_root = true
+select_mode = 1
+metadata/_tab_index = 0
+
+[node name="Affinities" type="Tree" parent="Background/HSplit/MainContent/TabContainer" unique_id=7]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 4
+column_titles_visible = true
+hide_root = true
+select_mode = 1
+metadata/_tab_index = 1
