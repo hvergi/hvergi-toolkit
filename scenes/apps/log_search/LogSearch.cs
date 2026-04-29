@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Globalization;
 
 public partial class LogSearch : Window
 {
@@ -185,6 +186,7 @@ public partial class LogSearch : Window
         public string FilePath;
         public int LineNumber;
         public string LineText;
+        public DateTime TimeStamp;
     }
 
     private const int MaxResultsToDisplay = 500;
@@ -236,6 +238,7 @@ public partial class LogSearch : Window
 
         int totalMatches = 0;
         int displayedMatches = 0;
+        DateTime currentLogDate = DateTime.MinValue;
         List<MatchInfo> matchBuffer = new();
 
         for (int fIdx = 0; fIdx < filteredFiles.Count; fIdx++)
@@ -253,6 +256,25 @@ public partial class LogSearch : Window
                 while (!sr.EndOfStream)
                 {
                     string line = sr.ReadLine();
+                    lineIdx++;
+                    if (lineIdx % 2000 == 0) token.ThrowIfCancellationRequested();
+                    
+                    if (line != null && line.Contains("Logging started"))
+                    {
+                        var daySpan = line.AsSpan(line.Length - 2);
+                        if (DateTime.TryParseExact(line.Substring(line.Length - 10), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
+                        {
+                            currentLogDate = parsedDate;
+                            continue;
+                        }
+
+                    }
+
+                    if (useFilter && !(currentLogDate >= start && currentLogDate <= end))
+                    {
+                        continue;
+                    }                   
+                   
                     if (line != null && line.Contains(query, StringComparison.OrdinalIgnoreCase))
                     {
                         totalMatches++;
@@ -264,7 +286,8 @@ public partial class LogSearch : Window
                                 FileName = Path.GetFileName(file),
                                 FilePath = file,
                                 LineNumber = lineIdx,
-                                LineText = line.Trim()
+                                LineText = line.Trim(),
+                                TimeStamp = currentLogDate
                             });
                             displayedMatches++;
 
@@ -278,6 +301,7 @@ public partial class LogSearch : Window
                                     d["path"] = m.FilePath;
                                     d["line"] = m.LineNumber;
                                     d["text"] = m.LineText;
+                                    d["timestamp"] = m.TimeStamp.ToShortDateString();
                                     godotChunk.Add(d);
                                 }
                                 matchBuffer.Clear();
@@ -286,8 +310,7 @@ public partial class LogSearch : Window
                         }
                     }
                     
-                    lineIdx++;
-                    if (lineIdx % 2000 == 0) token.ThrowIfCancellationRequested();
+
                 }
             }
             catch (Exception e)
@@ -306,6 +329,7 @@ public partial class LogSearch : Window
                 d["path"] = m.FilePath;
                 d["line"] = m.LineNumber;
                 d["text"] = m.LineText;
+                d["timestamp"] = m.TimeStamp.ToShortDateString();
                 godotChunk.Add(d);
             }
             CallDeferred(nameof(AddResultsChunk), godotChunk);
@@ -326,8 +350,9 @@ public partial class LogSearch : Window
             string fileName = m["fileName"].AsString();
             int lineNum = m["line"].AsInt32();
             string text = m["text"].AsString();
+            string datePart = m["timestamp"].AsString();
             
-            int idx = _resultsList.AddItem($"[{fileName}:{lineNum + 1}] {text}");
+            int idx = _resultsList.AddItem($"{datePart} [{fileName}:{lineNum + 1}] {text}");
             
             var metadata = new Godot.Collections.Dictionary
             {
