@@ -41,6 +41,8 @@ namespace HvergiToolkit
         public Button dyeEstimatorButton;
         [Export]
         public Button settlementPlannerButton;
+        [Export]
+        public Button updateButton;
 
         private string _currentPickerTarget = "";
 
@@ -62,6 +64,7 @@ namespace HvergiToolkit
             newsButton.Pressed += OnNewsButtonPressed;
             appsButton.Pressed += OnAppsButtonPressed;
             settingsButton.Pressed += OnSettingsButtonPressed;
+            updateButton.Pressed += OnUpdatePressed;
 
             playerEditorButton.Pressed += () => onAppButtonPressed("res://scenes/apps/player_editor/player_editor.tscn");
             moiTrackerButton.Pressed += () => onAppButtonPressed("res://scenes/apps/moi_tracker/moi_tracker.tscn");
@@ -234,6 +237,51 @@ namespace HvergiToolkit
         private void OnSettingsButtonPressed()
         {
             contentTabContainer.CurrentTab = 2;
+        }
+
+        private async void OnUpdatePressed()
+        {
+            Terminal.Write("Checking for updates...");
+            var (available, version, url) = await UpdateManager.CheckForUpdates();
+
+            if (!available)
+            {
+                Terminal.Write("You are running the latest version.");
+                return;
+            }
+
+            Terminal.Write($"New version available: {version}");
+            
+            // For now, we'll use a simple confirmation via Terminal since I don't want to add a popup scene yet
+            // but the plan says "Show a confirmation dialog". 
+            // I'll add a simple ConfirmationDialog.
+            
+            var dialog = new ConfirmationDialog();
+            dialog.Title = "Update Available";
+            dialog.DialogText = $"A new version ({version}) is available. Would you like to download and install it now?\nThe application will restart.";
+            AddChild(dialog);
+            dialog.PopupCentered();
+
+            dialog.Confirmed += async () => {
+                Terminal.Write("Downloading update...");
+                string zipPath = await UpdateManager.DownloadUpdate(url);
+                
+                if (string.IsNullOrEmpty(zipPath))
+                {
+                    Terminal.WriteError("Failed to download update.");
+                    return;
+                }
+
+                Terminal.Write("Applying update... The application will close and restart shortly.");
+                if (UpdateManager.ApplyUpdate(zipPath))
+                {
+                    GetTree().Quit();
+                }
+                else
+                {
+                    Terminal.WriteError("Failed to apply update.");
+                }
+            };
         }
 
         private void onAppButtonPressed(string scenePath)

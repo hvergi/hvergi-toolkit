@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://3rbt873eh0b8" path="res://scenes/hvergi_toolkit/HvergiToolkit.cs" id="1_uexwx"]
 [ext_resource type="Theme" uid="uid://44k28fj5f4t7" path="res://darkmode.tres" id="1_v14n5"]
 
-[node name="HvergiToolkit" type="Control" unique_id=1602896807 node_paths=PackedStringArray("terminalOutput", "contentTabContainer", "newsButton", "appsButton", "settingsButton", "playerEditorButton", "moiTrackerButton", "skillTrackerButton", "tradeWatcherButton", "stpCalcButton", "skillCompareButton", "sermonButton", "logAlertButton", "logSearchButton", "affinityFoodPlannerButton", "dyeEstimatorButton", "settlementPlannerButton")]
+[node name="HvergiToolkit" type="Control" unique_id=1602896807 node_paths=PackedStringArray("terminalOutput", "contentTabContainer", "newsButton", "appsButton", "settingsButton", "playerEditorButton", "moiTrackerButton", "skillTrackerButton", "tradeWatcherButton", "stpCalcButton", "skillCompareButton", "sermonButton", "logAlertButton", "logSearchButton", "affinityFoodPlannerButton", "dyeEstimatorButton", "settlementPlannerButton", "updateButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +29,7 @@ logSearchButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridCo
 affinityFoodPlannerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/AffintyFoodPlannerButton")
 dyeEstimatorButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/DyeEstimatorButton")
 settlementPlannerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SettlementPlannerButton")
+updateButton = NodePath("Layout/TopBar/UpdateButton")
 
 [node name="Panel" type="Panel" parent="." unique_id=1824719474]
 layout_mode = 1
@@ -66,6 +67,7 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 text = "Update"
 
 [node name="EndMargin" type="Control" parent="Layout/TopBar" unique_id=1621217307]
