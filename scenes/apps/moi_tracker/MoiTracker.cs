@@ -291,9 +291,9 @@ public partial class MoiTracker : Window
     {
         if (_leaderCard != null && playerName == _leaderCard.PlayerName)
         {
-            _totalCrafts++;
             _craftTimer.Start((float)_intervalSpinBox.Value);
         }
+        _totalCrafts++;
         
         UpdateUI();
     }
