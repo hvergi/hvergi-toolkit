@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 public partial class LogAlert : Window
 {
     private PlayerList _playerList;
     private RichTextLabel _alertFeed;
+    private CheckBox _enableMonitorCheck;
     private CheckBox _enableTtsCheck;
     private OptionButton _logTypeSelect;
     private LineEdit _patternEdit;
@@ -17,15 +17,19 @@ public partial class LogAlert : Window
     private VBoxContainer _filterList;
 
     private string _selectedPlayerName;
-    private Timer _pollTimer;
-    private Dictionary<LogReader.LogFileType, long> _lastPositions = new();
+    private LogAlertService _logAlertService;
 
     public override void _Ready()
     {
         this.CloseRequested += OnCloseRequested;
 
+        var toolkit = GetTree().Root.GetNode<HvergiToolkit.HvergiToolkit>("HvergiToolkit");
+        _logAlertService = toolkit.LogAlertService;
+        _logAlertService.LogAlertTriggered += OnLogAlertTriggered;
+
         _playerList = GetNode<PlayerList>("%PlayerList");
         _alertFeed = GetNode<RichTextLabel>("%AlertFeed");
+        _enableMonitorCheck = GetNode<CheckBox>("%EnableMonitorCheck");
         _enableTtsCheck = GetNode<CheckBox>("%EnableTtsCheck");
         _logTypeSelect = GetNode<OptionButton>("%LogTypeSelect");
         _patternEdit = GetNode<LineEdit>("%PatternEdit");
@@ -35,20 +39,32 @@ public partial class LogAlert : Window
 
         _playerList.PlayerSelected += OnPlayerSelected;
         _addButton.Pressed += OnAddFilterPressed;
-        _enableTtsCheck.Toggled += (toggled) => { AppSettings.LogAlert.EnableTts = toggled; AppSettings.Save(); };
+        
+        _enableMonitorCheck.Toggled += (toggled) => { 
+            if (string.IsNullOrEmpty(_selectedPlayerName)) return;
+            if (AppSettings.LogAlert.PlayerConfigs.TryGetValue(_selectedPlayerName, out var config)) {
+                config.Enabled = toggled; 
+                AppSettings.Save(); 
+            }
+        };
+
+        _enableTtsCheck.Toggled += (toggled) => { 
+            if (string.IsNullOrEmpty(_selectedPlayerName)) return;
+            if (AppSettings.LogAlert.PlayerConfigs.TryGetValue(_selectedPlayerName, out var config)) {
+                config.EnableTts = toggled; 
+                AppSettings.Save(); 
+            }
+        };
 
         SetupDropdowns();
-        LoadSettings();
-
-        _pollTimer = new Timer();
-        _pollTimer.WaitTime = 2.0f;
-        _pollTimer.Autostart = true;
-        _pollTimer.Timeout += OnPollTimerTimeout;
-        AddChild(_pollTimer);
     }
 
     private void OnCloseRequested()
     {
+        if (_logAlertService != null)
+        {
+            _logAlertService.LogAlertTriggered -= OnLogAlertTriggered;
+        }
         CallDeferred(MethodName.QueueFree);
     }
 
@@ -63,17 +79,14 @@ public partial class LogAlert : Window
         }
     }
 
-    private void LoadSettings()
-    {
-        _enableTtsCheck.ButtonPressed = AppSettings.LogAlert.EnableTts;
-        RefreshFilterList();
-    }
-
     private void RefreshFilterList()
     {
         foreach (Node child in _filterList.GetChildren()) child.QueueFree();
 
-        foreach (var filter in AppSettings.LogAlert.Filters)
+        if (string.IsNullOrEmpty(_selectedPlayerName)) return;
+        if (!AppSettings.LogAlert.PlayerConfigs.TryGetValue(_selectedPlayerName, out var config)) return;
+
+        foreach (var filter in config.Filters)
         {
             var hbox = new HBoxContainer();
             string ttsPart = string.IsNullOrEmpty(filter.TtsMessage) ? "" : $" (TTS: {filter.TtsMessage})";
@@ -84,7 +97,7 @@ public partial class LogAlert : Window
             };
             var removeBtn = new Button { Text = "X" };
             removeBtn.Pressed += () => {
-                AppSettings.LogAlert.Filters.Remove(filter);
+                config.Filters.Remove(filter);
                 AppSettings.Save();
                 RefreshFilterList();
             };
@@ -97,6 +110,8 @@ public partial class LogAlert : Window
 
     private void OnAddFilterPressed()
     {
+        if (string.IsNullOrEmpty(_selectedPlayerName)) return;
+
         string pattern = _patternEdit.Text.Trim();
         if (string.IsNullOrEmpty(pattern)) return;
 
@@ -107,7 +122,8 @@ public partial class LogAlert : Window
             TtsMessage = _ttsEdit.Text.Trim()
         };
 
-        AppSettings.LogAlert.Filters.Add(filter);
+        var config = AppSettings.LogAlert.PlayerConfigs[_selectedPlayerName];
+        config.Filters.Add(filter);
         AppSettings.Save();
         RefreshFilterList();
 
@@ -118,103 +134,27 @@ public partial class LogAlert : Window
     private void OnPlayerSelected(string playerName)
     {
         _selectedPlayerName = playerName;
-        _lastPositions.Clear();
+
+        if (!AppSettings.LogAlert.PlayerConfigs.ContainsKey(playerName))
+        {
+            AppSettings.LogAlert.PlayerConfigs[playerName] = new AppSettings.PlayerLogAlertConfig();
+            AppSettings.Save();
+        }
+
+        var config = AppSettings.LogAlert.PlayerConfigs[playerName];
+        _enableMonitorCheck.SetPressedNoSignal(config.Enabled);
+        _enableTtsCheck.SetPressedNoSignal(config.EnableTts);
+        RefreshFilterList();
+
         _alertFeed.Clear();
-        _alertFeed.AppendText($"[color=gray]Monitoring logs for {playerName}...[/color]\n");
-        
-        // Initial position setup for all active filter types
-        if (Players.PlayerDict.TryGetValue(playerName, out Player player))
-        {
-            var activeTypes = AppSettings.LogAlert.Filters.Select(f => f.LogType).Distinct();
-            foreach (var type in activeTypes)
-            {
-                string path = GetLatestLogPath(player, type);
-                if (!string.IsNullOrEmpty(path) && File.Exists(path))
-                {
-                    using var fs = new FileStream(path, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-                    _lastPositions[type] = fs.Length;
-                }
-            }
-        }
+        _alertFeed.AppendText($"[color=gray]Viewing alerts for {playerName}...[/color]\n");
     }
 
-    private string GetLatestLogPath(Player player, LogReader.LogFileType type)
+    private void OnLogAlertTriggered(string playerName, string logTypeName, string line)
     {
-        if (!LogReader.Prefixes.TryGetValue(type, out string prefix)) return null;
-        string logsDir = Path.Combine(player.Path, "logs");
-        if (!Directory.Exists(logsDir)) return null;
-
-        return Directory.GetFiles(logsDir, prefix + "*.txt")
-            .OrderByDescending(f => f)
-            .FirstOrDefault();
-    }
-
-    private void OnPollTimerTimeout()
-    {
-        if (string.IsNullOrEmpty(_selectedPlayerName) || !Players.PlayerDict.TryGetValue(_selectedPlayerName, out Player player)) return;
-
-        var activeTypes = AppSettings.LogAlert.Filters.Select(f => f.LogType).Distinct();
-
-        foreach (var type in activeTypes)
+        if (playerName == _selectedPlayerName)
         {
-            string path = GetLatestLogPath(player, type);
-            if (string.IsNullOrEmpty(path) || !File.Exists(path)) continue;
-
-            try
-            {
-                using var fs = new FileStream(path, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-                long lastPos = _lastPositions.ContainsKey(type) ? _lastPositions[type] : fs.Length;
-
-                if (fs.Length < lastPos) lastPos = 0; 
-                if (fs.Length == lastPos)
-                {
-                    _lastPositions[type] = lastPos;
-                    continue;
-                }
-
-                fs.Seek(lastPos, SeekOrigin.Begin);
-                using var sr = new StreamReader(fs);
-                
-                while (!sr.EndOfStream)
-                {
-                    string line = sr.ReadLine();
-                    if (!string.IsNullOrWhiteSpace(line))
-                    {
-                        ProcessLogLine(type, line);
-                    }
-                }
-                _lastPositions[type] = fs.Position;
-            }
-            catch (Exception e)
-            {
-                Terminal.WriteError($"LogAlert: Poll error for {type}: {e.Message}");
-            }
-        }
-    }
-
-    private void ProcessLogLine(LogReader.LogFileType type, string line)
-    {
-        var filters = AppSettings.LogAlert.Filters.Where(f => f.LogType == type);
-
-        foreach (var filter in filters)
-        {
-            try
-            {
-                if (Regex.IsMatch(line, filter.Pattern, RegexOptions.IgnoreCase))
-                {
-                    _alertFeed.AppendText($"[b][{type}][/b] {line}\n");
-                    
-                    if (AppSettings.LogAlert.EnableTts && !string.IsNullOrEmpty(filter.TtsMessage))
-                    {
-                        DisplayServer.TtsSpeak(filter.TtsMessage, AppSettings.LogAlert.TtsVoiceId);
-                    }
-                    break; // Only alert once per line
-                }
-            }
-            catch (Exception e)
-            {
-                Terminal.WriteError($"LogAlert: Regex error in filter '{filter.Pattern}': {e.Message}");
-            }
+            _alertFeed.AppendText($"[b][{logTypeName}][/b] {line}\n");
         }
     }
 }

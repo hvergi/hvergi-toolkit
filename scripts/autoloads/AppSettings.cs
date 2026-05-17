@@ -62,11 +62,18 @@ public static class AppSettings
         public string TtsMessage { get; set; } = "";
     }
 
+    public class PlayerTradeConfig
+    {
+        public bool Enabled { get; set; } = true;
+        public bool EnableTts { get; set; } = true;
+        public System.Collections.Generic.List<TradeFilter> Filters { get; set; } = new();
+    }
+
     public class TradeWatcherSettings
     {
-        public bool EnableTts { get; set; } = true;
         public string TtsVoiceId { get; set; } = "";
-        public System.Collections.Generic.List<TradeFilter> Filters { get; set; } = new();
+        public float PollIntervalSeconds { get; set; } = 2.0f;
+        public System.Collections.Generic.Dictionary<string, PlayerTradeConfig> PlayerConfigs { get; set; } = new();
     }
 
     public class STPCalculatorSettings
@@ -91,11 +98,18 @@ public static class AppSettings
         public string TtsMessage { get; set; } = "";
     }
 
+    public class PlayerLogAlertConfig
+    {
+        public bool Enabled { get; set; } = true;
+        public bool EnableTts { get; set; } = true;
+        public System.Collections.Generic.List<LogFilter> Filters { get; set; } = new();
+    }
+
     public class LogAlertSettings
     {
-        public bool EnableTts { get; set; } = true;
         public string TtsVoiceId { get; set; } = "";
-        public System.Collections.Generic.List<LogFilter> Filters { get; set; } = new();
+        public float PollIntervalSeconds { get; set; } = 2.0f;
+        public System.Collections.Generic.Dictionary<string, PlayerLogAlertConfig> PlayerConfigs { get; set; } = new();
     }
 
     public class LogSearchSettings

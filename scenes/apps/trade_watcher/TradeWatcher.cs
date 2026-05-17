@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 public partial class TradeWatcher : Window
 {
     private PlayerList _playerList;
     private RichTextLabel _tradeFeed;
+    private CheckBox _enableMonitorCheck;
     private CheckBox _enableTtsCheck;
     private OptionButton _typeSelect;
     private OptionButton _categorySelect;
@@ -27,19 +27,19 @@ public partial class TradeWatcher : Window
     private LineEdit _itemWtEdit;
 
     private string _selectedPlayerName;
-    private string _currentLogPath;
-    private long _lastPos = 0;
-    private Timer _pollTimer;
-
-    private readonly Regex _logRegex = new(@"^\[(?<time>\d{2}:\d{2}:\d{2})\] <(?<name>.+?)>(?: \((?<server>\w+?)\))? (?<category>WTB|WTS|WTT|PC|@)\s*(?<msg>.*)$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-    private readonly Regex _itemRegex = new(@"\[(?<item>.+?)\]", RegexOptions.Compiled);
+    private TradeMonitorService _tradeService;
 
     public override void _Ready()
     {
         this.CloseRequested += OnCloseRequested;
 
+        var toolkit = GetTree().Root.GetNode<HvergiToolkit.HvergiToolkit>("HvergiToolkit");
+        _tradeService = toolkit.TradeMonitorService;
+        _tradeService.TradeLineMatched += OnTradeLineMatched;
+
         _playerList = GetNode<PlayerList>("%PlayerList");
         _tradeFeed = GetNode<RichTextLabel>("%TradeFeed");
+        _enableMonitorCheck = GetNode<CheckBox>("%EnableMonitorCheck");
         _enableTtsCheck = GetNode<CheckBox>("%EnableTtsCheck");
         _typeSelect = GetNode<OptionButton>("%TypeSelect");
         _categorySelect = GetNode<OptionButton>("%CategorySelect");
@@ -58,21 +58,33 @@ public partial class TradeWatcher : Window
 
         _playerList.PlayerSelected += OnPlayerSelected;
         _addButton.Pressed += OnAddFilterPressed;
-        _enableTtsCheck.Toggled += (toggled) => { AppSettings.TradeWatcher.EnableTts = toggled; AppSettings.Save(); };
+        
+        _enableMonitorCheck.Toggled += (toggled) => { 
+            if (string.IsNullOrEmpty(_selectedPlayerName)) return;
+            if (AppSettings.TradeWatcher.PlayerConfigs.TryGetValue(_selectedPlayerName, out var config)) {
+                config.Enabled = toggled; 
+                AppSettings.Save(); 
+            }
+        };
+
+        _enableTtsCheck.Toggled += (toggled) => { 
+            if (string.IsNullOrEmpty(_selectedPlayerName)) return;
+            if (AppSettings.TradeWatcher.PlayerConfigs.TryGetValue(_selectedPlayerName, out var config)) {
+                config.EnableTts = toggled; 
+                AppSettings.Save(); 
+            }
+        };
         _modeSelect.ItemSelected += OnModeSelected;
 
         SetupDropdowns();
-        LoadSettings();
-
-        _pollTimer = new Timer();
-        _pollTimer.WaitTime = 2.0f;
-        _pollTimer.Autostart = true;
-        _pollTimer.Timeout += OnPollTimerTimeout;
-        AddChild(_pollTimer);
     }
 
     private void OnCloseRequested()
     {
+        if (_tradeService != null)
+        {
+            _tradeService.TradeLineMatched -= OnTradeLineMatched;
+        }
         CallDeferred(MethodName.QueueFree);
     }
 
@@ -94,12 +106,6 @@ public partial class TradeWatcher : Window
         _modeSelect.AddItem("Player Name");
     }
 
-    private void LoadSettings()
-    {
-        _enableTtsCheck.ButtonPressed = AppSettings.TradeWatcher.EnableTts;
-        RefreshFilterList();
-    }
-
     private void OnModeSelected(long index)
     {
         bool isItem = (AppSettings.MatchMode)index == AppSettings.MatchMode.ItemTemplate;
@@ -111,7 +117,10 @@ public partial class TradeWatcher : Window
     {
         foreach (Node child in _filterList.GetChildren()) child.QueueFree();
 
-        foreach (var filter in AppSettings.TradeWatcher.Filters)
+        if (string.IsNullOrEmpty(_selectedPlayerName)) return;
+        if (!AppSettings.TradeWatcher.PlayerConfigs.TryGetValue(_selectedPlayerName, out var config)) return;
+
+        foreach (var filter in config.Filters)
         {
             var hbox = new HBoxContainer();
             string ttsPart = string.IsNullOrEmpty(filter.TtsMessage) ? "" : $" (TTS: {filter.TtsMessage})";
@@ -122,7 +131,7 @@ public partial class TradeWatcher : Window
             };
             var removeBtn = new Button { Text = "X" };
             removeBtn.Pressed += () => {
-                AppSettings.TradeWatcher.Filters.Remove(filter);
+                config.Filters.Remove(filter);
                 AppSettings.Save();
                 RefreshFilterList();
             };
@@ -135,6 +144,8 @@ public partial class TradeWatcher : Window
 
     private void OnAddFilterPressed()
     {
+        if (string.IsNullOrEmpty(_selectedPlayerName)) return;
+
         string pattern = "";
         var mode = (AppSettings.MatchMode)_modeSelect.Selected;
 
@@ -170,7 +181,8 @@ public partial class TradeWatcher : Window
             TtsMessage = _ttsEdit.Text.Trim()
         };
 
-        AppSettings.TradeWatcher.Filters.Add(filter);
+        var config = AppSettings.TradeWatcher.PlayerConfigs[_selectedPlayerName];
+        config.Filters.Add(filter);
         AppSettings.Save();
         RefreshFilterList();
 
@@ -180,149 +192,27 @@ public partial class TradeWatcher : Window
     private void OnPlayerSelected(string playerName)
     {
         _selectedPlayerName = playerName;
-        if (Players.PlayerDict.TryGetValue(playerName, out Player player))
+
+        if (!AppSettings.TradeWatcher.PlayerConfigs.ContainsKey(playerName))
         {
-            _currentLogPath = player.GetLogPath("Trade");
-            _lastPos = 0;
-            if (File.Exists(_currentLogPath))
-            {
-                using var fs = new FileStream(_currentLogPath, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-                _lastPos = fs.Length; 
-            }
-            _tradeFeed.Clear();
-            _tradeFeed.AppendText($"[color=gray]Monitoring Trade log for {playerName}...[/color]\n");
+            AppSettings.TradeWatcher.PlayerConfigs[playerName] = new AppSettings.PlayerTradeConfig();
+            AppSettings.Save();
         }
+
+        var config = AppSettings.TradeWatcher.PlayerConfigs[playerName];
+        _enableMonitorCheck.SetPressedNoSignal(config.Enabled);
+        _enableTtsCheck.SetPressedNoSignal(config.EnableTts);
+        RefreshFilterList();
+
+        _tradeFeed.Clear();
+        _tradeFeed.AppendText($"[color=gray]Viewing trade feed for {playerName}...[/color]\n");
     }
 
-    private void OnPollTimerTimeout()
+    private void OnTradeLineMatched(string playerName, string formattedBbcode)
     {
-        if (string.IsNullOrEmpty(_currentLogPath) || !File.Exists(_currentLogPath)) return;
-
-        try
+        if (playerName == _selectedPlayerName)
         {
-            using var fs = new FileStream(_currentLogPath, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-            if (fs.Length < _lastPos) _lastPos = 0; 
-            if (fs.Length == _lastPos) return;
-
-            fs.Seek(_lastPos, SeekOrigin.Begin);
-            using var sr = new StreamReader(fs);
-            
-            while (!sr.EndOfStream)
-            {
-                string line = sr.ReadLine();
-                if (!string.IsNullOrWhiteSpace(line))
-                {
-                    ProcessLogLine(line);
-                }
-            }
-            _lastPos = fs.Position;
+            _tradeFeed.AppendText(formattedBbcode);
         }
-        catch (Exception e)
-        {
-            Terminal.WriteError($"TradeWatcher: Poll error: {e.Message}");
-        }
-    }
-
-    private void ProcessLogLine(string line)
-    {
-        var match = _logRegex.Match(line);
-        if (!match.Success) return;
-
-        string name = match.Groups["name"].Value;
-        string categoryStr = match.Groups["category"].Value.ToUpper();
-        string message = match.Groups["msg"].Value;
-        string time = match.Groups["time"].Value;
-
-        // 1. Priority: Mentions (@PlayerName)
-        bool isMention = false;
-        if (!string.IsNullOrEmpty(_selectedPlayerName))
-        {
-            // Check if the category itself is '@' or if the message contains the mention
-            if (categoryStr == "@" || message.Contains("@" + _selectedPlayerName, StringComparison.OrdinalIgnoreCase))
-            {
-                isMention = true;
-            }
-        }
-
-        if (isMention)
-        {
-            _tradeFeed.AppendText($"[{time}] [color=yellow][b]<{name}> {categoryStr} {message}[/b][/color]\n");
-            if (AppSettings.TradeWatcher.EnableTts)
-            {
-                DisplayServer.TtsSpeak($"You were mentioned in trade by {name}", AppSettings.TradeWatcher.TtsVoiceId);
-            }
-            return;
-        }
-
-        // 2. Standard Trade Logic
-        // Default to 'Any' if the category is non-standard, allowing it to pass 'Any' filters
-        if (!Enum.TryParse(categoryStr, out AppSettings.TradeCategory lineCategory))
-        {
-            lineCategory = AppSettings.TradeCategory.Any;
-        }
-
-        var items = new List<string>();
-        var itemMatches = _itemRegex.Matches(message);
-        foreach (Match im in itemMatches) items.Add(im.Groups["item"].Value);
-
-        // 1. Exclude filters
-        foreach (var filter in AppSettings.TradeWatcher.Filters.Where(f => f.IsExclude))
-        {
-            if (IsMatch(filter, name, lineCategory, message, items)) return;
-        }
-
-        // 2. Include filters
-        bool passedInclude = true;
-        AppSettings.TradeFilter matchedInclude = null;
-
-        if (AppSettings.TradeWatcher.Filters.Any(f => !f.IsExclude))
-        {
-            passedInclude = false;
-            foreach (var filter in AppSettings.TradeWatcher.Filters.Where(f => !f.IsExclude))
-            {
-                if (IsMatch(filter, name, lineCategory, message, items))
-                {
-                    passedInclude = true;
-                    matchedInclude = filter;
-                    break;
-                }
-            }
-        }
-
-        if (passedInclude)
-        {
-            _tradeFeed.AppendText($"[{time}] <{name}> [b]{categoryStr}[/b] {message}\n");
-            
-            if (AppSettings.TradeWatcher.EnableTts && matchedInclude != null && !string.IsNullOrEmpty(matchedInclude.TtsMessage))
-            {
-                string tts = matchedInclude.TtsMessage.Replace("{player}", name);
-                DisplayServer.TtsSpeak(tts, AppSettings.TradeWatcher.TtsVoiceId);
-            }
-        }
-    }
-
-    private bool IsMatch(AppSettings.TradeFilter filter, string playerName, AppSettings.TradeCategory lineCategory, string message, List<string> items)
-    {
-        if (filter.Category != AppSettings.TradeCategory.Any && filter.Category != lineCategory) return false;
-
-        switch (filter.Mode)
-        {
-            case AppSettings.MatchMode.Player:
-                return playerName.Equals(filter.Pattern, StringComparison.OrdinalIgnoreCase);
-
-            case AppSettings.MatchMode.SimpleText:
-                string simpleRegex = Regex.Escape(filter.Pattern).Replace("\\*", ".*");
-                return Regex.IsMatch(message, simpleRegex, RegexOptions.IgnoreCase);
-
-            case AppSettings.MatchMode.ItemTemplate:
-                string regexPattern = "^" + Regex.Escape(filter.Pattern).Replace("\\*", ".*") + "$";
-                foreach (var item in items)
-                {
-                    if (Regex.IsMatch(item, regexPattern, RegexOptions.IgnoreCase)) return true;
-                }
-                return false;
-        }
-
-        return false;
     }
 }

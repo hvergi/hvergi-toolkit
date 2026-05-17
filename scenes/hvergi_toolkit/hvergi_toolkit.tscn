@@ -510,6 +510,15 @@ size_flags_horizontal = 3
 [node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919142]
 layout_mode = 2
 
+[node name="ActiveMonitoringHeader" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Active Monitoring"
+
+[node name="TradeWatcherSummaryList" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="STP Calculator" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=480427419]
 visible = false
 layout_mode = 2
@@ -612,6 +621,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=2083919154]
+layout_mode = 2
+
+[node name="ActiveMonitoringHeader" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Active Monitoring"
+
+[node name="LogAlertSummaryList" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Log Search" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=465707810]
