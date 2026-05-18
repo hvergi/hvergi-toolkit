@@ -67,6 +67,11 @@ theme_override_constants/separation = 10
 [node name="SettingsHBox" type="HBoxContainer" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox" unique_id=602]
 layout_mode = 2
 
+[node name="EnableMonitorCheck" type="CheckBox" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/SettingsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enable Monitoring"
+
 [node name="EnableTtsCheck" type="CheckBox" parent="Background/HSplit/VSplit/FilterSection/Margin/FilterVBox/SettingsHBox" unique_id=2]
 unique_name_in_owner = true
 layout_mode = 2

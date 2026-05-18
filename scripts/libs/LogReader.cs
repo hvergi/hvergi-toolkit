@@ -61,38 +61,34 @@ public class LogReader
     public List<string> ReadLog(LogFileType type)
     {
         List<string> lines = new();
-        string currentPath = GetPath(type);
+        string currentPath = "";
         
         var dateTime = Time.GetDatetimeDictFromSystem();
         int currentDay = dateTime["day"].AsInt32();
 
-        if (string.IsNullOrEmpty(currentPath)) 
-        {
-            _lastDay = currentDay;
-            return lines;
-        }
-
-        // Check if the file path has changed (e.g., due to day rollover in daily rotation)
-        if (_lastFiles.TryGetValue(type, out string lastPath) && lastPath != currentPath)
-        {
+        if(_lastFiles.TryGetValue(type, out string lastPath)){
+            if(string.IsNullOrEmpty(lastPath)) return lines;
+            
             if (File.Exists(lastPath))
             {
-                // Read remaining lines from the old file
-                lines.AddRange(ReadFrom(lastPath, _lastPositions.GetValueOrDefault(type, 0)).lines);
+                var (newLines, newPos) = ReadFrom(lastPath, _lastPositions.GetValueOrDefault(type, 0));
+                lines.AddRange(newLines);
+                _lastPositions[type] = newPos;
             }
-            // Reset position for the new file
+        }
+
+        if(currentDay != _lastDay){
             _lastPositions[type] = 0;
+            currentPath = GetPath(type);
+            if (!string.IsNullOrEmpty(currentPath) && File.Exists(currentPath)){
+                long pos = _lastPositions.GetValueOrDefault(type, 0);
+                var (newLines, newPos) = ReadFrom(currentPath, pos);
+                lines.AddRange(newLines);
+                _lastPositions[type] = newPos;
+                _lastFiles[type] = currentPath;
+            }
         }
-
-        if (File.Exists(currentPath))
-        {
-            long pos = _lastPositions.GetValueOrDefault(type, 0);
-            var (newLines, newPos) = ReadFrom(currentPath, pos);
-            lines.AddRange(newLines);
-            _lastPositions[type] = newPos;
-            _lastFiles[type] = currentPath;
-        }
-
+        
         _lastDay = currentDay;
         return lines;
     }

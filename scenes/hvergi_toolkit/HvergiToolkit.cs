@@ -5,6 +5,9 @@ namespace HvergiToolkit
 {
     public partial class HvergiToolkit : Control
     {
+        public TradeMonitorService TradeMonitorService { get; private set; }
+        public LogAlertService LogAlertService { get; private set; }
+
         [Export]
         public RichTextLabel terminalOutput;
         [ExportGroup("Tab Controls")]
@@ -41,6 +44,8 @@ namespace HvergiToolkit
         public Button dyeEstimatorButton;
         [Export]
         public Button settlementPlannerButton;
+        [Export]
+        public Button updateButton;
 
         private string _currentPickerTarget = "";
 
@@ -59,9 +64,18 @@ namespace HvergiToolkit
                 Terminal.Write($"Loaded {Players.WurmPaths.Count} paths and {Players.PlayerDict.Count} players.");
             }
 
+            TradeMonitorService = new TradeMonitorService();
+            TradeMonitorService.Name = "TradeMonitorService";
+            AddChild(TradeMonitorService);
+
+            LogAlertService = new LogAlertService();
+            LogAlertService.Name = "LogAlertService";
+            AddChild(LogAlertService);
+
             newsButton.Pressed += OnNewsButtonPressed;
             appsButton.Pressed += OnAppsButtonPressed;
             settingsButton.Pressed += OnSettingsButtonPressed;
+            updateButton.Pressed += OnUpdatePressed;
 
             playerEditorButton.Pressed += () => onAppButtonPressed("res://scenes/apps/player_editor/player_editor.tscn");
             moiTrackerButton.Pressed += () => onAppButtonPressed("res://scenes/apps/moi_tracker/moi_tracker.tscn");
@@ -75,6 +89,9 @@ namespace HvergiToolkit
             affinityFoodPlannerButton.Pressed += () => onAppButtonPressed("res://scenes/apps/affinity_food_planner/affinity_food_planner.tscn");
             dyeEstimatorButton.Pressed += () => onAppButtonPressed("res://scenes/apps/dye_estimator/dye_estimator.tscn");
             settlementPlannerButton.Pressed += () => onAppButtonPressed("res://scenes/apps/settlement_planner/settlement_planner.tscn");
+
+            var settingsTabs = GetNode<TabContainer>("Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs");
+            settingsTabs.TabChanged += (tab) => RefreshMonitoringSummaries();
 
             InitializeSettings();
         }
@@ -234,6 +251,95 @@ namespace HvergiToolkit
         private void OnSettingsButtonPressed()
         {
             contentTabContainer.CurrentTab = 2;
+            RefreshMonitoringSummaries();
+        }
+
+        private void RefreshMonitoringSummaries()
+        {
+            var tradeList = GetNode<VBoxContainer>("%TradeWatcherSummaryList");
+            if (tradeList != null)
+            {
+                foreach(Node n in tradeList.GetChildren()) n.QueueFree();
+
+                foreach (var kvp in AppSettings.TradeWatcher.PlayerConfigs)
+                {
+                    var hbox = new HBoxContainer();
+                    var label = new Label { Text = kvp.Key, SizeFlagsHorizontal = Control.SizeFlags.ExpandFill };
+                    var toggleBtn = new CheckButton { Text = "Enabled", ButtonPressed = kvp.Value.Enabled };
+                    toggleBtn.Toggled += (pressed) => {
+                        kvp.Value.Enabled = pressed;
+                        AppSettings.Save();
+                    };
+                    hbox.AddChild(label);
+                    hbox.AddChild(toggleBtn);
+                    tradeList.AddChild(hbox);
+                }
+            }
+
+            var logList = GetNode<VBoxContainer>("%LogAlertSummaryList");
+            if (logList != null)
+            {
+                foreach(Node n in logList.GetChildren()) n.QueueFree();
+
+                foreach (var kvp in AppSettings.LogAlert.PlayerConfigs)
+                {
+                    var hbox = new HBoxContainer();
+                    var label = new Label { Text = kvp.Key, SizeFlagsHorizontal = Control.SizeFlags.ExpandFill };
+                    var toggleBtn = new CheckButton { Text = "Enabled", ButtonPressed = kvp.Value.Enabled };
+                    toggleBtn.Toggled += (pressed) => {
+                        kvp.Value.Enabled = pressed;
+                        AppSettings.Save();
+                    };
+                    hbox.AddChild(label);
+                    hbox.AddChild(toggleBtn);
+                    logList.AddChild(hbox);
+                }
+            }
+        }
+
+        private async void OnUpdatePressed()
+        {
+            Terminal.Write("Checking for updates...");
+            var (available, version, url) = await UpdateManager.CheckForUpdates();
+
+            if (!available)
+            {
+                Terminal.Write("You are running the latest version.");
+                return;
+            }
+
+            Terminal.Write($"New version available: {version}");
+            
+            // For now, we'll use a simple confirmation via Terminal since I don't want to add a popup scene yet
+            // but the plan says "Show a confirmation dialog". 
+            // I'll add a simple ConfirmationDialog.
+            
+            var dialog = new ConfirmationDialog();
+            dialog.Title = "Update Available";
+            dialog.DialogText = $"A new version ({version}) is available. Would you like to download and install it now?\nThe application will restart.";
+            AddChild(dialog);
+            dialog.PopupCentered();
+
+            dialog.Confirmed += async () => {
+                Terminal.Write("Downloading update...");
+                string zipPath = await UpdateManager.DownloadUpdate(url);
+                
+                if (string.IsNullOrEmpty(zipPath))
+                {
+                    Terminal.WriteError("Failed to download update.");
+                    return;
+                }
+
+                Terminal.Write("Applying update... The application will close and restart shortly.");
+                if (UpdateManager.ApplyUpdate(zipPath))
+                {
+                    GetTree().Quit();
+                }
+                else
+                {
+                    Terminal.WriteError("Failed to apply update.");
+                }
+            };
         }
 
         private void onAppButtonPressed(string scenePath)

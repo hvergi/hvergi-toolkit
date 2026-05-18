@@ -62,11 +62,18 @@ public static class AppSettings
         public string TtsMessage { get; set; } = "";
     }
 
+    public class PlayerTradeConfig
+    {
+        public bool Enabled { get; set; } = true;
+        public bool EnableTts { get; set; } = true;
+        public System.Collections.Generic.List<TradeFilter> Filters { get; set; } = new();
+    }
+
     public class TradeWatcherSettings
     {
-        public bool EnableTts { get; set; } = true;
         public string TtsVoiceId { get; set; } = "";
-        public System.Collections.Generic.List<TradeFilter> Filters { get; set; } = new();
+        public float PollIntervalSeconds { get; set; } = 2.0f;
+        public System.Collections.Generic.Dictionary<string, PlayerTradeConfig> PlayerConfigs { get; set; } = new();
     }
 
     public class STPCalculatorSettings
@@ -91,11 +98,18 @@ public static class AppSettings
         public string TtsMessage { get; set; } = "";
     }
 
+    public class PlayerLogAlertConfig
+    {
+        public bool Enabled { get; set; } = true;
+        public bool EnableTts { get; set; } = true;
+        public System.Collections.Generic.List<LogFilter> Filters { get; set; } = new();
+    }
+
     public class LogAlertSettings
     {
-        public bool EnableTts { get; set; } = true;
         public string TtsVoiceId { get; set; } = "";
-        public System.Collections.Generic.List<LogFilter> Filters { get; set; } = new();
+        public float PollIntervalSeconds { get; set; } = 2.0f;
+        public System.Collections.Generic.Dictionary<string, PlayerLogAlertConfig> PlayerConfigs { get; set; } = new();
     }
 
     public class LogSearchSettings
@@ -118,6 +132,12 @@ public static class AppSettings
         // Boilerplate for future settings
     }
 
+    public class GeneralSettings
+    {
+        public string GitHubRepo { get; set; } = "hvergi/hvergi-toolkit";
+        public string CurrentVersion { get; set; } = "0.1.0";
+    }
+
     public static MoiTrackerSettings MoiTracker { get; set; } = new();
     public static SkillTrackerSettings SkillTracker { get; set; } = new();
     public static TradeWatcherSettings TradeWatcher { get; set; } = new();
@@ -129,6 +149,7 @@ public static class AppSettings
     public static AffinityFoodPlannerSettings AffinityFoodPlanner { get; set; } = new();
     public static DyeEstimatorSettings DyeEstimator { get; set; } = new();
     public static SettlementPlannerSettings SettlementPlanner { get; set; } = new();
+    public static GeneralSettings General { get; set; } = new();
 
     public static void Save()
     {
@@ -146,7 +167,8 @@ public static class AppSettings
                 LogSearch = LogSearch,
                 AffinityFoodPlanner = AffinityFoodPlanner,
                 DyeEstimator = DyeEstimator,
-                SettlementPlanner = SettlementPlanner
+                SettlementPlanner = SettlementPlanner,
+                General = General
             };
 
             string json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
@@ -191,6 +213,7 @@ public static class AppSettings
                 if (data.AffinityFoodPlanner != null) AffinityFoodPlanner = data.AffinityFoodPlanner;
                 if (data.DyeEstimator != null) DyeEstimator = data.DyeEstimator;
                 if (data.SettlementPlanner != null) SettlementPlanner = data.SettlementPlanner;
+                if (data.General != null) General = data.General;
             }
         }
         catch (Exception e)
@@ -212,5 +235,6 @@ public static class AppSettings
         public AffinityFoodPlannerSettings AffinityFoodPlanner { get; set; }
         public DyeEstimatorSettings DyeEstimator { get; set; }
         public SettlementPlannerSettings SettlementPlanner { get; set; }
+        public GeneralSettings General { get; set; }
     }
 }
