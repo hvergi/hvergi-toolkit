@@ -10,6 +10,8 @@ namespace HvergiToolkit
 
         [Export]
         public RichTextLabel terminalOutput;
+        [Export]
+        public RichTextLabel creditsLabel;
         [ExportGroup("Tab Controls")]
         [Export]
         public TabContainer contentTabContainer;
@@ -65,6 +67,8 @@ namespace HvergiToolkit
             {
                 Terminal.Write($"Loaded {Players.WurmPaths.Count} paths and {Players.PlayerDict.Count} players.");
             }
+
+            //creditsLabel.Text = Engine.GetLicenseText();
 
             TradeMonitorService = new TradeMonitorService();
             TradeMonitorService.Name = "TradeMonitorService";
@@ -317,10 +321,6 @@ namespace HvergiToolkit
             }
 
             Terminal.Write($"New version available: {version}");
-            
-            // For now, we'll use a simple confirmation via Terminal since I don't want to add a popup scene yet
-            // but the plan says "Show a confirmation dialog". 
-            // I'll add a simple ConfirmationDialog.
             
             var dialog = new ConfirmationDialog();
             dialog.Title = "Update Available";
