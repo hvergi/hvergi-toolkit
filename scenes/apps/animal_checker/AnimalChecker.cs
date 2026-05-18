@@ -93,73 +93,111 @@ public partial class AnimalChecker : Window
     private void OnPollTimeout()
     {
         if (_logReader == null) return;
-        
+
         var newLines = _logReader.ReadLog(LogReader.LogFileType.Event);
+        if (newLines.Count == 0) return;
+
+        // Group lines by their [HH:MM:SS] timestamp prefix.
+        // Lines without a recognisable timestamp fall into an empty-string group.
+        var groups = new Dictionary<string, List<string>>();
+        var groupOrder = new List<string>(); // preserve insertion order
+
         foreach (var line in newLines)
         {
-            ProcessLine(line);
+            string ts = string.Empty;
+            if (line.Length >= 10 && line[0] == '[' && line[9] == ']')
+                ts = line[..10]; // e.g. "[12:34:56]"
+
+            if (!groups.ContainsKey(ts))
+            {
+                groups[ts] = new List<string>();
+                groupOrder.Add(ts);
+            }
+            groups[ts].Add(line);
+        }
+
+        foreach (var ts in groupOrder)
+        {
+            ProcessGroup(groups[ts]);
         }
     }
 
-    private void ProcessLine(string line)
+    /// <summary>
+    /// Processes all lines that share the same timestamp as a single animal
+    /// inspection and emits one combined output block in the order:
+    /// gender → rare traits → regular traits.
+    /// </summary>
+    private void ProcessGroup(List<string> lines)
     {
-        if(line.Contains("trait points")){
-            if (line.Contains("She")){
-                DisplayServer.TtsSpeak("Female", AppSettings.AnimalChecker.TtsVoiceId);
-            } else {
-                DisplayServer.TtsSpeak("Male", AppSettings.AnimalChecker.TtsVoiceId);
-            }
-
-            return;
-        }
-        
-        // Process RareDictionary
-        foreach (var entry in RareDictionary)
+        // --- Gender ---
+        string gender = null;
+        foreach (var line in lines)
         {
-            string type = entry.Key;
-            string[] matchStrings = entry.Value;
-            int count = 0;
+            if (!line.Contains("trait points")) continue;
+            gender = line.Contains("She") ? "Female" : "Male";
+            break;
+        }
 
-            foreach (var match in matchStrings)
+        // --- Rare trait counts (accumulated across all lines) ---
+        var rareCounts = new Dictionary<string, int>();
+        foreach (var key in RareDictionary.Keys)
+            rareCounts[key] = 0;
+
+        foreach (var line in lines)
+        {
+            foreach (var entry in RareDictionary)
             {
-                if (line.Contains(match, StringComparison.OrdinalIgnoreCase))
+                foreach (var match in entry.Value)
                 {
-                    count++;
+                    if (line.Contains(match, StringComparison.OrdinalIgnoreCase))
+                        rareCounts[entry.Key]++;
                 }
             }
-
-            if (count > 0)
-            {
-                _matchDisplay.AppendText($"Rare {type}: {count}\n");
-                DisplayServer.TtsSpeak($"Rare {type}: {count}", AppSettings.AnimalChecker.TtsVoiceId);
-            }
         }
-        
-        // Iterate through each type in the dictionary
-        foreach (var entry in MatchDictionary)
+
+        // --- Regular trait counts (accumulated across all lines) ---
+        var traitCounts = new Dictionary<string, int>();
+        foreach (var key in MatchDictionary.Keys)
+            traitCounts[key] = 0;
+
+        foreach (var line in lines)
         {
-            string type = entry.Key;
-            string[] matchStrings = entry.Value;
-            int count = 0;
-            
-            // Count occurrences of each string in the array for this specific line
-            foreach (var match in matchStrings)
+            foreach (var entry in MatchDictionary)
             {
-                if (line.Contains(match, StringComparison.OrdinalIgnoreCase))
+                foreach (var match in entry.Value)
                 {
-                    count++;
+                    if (line.Contains(match, StringComparison.OrdinalIgnoreCase))
+                        traitCounts[entry.Key]++;
                 }
             }
-            
-            // Only display if at least one match was found
-            if (count > 0)
-            {
-                _matchDisplay.AppendText($"{type}: {count}\n");
-                DisplayServer.TtsSpeak($"{type}: {count}", AppSettings.AnimalChecker.TtsVoiceId);
-            }
         }
 
+        // --- Bail out early if there is nothing animal-related in this group ---
+        bool hasGender = gender != null;
+        bool hasRare   = rareCounts.Values.Any(c => c > 0);
+        bool hasTrait  = traitCounts.Values.Any(c => c > 0);
+        if (!hasGender && !hasRare && !hasTrait) return;
 
+        // --- Emit output in order: gender → rare → traits ---
+        if (hasGender)
+        {
+            _matchDisplay.AppendText($"[b]{gender}[/b] ");
+            DisplayServer.TtsSpeak(gender, AppSettings.AnimalChecker.TtsVoiceId);
+        }
+
+        foreach (var entry in rareCounts.Where(kv => kv.Value > 0))
+        {
+            _matchDisplay.AppendText($"Rare {entry.Key}: {entry.Value} ");
+            DisplayServer.TtsSpeak($"Rare {entry.Key}: {entry.Value}", AppSettings.AnimalChecker.TtsVoiceId);
+        }
+
+        foreach (var entry in traitCounts.Where(kv => kv.Value > 0))
+        {
+            _matchDisplay.AppendText($"{entry.Key}: {entry.Value} ");
+            DisplayServer.TtsSpeak($"{entry.Key}: {entry.Value}", AppSettings.AnimalChecker.TtsVoiceId);
+        }
+
+        _matchDisplay.AppendText("\n");
     }
 
     private void OnCloseRequested()
