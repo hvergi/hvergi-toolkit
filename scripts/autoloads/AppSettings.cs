@@ -135,6 +135,11 @@ public static class AppSettings
         // Boilerplate for future settings
     }
 
+    public class AnimalCheckerSettings
+    {
+        public string TtsVoiceId { get; set; } = "";
+    }
+
 
     public static MoiTrackerSettings MoiTracker { get; set; } = new();
     public static SkillTrackerSettings SkillTracker { get; set; } = new();
@@ -147,6 +152,7 @@ public static class AppSettings
     public static AffinityFoodPlannerSettings AffinityFoodPlanner { get; set; } = new();
     public static DyeEstimatorSettings DyeEstimator { get; set; } = new();
     public static SettlementPlannerSettings SettlementPlanner { get; set; } = new();
+    public static AnimalCheckerSettings AnimalChecker { get; set; } = new();
 
     public static void Save()
     {
@@ -165,6 +171,7 @@ public static class AppSettings
                 AffinityFoodPlanner = AffinityFoodPlanner,
                 DyeEstimator = DyeEstimator,
                 SettlementPlanner = SettlementPlanner,
+                AnimalChecker = AnimalChecker,
             };
 
             string json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
@@ -209,6 +216,7 @@ public static class AppSettings
                 if (data.AffinityFoodPlanner != null) AffinityFoodPlanner = data.AffinityFoodPlanner;
                 if (data.DyeEstimator != null) DyeEstimator = data.DyeEstimator;
                 if (data.SettlementPlanner != null) SettlementPlanner = data.SettlementPlanner;
+                if (data.AnimalChecker != null) AnimalChecker = data.AnimalChecker;
             }
         }
         catch (Exception e)
@@ -230,5 +238,6 @@ public static class AppSettings
         public AffinityFoodPlannerSettings AffinityFoodPlanner { get; set; }
         public DyeEstimatorSettings DyeEstimator { get; set; }
         public SettlementPlannerSettings SettlementPlanner { get; set; }
+        public AnimalCheckerSettings AnimalChecker { get; set; }
     }
 }

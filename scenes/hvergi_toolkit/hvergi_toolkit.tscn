@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://3rbt873eh0b8" path="res://scenes/hvergi_toolkit/HvergiToolkit.cs" id="1_uexwx"]
 [ext_resource type="Theme" uid="uid://44k28fj5f4t7" path="res://darkmode.tres" id="1_v14n5"]
 
-[node name="HvergiToolkit" type="Control" unique_id=1602896807 node_paths=PackedStringArray("terminalOutput", "contentTabContainer", "newsButton", "appsButton", "settingsButton", "playerEditorButton", "moiTrackerButton", "skillTrackerButton", "tradeWatcherButton", "stpCalcButton", "skillCompareButton", "sermonButton", "logAlertButton", "logSearchButton", "affinityFoodPlannerButton", "dyeEstimatorButton", "settlementPlannerButton", "updateButton")]
+[node name="HvergiToolkit" type="Control" unique_id=1602896807 node_paths=PackedStringArray("terminalOutput", "contentTabContainer", "newsButton", "appsButton", "settingsButton", "playerEditorButton", "moiTrackerButton", "skillTrackerButton", "tradeWatcherButton", "stpCalcButton", "skillCompareButton", "sermonButton", "animalCheckerButton", "logAlertButton", "logSearchButton", "affinityFoodPlannerButton", "dyeEstimatorButton", "settlementPlannerButton", "updateButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +24,7 @@ tradeWatcherButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/Gri
 stpCalcButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/STPCalcButton")
 skillCompareButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SkillCompareButton")
 sermonButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SermonButton")
+animalCheckerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/AnimalCheckerButton")
 logAlertButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/LogAlertButton")
 logSearchButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/LogSearchButton")
 affinityFoodPlannerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/AffintyFoodPlannerButton")
@@ -186,6 +187,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 disabled = true
 text = "Sermon Warden"
+
+[node name="AnimalCheckerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=173829104]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Animal Checker"
 
 [node name="DyeEstimatorButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1385247213]
 layout_mode = 2
@@ -714,6 +721,44 @@ layout_mode = 2
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Settlement Planner Settings"
+
+[node name="Animal Checker" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=173829105]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 11
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker" unique_id=173829106]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin" unique_id=173829107]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox" unique_id=173829108]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Animal Checker Settings"
+
+[node name="AnimalCheckerVoiceSettings" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox" unique_id=173829109]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox/AnimalCheckerVoiceSettings" unique_id=173829110]
+layout_mode = 2
+text = "Global TTS Voice: "
+
+[node name="AnimalCheckerVoiceReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox/AnimalCheckerVoiceSettings" unique_id=173829111]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset"
+
+[node name="AnimalCheckerVoiceSelect" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox/AnimalCheckerVoiceSettings" unique_id=173829112]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Terminal" type="Panel" parent="Layout" unique_id=1039621438]
 custom_minimum_size = Vector2(0, 200)
