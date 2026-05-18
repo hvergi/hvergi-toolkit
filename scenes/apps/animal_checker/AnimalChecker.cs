@@ -18,7 +18,18 @@ public partial class AnimalChecker : Window
     /// </summary>
     public Dictionary<string, string[]> MatchDictionary { get; set; } = new()
     {
-        { "Output",["It gives more resources.","It seems prize winning.","It looks plump and ready to butcher.","It seems to pick stuff up.","It seems vibrant."]}
+        { "Output",["It gives more resources.","It seems prize winning.","It looks plump and ready to butcher.","It seems to pick stuff up.","It seems vibrant."]},
+        {"Combat",["It seems more friendly.","It will fight fiercely.","It looks more friendly than normal","It is a tough bugger.","It seems especially loyal"]},
+        {"Draft",["It is easy on its gear","It has a strong body","It can carry more than average","It has strong legs"]},
+        {"Speed",["It has fleeter movement than normal.","It has lightning movement.","It has very strong leg muscles.","It seems accustomed to water"]}
+    };
+
+    public Dictionary<string, string[]> RareDictionary { get; set; } = new(){
+        { "Misc",["It seems immortal.","It has a chance to produce twins"]},
+        {"Combat",["It seems extremely tame"]},
+        {"Draft",["It seems stronger than normal","It seems more nimble than normal"]},
+        {"Speed",["It is unbelievably fast"]},
+        {"Output",["It has very good genes"]},
     };
 
     public override void _Ready()
@@ -102,7 +113,27 @@ public partial class AnimalChecker : Window
             return;
         }
         
-        //if (line.Contains(" he ") || line.Contains(" she ") || line.Contains(" her ") || line.Contains(" him ")) return;
+        // Process RareDictionary
+        foreach (var entry in RareDictionary)
+        {
+            string type = entry.Key;
+            string[] matchStrings = entry.Value;
+            int count = 0;
+
+            foreach (var match in matchStrings)
+            {
+                if (line.Contains(match, StringComparison.OrdinalIgnoreCase))
+                {
+                    count++;
+                }
+            }
+
+            if (count > 0)
+            {
+                _matchDisplay.AppendText($"Rare {type}: {count}\n");
+                DisplayServer.TtsSpeak($"Rare {type}: {count}", AppSettings.AnimalChecker.TtsVoiceId);
+            }
+        }
         
         // Iterate through each type in the dictionary
         foreach (var entry in MatchDictionary)
@@ -127,6 +158,7 @@ public partial class AnimalChecker : Window
                 DisplayServer.TtsSpeak($"{type}: {count}", AppSettings.AnimalChecker.TtsVoiceId);
             }
         }
+
 
     }
 
