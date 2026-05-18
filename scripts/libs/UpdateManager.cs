@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Godot;
 
@@ -14,8 +16,14 @@ namespace HvergiToolkit
     {
         private static readonly System.Net.Http.HttpClient HttpClient = new System.Net.Http.HttpClient();
 
+        static UpdateManager()
+        {
+            HttpClient.DefaultRequestHeaders.Add("User-Agent", "HvergiToolkit-Updater");
+        }
+
         public class ReleaseInfo
         {
+            [JsonPropertyName("tag_name")]
             public string TagName { get; set; }
             public string Body { get; set; }
             public List<AssetInfo> Assets { get; set; }
@@ -24,6 +32,7 @@ namespace HvergiToolkit
         public class AssetInfo
         {
             public string Name { get; set; }
+            [JsonPropertyName("browser_download_url")]
             public string BrowserDownloadUrl { get; set; }
         }
 
@@ -31,8 +40,7 @@ namespace HvergiToolkit
         {
             try
             {
-                string url = $"https://api.github.com/repos/{AppSettings.General.GitHubRepo}/releases/latest";
-                HttpClient.DefaultRequestHeaders.Add("User-Agent", "HvergiToolkit-Updater");
+                string url = $"https://api.github.com/repos/{AppSettings.GitHubRepo}/releases/latest";
 
                 var response = await HttpClient.GetAsync(url);
                 if (!response.IsSuccessStatusCode) return (false, "", "");
@@ -43,7 +51,7 @@ namespace HvergiToolkit
 
                 if (release == null) return (false, "", "");
 
-                string currentVersion = AppSettings.General.CurrentVersion;
+                string currentVersion = AppSettings.CurrentVersion;
                 string latestVersion = release.TagName.TrimStart('v');
 
                 if (IsNewerVersion(currentVersion, latestVersion))
@@ -71,6 +79,7 @@ namespace HvergiToolkit
             {
                 var currentVer = new Version(current);
                 var latestVer = new Version(latest);
+                Terminal.Write($"Current version: {currentVer}, Latest version: {latestVer}");
                 return latestVer > currentVer;
             }
             catch
@@ -150,7 +159,12 @@ start """" ""{exePath}""
 del ""%~f0""
 ";
             File.WriteAllText(batchPath, script);
-            OS.Execute("cmd.exe", new string[] { "/c", "start", "/min", batchPath }, null, false);
+            Process.Start(new ProcessStartInfo("cmd.exe", $"/c \"{batchPath}\"")
+            {
+                UseShellExecute = true,
+                WindowStyle = ProcessWindowStyle.Minimized,
+                CreateNoWindow = false
+            });
         }
 
         private static void CreateUnixUpdater(string extractDir, string installDir, string exePath)
@@ -166,8 +180,14 @@ chmod +x ""{exePath}""
 rm ""$0""
 ";
             File.WriteAllText(scriptPath, script);
-            OS.Execute("chmod", new string[] { "+x", scriptPath }, null, true);
-            OS.Execute("bash", new string[] { "-c", $"\"{scriptPath}\" &" }, null, false);
+            Process.Start(new ProcessStartInfo("chmod", $"+x \"{scriptPath}\"")
+            {
+                UseShellExecute = false
+            })?.WaitForExit();
+            Process.Start(new ProcessStartInfo("bash", $"-c \"{scriptPath} &\"")
+            {
+                UseShellExecute = false
+            });
         }
     }
 }
