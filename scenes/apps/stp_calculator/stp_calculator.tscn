@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://d333nhyh2p0xp"]
+[gd_scene format=3 uid="uid://d333nhyh2p0xp"]
 
 [ext_resource type="Script" uid="uid://who3iyf6di4q" path="res://scenes/apps/stp_calculator/STPCalculator.cs" id="1_script"]
 

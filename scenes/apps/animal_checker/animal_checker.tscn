@@ -1,23 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cefik71xuii85"]
+[gd_scene format=3 uid="uid://cefik71xuix85"]
 
-[ext_resource type="Script" path="res://scenes/apps/animal_checker/AnimalChecker.cs" id="1_script"]
+[ext_resource type="Script" uid="uid://cefik71xuii85" path="res://scenes/apps/animal_checker/AnimalChecker.cs" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://dp6m0j4w8n3u1" path="res://scenes/ui/player_select_horizontal/player_select_horizontal.tscn" id="2_player_select"]
 
-[node name="AnimalChecker" type="Window"]
+[node name="AnimalChecker" type="Window" unique_id=211885816]
 oversampling_override = 1.0
 title = "Animal Checker"
 initial_position = 4
 size = Vector2i(1152, 648)
 script = ExtResource("1_script")
 
-[node name="Background" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="." unique_id=2021685813]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Margin" type="MarginContainer" parent="Background"]
+[node name="Margin" type="MarginContainer" parent="Background" unique_id=191089240]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,56 +29,57 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HSplit" type="HSplitContainer" parent="Background/Margin"]
+[node name="HSplit" type="HSplitContainer" parent="Background/Margin" unique_id=2123575045]
 layout_mode = 2
+split_offsets = PackedInt32Array(300)
 split_offset = 300
 
-[node name="LeftPane" type="VBoxContainer" parent="Background/Margin/HSplit"]
+[node name="LeftPane" type="VBoxContainer" parent="Background/Margin/HSplit" unique_id=1305499806]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="ControlsPanel" type="PanelContainer" parent="Background/Margin/HSplit/LeftPane"]
+[node name="ControlsPanel" type="PanelContainer" parent="Background/Margin/HSplit/LeftPane" unique_id=1692830216]
 layout_mode = 2
 
-[node name="Margin" type="MarginContainer" parent="Background/Margin/HSplit/LeftPane/ControlsPanel"]
+[node name="Margin" type="MarginContainer" parent="Background/Margin/HSplit/LeftPane/ControlsPanel" unique_id=1797084710]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin" unique_id=1643106938]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="PlayerSelect" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox" instance=ExtResource("2_player_select")]
+[node name="PlayerSelect" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox" unique_id=503374831 instance=ExtResource("2_player_select")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PlaybackControls" type="HBoxContainer" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox"]
+[node name="PlaybackControls" type="HBoxContainer" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox" unique_id=65245407]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="StartButton" type="Button" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox/PlaybackControls"]
+[node name="StartButton" type="Button" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox/PlaybackControls" unique_id=1969507600]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Start"
 
-[node name="StopButton" type="Button" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox/PlaybackControls"]
+[node name="StopButton" type="Button" parent="Background/Margin/HSplit/LeftPane/ControlsPanel/Margin/VBox/PlaybackControls" unique_id=1370616037]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Stop"
 
-[node name="RightPane" type="VBoxContainer" parent="Background/Margin/HSplit"]
+[node name="RightPane" type="VBoxContainer" parent="Background/Margin/HSplit" unique_id=1535617017]
 layout_mode = 2
 
-[node name="MatchesPanel" type="PanelContainer" parent="Background/Margin/HSplit/RightPane"]
+[node name="MatchesPanel" type="PanelContainer" parent="Background/Margin/HSplit/RightPane" unique_id=612881361]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MatchDisplay" type="RichTextLabel" parent="Background/Margin/HSplit/RightPane/MatchesPanel"]
+[node name="MatchDisplay" type="RichTextLabel" parent="Background/Margin/HSplit/RightPane/MatchesPanel" unique_id=2133162250]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

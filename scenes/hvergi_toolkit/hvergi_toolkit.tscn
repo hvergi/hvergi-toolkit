@@ -111,8 +111,10 @@ metadata/_tab_index = 0
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[font_size=30]Beta[/font_size]
-* [b]First Demo Release[/b] Report bugs to hvergi.
+text = "[font_size=30]Version 0.2.0[/font_size]
+* [b]Fix[/b] Godot tc
+
+Report bugs to hvergi.
 "
 
 [node name="AppsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=1943042757]

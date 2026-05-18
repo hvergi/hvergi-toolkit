@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://yrandct5se3l"]
+[gd_scene format=3 uid="uid://yrandct5se3l"]
 
 [ext_resource type="Script" uid="uid://t3p0i0kettvv" path="res://scenes/apps/player_editor/PlayerEditor.cs" id="1_5nnfm"]
 
@@ -82,6 +82,7 @@ text = "Manual Add"
 [node name="PlayerSection" type="HSplitContainer" parent="Background/MarginContainer/MainLayout" unique_id=584826735]
 layout_mode = 2
 size_flags_vertical = 3
+split_offsets = PackedInt32Array(300)
 split_offset = 300
 
 [node name="ListPanel" type="PanelContainer" parent="Background/MarginContainer/MainLayout/PlayerSection" unique_id=222222221]
