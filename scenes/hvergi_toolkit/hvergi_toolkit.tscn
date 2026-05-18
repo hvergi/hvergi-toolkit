@@ -99,11 +99,10 @@ text = "Settings"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 
 [node name="NewsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=582676789]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -116,6 +115,7 @@ text = "[font_size=30]Beta[/font_size]
 "
 
 [node name="AppsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=1943042757]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
