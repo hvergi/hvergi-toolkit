@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://3rbt873eh0b8" path="res://scenes/hvergi_toolkit/HvergiToolkit.cs" id="1_uexwx"]
 [ext_resource type="Theme" uid="uid://44k28fj5f4t7" path="res://darkmode.tres" id="1_v14n5"]
 
-[node name="HvergiToolkit" type="Control" unique_id=1602896807 node_paths=PackedStringArray("terminalOutput", "contentTabContainer", "newsButton", "appsButton", "settingsButton", "playerEditorButton", "moiTrackerButton", "skillTrackerButton", "tradeWatcherButton", "stpCalcButton", "skillCompareButton", "sermonButton", "logAlertButton", "logSearchButton", "affinityFoodPlannerButton", "dyeEstimatorButton", "settlementPlannerButton", "updateButton")]
+[node name="HvergiToolkit" type="Control" unique_id=1602896807 node_paths=PackedStringArray("terminalOutput", "contentTabContainer", "newsButton", "appsButton", "settingsButton", "playerEditorButton", "moiTrackerButton", "skillTrackerButton", "tradeWatcherButton", "stpCalcButton", "skillCompareButton", "sermonButton", "animalCheckerButton", "logAlertButton", "logSearchButton", "affinityFoodPlannerButton", "dyeEstimatorButton", "settlementPlannerButton", "updateButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +24,7 @@ tradeWatcherButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/Gri
 stpCalcButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/STPCalcButton")
 skillCompareButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SkillCompareButton")
 sermonButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SermonButton")
+animalCheckerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/AnimalCheckerButton")
 logAlertButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/LogAlertButton")
 logSearchButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/LogSearchButton")
 affinityFoodPlannerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/AffintyFoodPlannerButton")
@@ -186,6 +187,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 disabled = true
 text = "Sermon Warden"
+
+[node name="AnimalCheckerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=173829104]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Animal Checker"
 
 [node name="DyeEstimatorButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1385247213]
 layout_mode = 2

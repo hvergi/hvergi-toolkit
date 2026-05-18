@@ -35,6 +35,8 @@ namespace HvergiToolkit
         [Export]
         public Button sermonButton;
         [Export]
+        public Button animalCheckerButton;
+        [Export]
         public Button logAlertButton;
         [Export]
         public Button logSearchButton;
@@ -84,6 +86,7 @@ namespace HvergiToolkit
             stpCalcButton.Pressed += () => onAppButtonPressed("res://scenes/apps/stp_calculator/stp_calculator.tscn");
             skillCompareButton.Pressed += () => onAppButtonPressed("res://scenes/apps/skill_compare/skill_compare.tscn");
             sermonButton.Pressed += () => onAppButtonPressed("res://scenes/apps/sermon_warden/sermon_warden.tscn");
+            animalCheckerButton.Pressed += () => onAppButtonPressed("res://scenes/apps/animal_checker/animal_checker.tscn");
             logAlertButton.Pressed += () => onAppButtonPressed("res://scenes/apps/log_alert/log_alert.tscn");
             logSearchButton.Pressed += () => onAppButtonPressed("res://scenes/apps/log_search/log_search.tscn");
             affinityFoodPlannerButton.Pressed += () => onAppButtonPressed("res://scenes/apps/affinity_food_planner/affinity_food_planner.tscn");
