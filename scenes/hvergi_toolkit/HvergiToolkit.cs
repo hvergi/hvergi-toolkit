@@ -118,6 +118,11 @@ namespace HvergiToolkit
                 () => AppSettings.LogAlert.TtsVoiceId, 
                 (id) => AppSettings.LogAlert.TtsVoiceId = id);
 
+            // Initialize Animal Checker Voice
+            SetupVoiceSelection("%AnimalCheckerVoiceSelect", "%AnimalCheckerVoiceReset", voices, 
+                () => AppSettings.AnimalChecker.TtsVoiceId, 
+                (id) => AppSettings.AnimalChecker.TtsVoiceId = id);
+
             SetupAlertGroup("Craft", AppSettings.MoiTracker.CraftAlert, 0, "res://assets/sounds/craft.wav", 1.0f, "Crafting interval reached.");
             SetupAlertGroup("Moi", AppSettings.MoiTracker.MoiAlert, 0, "res://assets/sounds/moi.wav", 1.0f, "{player} has had an M.O.I.");
 

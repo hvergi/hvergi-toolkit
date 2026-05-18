@@ -92,6 +92,18 @@ public partial class AnimalChecker : Window
 
     private void ProcessLine(string line)
     {
+        if(line.Contains("trait points")){
+            if (line.Contains("She")){
+                DisplayServer.TtsSpeak("Female", AppSettings.AnimalChecker.TtsVoiceId);
+            } else {
+                DisplayServer.TtsSpeak("Male", AppSettings.AnimalChecker.TtsVoiceId);
+            }
+
+            return;
+        }
+        
+        //if (line.Contains(" he ") || line.Contains(" she ") || line.Contains(" her ") || line.Contains(" him ")) return;
+        
         // Iterate through each type in the dictionary
         foreach (var entry in MatchDictionary)
         {
@@ -112,8 +124,10 @@ public partial class AnimalChecker : Window
             if (count > 0)
             {
                 _matchDisplay.AppendText($"{type}: {count}\n");
+                DisplayServer.TtsSpeak($"{type}: {count}", AppSettings.AnimalChecker.TtsVoiceId);
             }
         }
+
     }
 
     private void OnCloseRequested()
