@@ -67,7 +67,6 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_vertical = 4
-disabled = true
 text = "Update"
 
 [node name="EndMargin" type="Control" parent="Layout/TopBar" unique_id=1621217307]
@@ -510,12 +509,12 @@ size_flags_horizontal = 3
 [node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919142]
 layout_mode = 2
 
-[node name="ActiveMonitoringHeader" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox"]
+[node name="ActiveMonitoringHeader" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=16058753]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "Active Monitoring"
 
-[node name="TradeWatcherSummaryList" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox"]
+[node name="TradeWatcherSummaryList" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=167543563]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -623,12 +622,12 @@ size_flags_horizontal = 3
 [node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=2083919154]
 layout_mode = 2
 
-[node name="ActiveMonitoringHeader" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox"]
+[node name="ActiveMonitoringHeader" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=1634218049]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "Active Monitoring"
 
-[node name="LogAlertSummaryList" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox"]
+[node name="LogAlertSummaryList" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=21612947]
 unique_name_in_owner = true
 layout_mode = 2
 
