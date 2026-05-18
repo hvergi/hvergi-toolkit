@@ -11,16 +11,10 @@ public partial class TradeMonitorService : Node
     public delegate void TradeLineMatchedEventHandler(string playerName, string formattedBbcode);
 
     private Timer _pollTimer;
-    private readonly Dictionary<string, TradePlayerState> _playerStates = new();
+    private readonly Dictionary<string, LogReader> _logReaders = new();
 
     private readonly Regex _logRegex = new(@"^\[(?<time>\d{2}:\d{2}:\d{2})\] <(?<name>.+?)>(?: \((?<server>\w+?)\))? (?<category>WTB|WTS|WTT|PC|@)\s*(?<msg>.*)$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
     private readonly Regex _itemRegex = new(@"\[(?<item>.+?)\]", RegexOptions.Compiled);
-
-    private class TradePlayerState
-    {
-        public string LogPath;
-        public long LastPos;
-    }
 
     public override void _Ready()
     {
@@ -57,10 +51,10 @@ public partial class TradeMonitorService : Node
             .Select(kvp => kvp.Key)
             .ToHashSet();
 
-        var statesToRemove = _playerStates.Keys.Where(k => !activePlayers.Contains(k)).ToList();
+        var statesToRemove = _logReaders.Keys.Where(k => !activePlayers.Contains(k)).ToList();
         foreach (var key in statesToRemove)
         {
-            _playerStates.Remove(key);
+            _logReaders.Remove(key);
         }
 
         foreach (var kvp in AppSettings.TradeWatcher.PlayerConfigs)
@@ -72,52 +66,25 @@ public partial class TradeMonitorService : Node
 
             if (!Players.PlayerDict.TryGetValue(playerName, out Player player)) continue;
 
-            string currentLogPath = player.GetLogPath("Trade");
-            if (string.IsNullOrEmpty(currentLogPath) || !File.Exists(currentLogPath)) continue;
-
-            if (!_playerStates.TryGetValue(playerName, out var state))
+            if (!_logReaders.TryGetValue(playerName, out var reader))
             {
-                state = new TradePlayerState { LogPath = currentLogPath, LastPos = 0 };
-                
-                // If it's a new state but the file already has contents, don't read the whole backlog right away
-                // Optionally could seek to end, but step 2 implies LastPos = 0 initially so it reads the day's history once.
-                try
-                {
-                    using var fs = new FileStream(currentLogPath, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-                    state.LastPos = fs.Length;
-                }
-                catch (Exception e)
-                {
-                    Terminal.WriteError($"TradeMonitorService: Could not initialize LastPos for {playerName}. {e.Message}");
-                }
-
-                _playerStates[playerName] = state;
+                reader = new LogReader(player);
+                reader.SetPosition(LogReader.LogFileType.Trade, true);
+                _logReaders[playerName] = reader;
             }
-            else if (state.LogPath != currentLogPath)
-            {
-                // Day rollover or path changed
-                state.LogPath = currentLogPath;
-                state.LastPos = 0;
-            }
+            
 
             try
             {
-                using var fs = new FileStream(currentLogPath, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-                if (fs.Length < state.LastPos) state.LastPos = 0; // File was truncated
-                if (fs.Length == state.LastPos) continue; // No new content
-
-                fs.Seek(state.LastPos, SeekOrigin.Begin);
-                using var sr = new StreamReader(fs);
+                var newLines = reader.ReadLog(LogReader.LogFileType.Trade);
                 
-                while (!sr.EndOfStream)
+                foreach (var line in newLines)
                 {
-                    string line = sr.ReadLine();
                     if (!string.IsNullOrWhiteSpace(line))
                     {
                         ProcessLogLine(playerName, config, line);
                     }
                 }
-                state.LastPos = fs.Position;
             }
             catch (Exception e)
             {

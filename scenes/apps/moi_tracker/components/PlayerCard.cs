@@ -88,7 +88,7 @@ public partial class PlayerCard : PanelContainer
             }
             
             // Check for Craft Start
-            if (lowerLine.Contains("you start") || lowerLine.Contains("you start improving"))
+            if (lowerLine.Contains("you start"))
             {
                 _craftsCount++;
                 EmitSignal(SignalName.CraftDetected, _player.Name);
