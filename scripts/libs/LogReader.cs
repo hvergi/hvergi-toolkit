@@ -45,7 +45,8 @@ public class LogReader
     private readonly Player _player;
     private readonly Dictionary<LogFileType, long> _lastPositions = new();
     private readonly Dictionary<LogFileType, string> _lastFiles = new();
-    private int _lastDay = -1;
+    private readonly Dictionary<LogFileType, int> _lastFileDay = new();
+    //private int _lastDay = -1;
 
     public LogReader(Player player)
     {
@@ -61,35 +62,31 @@ public class LogReader
     public List<string> ReadLog(LogFileType type)
     {
         List<string> lines = new();
-        string currentPath = "";
+        int currentDay = DateTime.Now.Day;
+
+        _lastFiles.TryGetValue(type, out string lastPath);
+        _lastFileDay.TryGetValue(type, out int lastDay);
         
-        var dateTime = Time.GetDatetimeDictFromSystem();
-        int currentDay = dateTime["day"].AsInt32();
-
-        if(_lastFiles.TryGetValue(type, out string lastPath)){
-            if(string.IsNullOrEmpty(lastPath)) return lines;
-            
-            if (File.Exists(lastPath))
-            {
-                var (newLines, newPos) = ReadFrom(lastPath, _lastPositions.GetValueOrDefault(type, 0));
-                lines.AddRange(newLines);
-                _lastPositions[type] = newPos;
-            }
-        }
-
-        if(currentDay != _lastDay){
+        if(string.IsNullOrEmpty(lastPath)){
+            _lastFiles[type] = GetPath(type);
+            _lastFileDay[type] = currentDay;
             _lastPositions[type] = 0;
-            currentPath = GetPath(type);
-            if (!string.IsNullOrEmpty(currentPath) && File.Exists(currentPath)){
-                long pos = _lastPositions.GetValueOrDefault(type, 0);
-                var (newLines, newPos) = ReadFrom(currentPath, pos);
-                lines.AddRange(newLines);
-                _lastPositions[type] = newPos;
-                _lastFiles[type] = currentPath;
-            }
         }
-        
-        _lastDay = currentDay;
+
+        if (File.Exists(lastPath)){
+            var (newLines, newPos) = ReadFrom(lastPath, _lastPositions.GetValueOrDefault(type, 0));
+            lines.AddRange(newLines);
+            _lastPositions[type] = newPos;
+        }
+
+        if (currentDay != lastDay){
+            _lastPositions[type] = 0;
+            _lastFiles[type] = GetPath(type);
+            _lastFileDay[type] = currentDay;
+            var (newLines, newPos) = ReadFrom(_lastFiles[type], _lastPositions.GetValueOrDefault(type, 0));
+            lines.AddRange(newLines);
+            _lastPositions[type] = newPos;
+        }
         return lines;
     }
 
