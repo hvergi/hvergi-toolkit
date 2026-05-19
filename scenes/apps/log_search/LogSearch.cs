@@ -261,7 +261,6 @@ public partial class LogSearch : Window
                     
                     if (line != null && line.Contains("Logging started"))
                     {
-                        var daySpan = line.AsSpan(line.Length - 2);
                         if (DateTime.TryParseExact(line.Substring(line.Length - 10), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
                         {
                             currentLogDate = parsedDate;
