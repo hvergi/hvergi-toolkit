@@ -112,7 +112,10 @@ metadata/_tab_index = 0
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[font_size=30]Version 0.2.0[/font_size]
+text = "[font_size=30]Version 0.2.1[/font_size]
+* [b]Fix[/b] ....
+
+[font_size=30]Version 0.2.0[/font_size]
 * [b]Fix[/b] Godot tc
 * [b]Fix[/b] Fixed  issue with date roll over on log reader
 

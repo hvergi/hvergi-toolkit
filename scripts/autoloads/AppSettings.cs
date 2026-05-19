@@ -8,7 +8,7 @@ public static class AppSettings
     private const string SavePath = "user://settings.json";
 
     public static string GitHubRepo { get; } = "hvergi/hvergi-toolkit";
-    public static string CurrentVersion { get; } = "0.2.0";
+    public static string CurrentVersion { get; } = "0.2.1";
 
     public class AlertSettings
     {
