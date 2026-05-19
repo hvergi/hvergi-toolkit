@@ -101,11 +101,10 @@ text = "Settings"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-current_tab = 2
+current_tab = 0
 tabs_visible = false
 
 [node name="NewsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=582676789]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -115,6 +114,7 @@ size_flags_vertical = 3
 bbcode_enabled = true
 text = "[font_size=30]Version 0.2.0[/font_size]
 * [b]Fix[/b] Godot tc
+* [b]Fix[/b] Fixed  issue with date roll over on log reader
 
 Report bugs to hvergi.
 "
@@ -213,6 +213,7 @@ disabled = true
 text = "SettlementPlanner"
 
 [node name="SettingsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=1861348102]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
