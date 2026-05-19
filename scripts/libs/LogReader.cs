@@ -51,8 +51,6 @@ public class LogReader
     public LogReader(Player player)
     {
         _player = player;
-        var dateTime = Time.GetDatetimeDictFromSystem();
-        _lastDay = dateTime["day"].AsInt32();
     }
 
     /// <summary>
@@ -68,8 +66,10 @@ public class LogReader
         _lastFileDay.TryGetValue(type, out int lastDay);
         
         if(string.IsNullOrEmpty(lastPath)){
-            _lastFiles[type] = GetPath(type);
-            _lastFileDay[type] = currentDay;
+            lastPath = GetPath(type);
+            _lastFiles[type] = lastPath;
+            lastDay = currentDay;
+            _lastFileDay[type] = lastDay;
             _lastPositions[type] = 0;
         }
 
@@ -78,14 +78,17 @@ public class LogReader
             lines.AddRange(newLines);
             _lastPositions[type] = newPos;
         }
-
+        //Not all logs change daily, so we check for changes, and if it changed, we start reading from the begining
         if (currentDay != lastDay){
-            _lastPositions[type] = 0;
-            _lastFiles[type] = GetPath(type);
+            var checkpath = GetPath(type);
+            if(checkpath != lastPath){
+                _lastPositions[type] = 0;
+                _lastFiles[type] = checkpath;
+                var (newLines, newPos) = ReadFrom(_lastFiles[type], _lastPositions.GetValueOrDefault(type, 0));
+                lines.AddRange(newLines);
+                _lastPositions[type] = newPos;
+            }
             _lastFileDay[type] = currentDay;
-            var (newLines, newPos) = ReadFrom(_lastFiles[type], _lastPositions.GetValueOrDefault(type, 0));
-            lines.AddRange(newLines);
-            _lastPositions[type] = newPos;
         }
         return lines;
     }
