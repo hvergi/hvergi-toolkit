@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxkvbgcbdfqgx"]
+[gd_scene format=3 uid="uid://cxkvbgcbdfqgx"]
 
 [ext_resource type="Script" uid="uid://b74mkk2kfgovr" path="res://scenes/apps/log_search/LogSearch.cs" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://ba3uxhjkuliwo" path="res://scenes/ui/player_list/player_list.tscn" id="2_player_list"]
@@ -24,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+split_offsets = PackedInt32Array(250)
 split_offset = 250
 
 [node name="PlayerList" parent="Background/HSplit" unique_id=499699518 instance=ExtResource("2_player_list")]
@@ -32,6 +33,7 @@ layout_mode = 2
 
 [node name="VSplit" type="VSplitContainer" parent="Background/HSplit" unique_id=2056851629]
 layout_mode = 2
+split_offsets = PackedInt32Array(350)
 split_offset = 350
 
 [node name="SearchSection" type="VBoxContainer" parent="Background/HSplit/VSplit" unique_id=2041517077]

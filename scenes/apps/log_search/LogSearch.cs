@@ -35,7 +35,7 @@ public partial class LogSearch : Window
     private int _viewStartLine;
     private int _viewEndLine;
 
-    private int _lastChunckCount;
+    private int _lastChunkCount;
 
     public override void _Ready()
     {
@@ -261,7 +261,6 @@ public partial class LogSearch : Window
                     
                     if (line != null && line.Contains("Logging started"))
                     {
-                        var daySpan = line.AsSpan(line.Length - 2);
                         if (DateTime.TryParseExact(line.Substring(line.Length - 10), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
                         {
                             currentLogDate = parsedDate;
@@ -470,7 +469,7 @@ public partial class LogSearch : Window
             {
                 if (prev)
                 {
-                    int diff = chunkLines.Count - _lastChunckCount;
+                    int diff = chunkLines.Count - _lastChunkCount;
                     _fileViewer.SetCaretLine(oldCaret + diff);
                     _fileViewer.ScrollVertical = oldVScroll + diff;
                 }
@@ -481,7 +480,7 @@ public partial class LogSearch : Window
                 }
 
             }
-            _lastChunckCount = chunkLines.Count;
+            _lastChunkCount = chunkLines.Count;
         }
         catch (Exception e)
         {

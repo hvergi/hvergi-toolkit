@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://3rbt873eh0b8" path="res://scenes/hvergi_toolkit/HvergiToolkit.cs" id="1_uexwx"]
 [ext_resource type="Theme" uid="uid://44k28fj5f4t7" path="res://darkmode.tres" id="1_v14n5"]
+[ext_resource type="Script" uid="uid://bib44c8vap54h" path="res://scripts/ui/GodotCopyrightDisplay.cs" id="3_64b4g"]
 
 [node name="HvergiToolkit" type="Control" unique_id=1602896807 node_paths=PackedStringArray("terminalOutput", "contentTabContainer", "newsButton", "appsButton", "settingsButton", "playerEditorButton", "moiTrackerButton", "skillTrackerButton", "tradeWatcherButton", "stpCalcButton", "skillCompareButton", "sermonButton", "animalCheckerButton", "logAlertButton", "logSearchButton", "affinityFoodPlannerButton", "dyeEstimatorButton", "settlementPlannerButton", "updateButton")]
 layout_mode = 3
@@ -111,8 +112,11 @@ metadata/_tab_index = 0
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[font_size=30]Beta[/font_size]
-* [b]First Demo Release[/b] Report bugs to hvergi.
+text = "[font_size=30]Version 0.2.0[/font_size]
+* [b]Fix[/b] Godot tc
+* [b]Fix[/b] Fixed  issue with date roll over on log reader
+
+Report bugs to hvergi.
 "
 
 [node name="AppsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=1943042757]
@@ -216,9 +220,10 @@ metadata/_tab_index = 2
 [node name="SettingsTabs" type="TabContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer" unique_id=1311410306]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 12
 
 [node name="Moi Tracker" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1731227032]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -759,6 +764,34 @@ text = "Reset"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Credits" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=611722462]
+layout_mode = 2
+metadata/_tab_index = 12
+
+[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits" unique_id=409163744]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits/Margin" unique_id=936372901]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits/Margin/VBox" unique_id=2113699898]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Godot Engine Credits"
+
+[node name="CreditsRTL" type="RichTextLabel" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits/Margin/VBox" unique_id=305240830]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+script = ExtResource("3_64b4g")
 
 [node name="Terminal" type="Panel" parent="Layout" unique_id=1039621438]
 custom_minimum_size = Vector2(0, 200)

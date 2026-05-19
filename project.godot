@@ -27,6 +27,10 @@ window/subwindows/embed_subwindows=false
 
 project/assembly_name="Hvergi Toolkit"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/license_exporter/plugin.cfg")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr4lvkktllics"]
+[gd_scene format=3 uid="uid://cr4lvkktllics"]
 
 [ext_resource type="Script" uid="uid://cbk71yisgcfi3" path="res://scenes/apps/skill_compare/SkillCompare.cs" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://ba3uxhjkuliwo" path="res://scenes/ui/player_list/player_list.tscn" id="2_player_list"]
@@ -24,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+split_offsets = PackedInt32Array(250)
 split_offset = 250
 
 [node name="PlayerList" parent="Background/HSplit" unique_id=499699518 instance=ExtResource("2_player_list")]
@@ -87,6 +88,7 @@ metadata/_tab_index = 0
 
 [node name="Affinities" type="Tree" parent="Background/HSplit/MainContent/TabContainer" unique_id=7]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 columns = 4
 column_titles_visible = true
