@@ -100,7 +100,7 @@ public class Player
             while (!sr.EndOfStream)
             {
                 string line = sr.ReadLine();
-                if (line.StartsWith("event_log_rotation="))
+                if (line != null && line.StartsWith("event_log_rotation="))
                 {
                     string val = line.Split('=')[1].Trim();
                     if (int.TryParse(val, out int rotation))
