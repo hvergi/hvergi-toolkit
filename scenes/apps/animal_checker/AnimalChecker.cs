@@ -131,6 +131,8 @@ public partial class AnimalChecker : Window
     {
         // --- Gender ---
         string gender = null;
+        string color = null;
+
         foreach (var line in lines)
         {
             if (!line.Contains("trait points")) continue;
@@ -138,6 +140,12 @@ public partial class AnimalChecker : Window
             break;
         }
 
+        foreach (var line in lines)
+        {
+            if(!line.Contains(" colour is ")) continue;
+            color = line.Split(" is ").Last();
+            break;
+        }
         // --- Rare trait counts (accumulated across all lines) ---
         var rareCounts = new Dictionary<string, int>();
         foreach (var key in RareDictionary.Keys)
@@ -174,8 +182,11 @@ public partial class AnimalChecker : Window
 
         // --- Bail out early if there is nothing animal-related in this group ---
         bool hasGender = gender != null;
+        bool hasColor = color != null;
         bool hasRare   = rareCounts.Values.Any(c => c > 0);
         bool hasTrait  = traitCounts.Values.Any(c => c > 0);
+        Terminal.Write($"AnimalChecker: {hasGender} {hasColor} {hasRare} {hasTrait}");
+
         if (!hasGender && !hasRare && !hasTrait) return;
 
         // --- Emit output in order: gender → rare → traits ---
@@ -183,6 +194,11 @@ public partial class AnimalChecker : Window
         {
             _matchDisplay.AppendText($"[b]{gender}[/b] ");
             DisplayServer.TtsSpeak(gender, AppSettings.AnimalChecker.TtsVoiceId);
+        }
+        if (hasColor)
+        {
+            _matchDisplay.AppendText($"[b]{color}[/b] ");
+            DisplayServer.TtsSpeak(color, AppSettings.AnimalChecker.TtsVoiceId);
         }
 
         foreach (var entry in rareCounts.Where(kv => kv.Value > 0))
