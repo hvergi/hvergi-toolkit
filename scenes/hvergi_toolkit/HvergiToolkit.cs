@@ -306,6 +306,11 @@ namespace HvergiToolkit
 
         private async void OnUpdatePressed()
         {
+            if (!OS.Singleton.HasFeature("template"))
+            {
+                Terminal.WriteWarning("You are in dev mode, you can't update.");
+                return;
+            }
             Terminal.Write("Checking for updates...");
             var (available, version, url) = await UpdateManager.CheckForUpdates();
 

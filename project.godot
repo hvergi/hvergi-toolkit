@@ -14,7 +14,7 @@ config/name="Hvergi Toolkit"
 config/version="0.1.2"
 run/main_scene="uid://pd2xx5lapec4"
 config/use_custom_user_dir=true
-config/features=PackedStringArray("4.6", "C#", "Forward Plus")
+config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 run/low_processor_mode=true
 config/icon="res://icon.svg"
 

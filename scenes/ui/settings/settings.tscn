@@ -1,0 +1,217 @@
+[gd_scene format=3 uid="uid://djcndo15ne5f4"]
+
+[ext_resource type="Script" uid="uid://b8im0gs3lnimv" path="res://scenes/ui/settings/Settings.cs" id="1_1m5ku"]
+
+[node name="Settings" type="ScrollContainer" unique_id=614003993]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1m5ku")
+metadata/_tab_index = 0
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1791698673]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=1965423428]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Margin/VBox" unique_id=1227120084]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Settings"
+
+[node name="Global" type="FoldableContainer" parent="Margin/VBox" unique_id=313096907]
+layout_mode = 2
+title = "Global"
+
+[node name="MOITracker" type="FoldableContainer" parent="Margin/VBox" unique_id=1632471978]
+layout_mode = 2
+title = "MOI Tracker"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/VBox/MOITracker" unique_id=542133468]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=1434095499]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer" unique_id=989982798]
+layout_mode = 2
+text = "Time To Craft Alert"
+
+[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer" unique_id=212992033]
+layout_mode = 2
+text = "Reset"
+
+[node name="OptionButton" type="OptionButton" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer" unique_id=429294427]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Sound"
+popup/item_0/id = 0
+popup/item_1/text = "TTS"
+popup/item_1/id = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer" unique_id=239848165]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=2039043065]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer2" unique_id=957532095]
+layout_mode = 2
+text = "Sound File:"
+
+[node name="Label2" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer2" unique_id=1816118170]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{Path to file}"
+
+[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer2" unique_id=215371599]
+layout_mode = 2
+text = "Change"
+
+[node name="Button2" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer2" unique_id=1839624630]
+layout_mode = 2
+text = "Reset"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=1070271212]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2" unique_id=129117050]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=677790449]
+layout_mode = 2
+text = "TTS Message:"
+
+[node name="LineEdit" type="LineEdit" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=1167361340]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Time to Craft."
+
+[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=1635612460]
+layout_mode = 2
+text = "Reset"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2" unique_id=450825757]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1399580821]
+layout_mode = 2
+text = "TTS Voice"
+
+[node name="OptionButton" type="OptionButton" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=126992070]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1922755252]
+layout_mode = 2
+text = "Reset"
+
+[node name="HSeparator" type="HSeparator" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=724711000]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=265549818]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer3" unique_id=1170952129]
+layout_mode = 2
+text = "MOI Alert"
+
+[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer3" unique_id=998463101]
+layout_mode = 2
+text = "Reset"
+
+[node name="OptionButton" type="OptionButton" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer3" unique_id=1175239057]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Sound"
+popup/item_0/id = 0
+popup/item_1/text = "TTS"
+popup/item_1/id = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer3" unique_id=2027487900]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=1425580085]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer4" unique_id=1150208008]
+layout_mode = 2
+text = "Sound File:"
+
+[node name="Label2" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer4" unique_id=1932057263]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{Path to file}"
+
+[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer4" unique_id=2077174919]
+layout_mode = 2
+text = "Change"
+
+[node name="Button2" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer4" unique_id=221827131]
+layout_mode = 2
+text = "Reset"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=2073405338]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3" unique_id=588236967]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=2146215210]
+layout_mode = 2
+text = "TTS Message:"
+
+[node name="LineEdit" type="LineEdit" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=1689127063]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{player} has had an M.O.I"
+
+[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=1257555528]
+layout_mode = 2
+text = "Reset"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3" unique_id=1681368742]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3/HBoxContainer" unique_id=1826047979]
+layout_mode = 2
+text = "TTS Voice"
+
+[node name="OptionButton" type="OptionButton" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3/HBoxContainer" unique_id=2113149774]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3/HBoxContainer" unique_id=1948790780]
+layout_mode = 2
+text = "Reset"
+
+[node name="TradeWatcher" type="FoldableContainer" parent="Margin/VBox" unique_id=405724889]
+layout_mode = 2
+title = "Trade Watcher"
+
+[node name="LogAlert" type="FoldableContainer" parent="Margin/VBox" unique_id=1326050355]
+layout_mode = 2
+title = "Log Alert"
+
+[node name="AnimalChecker" type="FoldableContainer" parent="Margin/VBox" unique_id=2001200922]
+layout_mode = 2
+title = "Animal Checker"

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://3rbt873eh0b8" path="res://scenes/hvergi_toolkit/HvergiToolkit.cs" id="1_uexwx"]
 [ext_resource type="Theme" uid="uid://44k28fj5f4t7" path="res://darkmode.tres" id="1_v14n5"]
 [ext_resource type="Script" uid="uid://bib44c8vap54h" path="res://scripts/ui/GodotCopyrightDisplay.cs" id="3_64b4g"]
+[ext_resource type="PackedScene" uid="uid://djcndo15ne5f4" path="res://scenes/ui/settings/settings.tscn" id="3_bn1ar"]
 
 [node name="HvergiToolkit" type="Control" unique_id=1602896807 node_paths=PackedStringArray("terminalOutput", "contentTabContainer", "newsButton", "appsButton", "settingsButton", "playerEditorButton", "moiTrackerButton", "skillTrackerButton", "tradeWatcherButton", "stpCalcButton", "skillCompareButton", "sermonButton", "animalCheckerButton", "logAlertButton", "logSearchButton", "affinityFoodPlannerButton", "dyeEstimatorButton", "settlementPlannerButton", "updateButton")]
 layout_mode = 3
@@ -112,8 +113,10 @@ metadata/_tab_index = 0
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[font_size=30]Version 0.2.1[/font_size]
-* [b]Fix[/b] ....
+text = "[font_size=30]Version 0.3.0[/font_size]
+* [b]Update[/b] Updated to Godot 4.7
+* [b]Change[/b] Large Scale UI Overhual Started
+* [b]Change[/b] Overhualed Settings
 
 [font_size=30]Version 0.2.0[/font_size]
 * [b]Fix[/b] Godot tc
@@ -223,12 +226,15 @@ metadata/_tab_index = 2
 [node name="SettingsTabs" type="TabContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer" unique_id=1311410306]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 12
+current_tab = 1
 
-[node name="Moi Tracker" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1731227032]
+[node name="Settings" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=614003993 instance=ExtResource("3_bn1ar")]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 0
+
+[node name="Moi Tracker" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1731227032]
+layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker" unique_id=1619848392]
 layout_mode = 2
@@ -465,7 +471,7 @@ text = "Test TTS"
 [node name="Skill Tracker" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=322011847]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 2
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Tracker" unique_id=1401711441]
 layout_mode = 2
@@ -486,7 +492,7 @@ text = "Skill Tracker Settings"
 [node name="Trade Watcher" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=816255030]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 3
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher" unique_id=1828636225]
 layout_mode = 2
@@ -536,7 +542,7 @@ layout_mode = 2
 [node name="STP Calculator" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=480427419]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 4
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/STP Calculator" unique_id=51860773]
 layout_mode = 2
@@ -557,7 +563,7 @@ text = "STP Calculator Settings"
 [node name="Skill Compare" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1772808845]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 4
+metadata/_tab_index = 5
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Compare" unique_id=1660734422]
 layout_mode = 2
@@ -578,7 +584,7 @@ text = "Skill Compare Settings"
 [node name="Sermon Warden" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=2030772858]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 5
+metadata/_tab_index = 6
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Sermon Warden" unique_id=270833853]
 layout_mode = 2
@@ -599,7 +605,7 @@ text = "Sermon Warden Settings"
 [node name="Log Alert" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1516116895]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 6
+metadata/_tab_index = 7
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert" unique_id=297964867]
 layout_mode = 2
@@ -649,7 +655,7 @@ layout_mode = 2
 [node name="Log Search" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=465707810]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 7
+metadata/_tab_index = 8
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Search" unique_id=965815423]
 layout_mode = 2
@@ -670,7 +676,7 @@ text = "Log Search Settings"
 [node name="Affinity Food" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1448589800]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 8
+metadata/_tab_index = 9
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Affinity Food" unique_id=460387701]
 layout_mode = 2
@@ -691,7 +697,7 @@ text = "Affinity Food Planner Settings"
 [node name="Dye Estimator" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=322384043]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 9
+metadata/_tab_index = 10
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Dye Estimator" unique_id=1349293426]
 layout_mode = 2
@@ -712,7 +718,7 @@ text = "Dye Estimator Settings"
 [node name="Settlement Planner" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=15294218]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 10
+metadata/_tab_index = 11
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Settlement Planner" unique_id=1264862683]
 layout_mode = 2
@@ -733,7 +739,7 @@ text = "Settlement Planner Settings"
 [node name="Animal Checker" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=173829105]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 11
+metadata/_tab_index = 12
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker" unique_id=173829106]
 layout_mode = 2
@@ -769,8 +775,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Credits" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=611722462]
+visible = false
 layout_mode = 2
-metadata/_tab_index = 12
+metadata/_tab_index = 13
 
 [node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits" unique_id=409163744]
 layout_mode = 2
