@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://pd2xx5lapec4"]
 
 [ext_resource type="Script" uid="uid://3rbt873eh0b8" path="res://scenes/hvergi_toolkit/HvergiToolkit.cs" id="1_uexwx"]
-[ext_resource type="Theme" uid="uid://44k28fj5f4t7" path="res://darkmode.tres" id="1_v14n5"]
 [ext_resource type="Script" uid="uid://bib44c8vap54h" path="res://scripts/ui/GodotCopyrightDisplay.cs" id="3_64b4g"]
 [ext_resource type="PackedScene" uid="uid://djcndo15ne5f4" path="res://scenes/ui/settings/settings.tscn" id="3_bn1ar"]
 
@@ -12,29 +11,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_v14n5")
 script = ExtResource("1_uexwx")
-terminalOutput = NodePath("Layout/Terminal/TerminalLog")
-contentTabContainer = NodePath("Layout/HBoxContainer/SectionTab")
-newsButton = NodePath("Layout/HBoxContainer/NavIcons/NewsButton")
-appsButton = NodePath("Layout/HBoxContainer/NavIcons/AppsButton")
-settingsButton = NodePath("Layout/HBoxContainer/NavIcons/SettingsButton")
-playerEditorButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/PlayerEditorButton")
-moiTrackerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/MoiTrackerButton")
-skillTrackerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SkillTrackerButton")
-tradeWatcherButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/TradeWatcherButton")
-stpCalcButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/STPCalcButton")
-skillCompareButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SkillCompareButton")
-sermonButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SermonButton")
-animalCheckerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/AnimalCheckerButton")
-logAlertButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/LogAlertButton")
-logSearchButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/LogSearchButton")
-affinityFoodPlannerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/AffintyFoodPlannerButton")
-dyeEstimatorButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/DyeEstimatorButton")
-settlementPlannerButton = NodePath("Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SettlementPlannerButton")
-updateButton = NodePath("Layout/TopBar/UpdateButton")
+terminalOutput = NodePath("PanelContainer/Layout/Terminal/TerminalLog")
+contentTabContainer = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab")
+newsButton = NodePath("PanelContainer/Layout/HBoxContainer/NavIcons/NewsButton")
+appsButton = NodePath("PanelContainer/Layout/HBoxContainer/NavIcons/AppsButton")
+settingsButton = NodePath("PanelContainer/Layout/HBoxContainer/NavIcons/SettingsButton")
+playerEditorButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/PlayerEditorButton")
+moiTrackerButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/MoiTrackerButton")
+skillTrackerButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SkillTrackerButton")
+tradeWatcherButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/TradeWatcherButton")
+stpCalcButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/STPCalcButton")
+skillCompareButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SkillCompareButton")
+sermonButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SermonButton")
+animalCheckerButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/AnimalCheckerButton")
+logAlertButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/LogAlertButton")
+logSearchButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/LogSearchButton")
+affinityFoodPlannerButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/AffintyFoodPlannerButton")
+dyeEstimatorButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/DyeEstimatorButton")
+settlementPlannerButton = NodePath("PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer/SettlementPlannerButton")
+updateButton = NodePath("PanelContainer/Layout/TopBar/UpdateButton")
 
-[node name="Panel" type="Panel" parent="." unique_id=1824719474]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2053839793]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,74 +40,72 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Layout" type="VBoxContainer" parent="." unique_id=2035933914]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+[node name="Layout" type="VBoxContainer" parent="PanelContainer" unique_id=2035933914]
+layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="TopBar" type="HBoxContainer" parent="Layout" unique_id=1056479420]
+[node name="TopBar" type="HBoxContainer" parent="PanelContainer/Layout" unique_id=1056479420]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="MarginContainer" type="MarginContainer" parent="Layout/TopBar" unique_id=1091780233]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/Layout/TopBar" unique_id=1091780233]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 
-[node name="Title" type="Label" parent="Layout/TopBar/MarginContainer" unique_id=459968443]
+[node name="Title" type="Label" parent="PanelContainer/Layout/TopBar/MarginContainer" unique_id=459968443]
 layout_mode = 2
 text = "Hvergi Toolkit"
 
-[node name="Spacer" type="Control" parent="Layout/TopBar" unique_id=1402091906]
+[node name="Spacer" type="Control" parent="PanelContainer/Layout/TopBar" unique_id=1402091906]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UpdateButton" type="Button" parent="Layout/TopBar" unique_id=2055742349]
+[node name="UpdateButton" type="Button" parent="PanelContainer/Layout/TopBar" unique_id=2055742349]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_vertical = 4
 text = "Update"
 
-[node name="EndMargin" type="Control" parent="Layout/TopBar" unique_id=1621217307]
+[node name="EndMargin" type="Control" parent="PanelContainer/Layout/TopBar" unique_id=1621217307]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Layout" unique_id=1084317602]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Layout" unique_id=1084317602]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NavIcons" type="VBoxContainer" parent="Layout/HBoxContainer" unique_id=108099786]
+[node name="NavIcons" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer" unique_id=108099786]
 layout_mode = 2
 
-[node name="NewsButton" type="Button" parent="Layout/HBoxContainer/NavIcons" unique_id=320236079]
+[node name="NewsButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/NavIcons" unique_id=320236079]
 layout_mode = 2
 size_flags_vertical = 3
 text = "News"
 
-[node name="AppsButton" type="Button" parent="Layout/HBoxContainer/NavIcons" unique_id=701573834]
+[node name="AppsButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/NavIcons" unique_id=701573834]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Apps"
 
-[node name="SettingsButton" type="Button" parent="Layout/HBoxContainer/NavIcons" unique_id=989672632]
+[node name="SettingsButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/NavIcons" unique_id=989672632]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Settings"
 
-[node name="SectionTab" type="TabContainer" parent="Layout/HBoxContainer" unique_id=1585863744]
+[node name="SectionTab" type="TabContainer" parent="PanelContainer/Layout/HBoxContainer" unique_id=1585863744]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 current_tab = 0
 tabs_visible = false
 
-[node name="NewsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=582676789]
+[node name="NewsContainer" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab" unique_id=582676789]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Layout/HBoxContainer/SectionTab/NewsContainer" unique_id=761584771]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Layout/HBoxContainer/SectionTab/NewsContainer" unique_id=761584771]
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
@@ -125,118 +121,118 @@ text = "[font_size=30]Version 0.3.0[/font_size]
 Report bugs to hvergi.
 "
 
-[node name="AppsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=1943042757]
+[node name="AppsContainer" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab" unique_id=1943042757]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="GridContainer" type="GridContainer" parent="Layout/HBoxContainer/SectionTab/AppsContainer" unique_id=232175105]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer" unique_id=232175105]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 4
 
-[node name="PlayerEditorButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1423878364]
+[node name="PlayerEditorButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1423878364]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Player Editor"
 
-[node name="MoiTrackerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1542206932]
+[node name="MoiTrackerButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1542206932]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Moi Tracker"
 
-[node name="SkillTrackerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=2012942201]
+[node name="SkillTrackerButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=2012942201]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Skill Tracker"
 
-[node name="TradeWatcherButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1299991211]
+[node name="TradeWatcherButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1299991211]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Trade Watcher"
 
-[node name="STPCalcButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=506206683]
+[node name="STPCalcButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=506206683]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "STP Calculator"
 
-[node name="SkillCompareButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=88345195]
+[node name="SkillCompareButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=88345195]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Skill Compare"
 
-[node name="LogSearchButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=609761138]
+[node name="LogSearchButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=609761138]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Log Search"
 
-[node name="LogAlertButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1655472775]
+[node name="LogAlertButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1655472775]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Log Alert"
 
-[node name="AffintyFoodPlannerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=696753583]
+[node name="AffintyFoodPlannerButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=696753583]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Affinty Food Planner"
 
-[node name="SermonButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1262834605]
+[node name="SermonButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1262834605]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 disabled = true
 text = "Sermon Warden"
 
-[node name="AnimalCheckerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=173829104]
+[node name="AnimalCheckerButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=173829104]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Animal Checker"
 
-[node name="DyeEstimatorButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1385247213]
+[node name="DyeEstimatorButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=1385247213]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 disabled = true
 text = "Dye Estimator"
 
-[node name="SettlementPlannerButton" type="Button" parent="Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=481683656]
+[node name="SettlementPlannerButton" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/AppsContainer/GridContainer" unique_id=481683656]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 disabled = true
 text = "SettlementPlanner"
 
-[node name="SettingsContainer" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab" unique_id=1861348102]
+[node name="SettingsContainer" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab" unique_id=1861348102]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="SettingsTabs" type="TabContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer" unique_id=1311410306]
+[node name="SettingsTabs" type="TabContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer" unique_id=1311410306]
 layout_mode = 2
 size_flags_vertical = 3
 current_tab = 1
 
-[node name="Settings" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=614003993 instance=ExtResource("3_bn1ar")]
+[node name="Settings" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=614003993 instance=ExtResource("3_bn1ar")]
 visible = false
 layout_mode = 2
 
-[node name="Moi Tracker" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1731227032]
+[node name="Moi Tracker" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1731227032]
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker" unique_id=1619848392]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker" unique_id=1619848392]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -244,50 +240,50 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin" unique_id=2059754235]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin" unique_id=2059754235]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1519821552]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1519821552]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Moi Tracker Settings"
 
-[node name="VoiceSettings" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1684054032]
+[node name="VoiceSettings" type="HBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1684054032]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/VoiceSettings" unique_id=2147191878]
+[node name="Label" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/VoiceSettings" unique_id=2147191878]
 layout_mode = 2
 text = "Global TTS Voice: "
 
-[node name="MoiVoiceReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/VoiceSettings" unique_id=1891321069]
+[node name="MoiVoiceReset" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/VoiceSettings" unique_id=1891321069]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Reset"
 
-[node name="MoiVoiceSelect" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/VoiceSettings" unique_id=1685323556]
+[node name="MoiVoiceSelect" type="OptionButton" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/VoiceSettings" unique_id=1685323556]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=123207499]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=123207499]
 layout_mode = 2
 
-[node name="CraftAlertHeader" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1690964090]
+[node name="CraftAlertHeader" type="HBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1690964090]
 layout_mode = 2
 
-[node name="CraftAlertTitle" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftAlertHeader" unique_id=1499899796]
+[node name="CraftAlertTitle" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftAlertHeader" unique_id=1499899796]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"HeaderMedium"
 text = "Craft Alert"
 
-[node name="CraftAlertReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftAlertHeader" unique_id=1929905578]
+[node name="CraftAlertReset" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftAlertHeader" unique_id=1929905578]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Reset to Defaults"
 
-[node name="CraftAlertMode" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=515218962]
+[node name="CraftAlertMode" type="OptionButton" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=515218962]
 unique_name_in_owner = true
 layout_mode = 2
 selected = 0
@@ -297,37 +293,37 @@ popup/item_0/id = 0
 popup/item_1/text = "TTS"
 popup/item_1/id = 1
 
-[node name="CraftSoundSettings" type="GridContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=820543261]
+[node name="CraftSoundSettings" type="GridContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=820543261]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 10
 columns = 2
 
-[node name="PathLabel" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=758398187]
+[node name="PathLabel" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=758398187]
 layout_mode = 2
 text = "Sound File:"
 
-[node name="HBox" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=1052132588]
+[node name="HBox" type="HBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=1052132588]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CraftSoundPath" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings/HBox" unique_id=423112055]
+[node name="CraftSoundPath" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings/HBox" unique_id=423112055]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "res://assets/sounds/craft.wav"
 clip_text = true
 
-[node name="CraftSoundChange" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings/HBox" unique_id=1873058838]
+[node name="CraftSoundChange" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings/HBox" unique_id=1873058838]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Change"
 
-[node name="VolLabel" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=755879554]
+[node name="VolLabel" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=755879554]
 layout_mode = 2
 text = "Volume:"
 
-[node name="CraftSoundVolume" type="HSlider" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=817126691]
+[node name="CraftSoundVolume" type="HSlider" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=817126691]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -336,57 +332,57 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="Spacer" type="Control" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=733838087]
+[node name="Spacer" type="Control" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=733838087]
 layout_mode = 2
 
-[node name="CraftSoundTest" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=279203517]
+[node name="CraftSoundTest" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftSoundSettings" unique_id=279203517]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Test Sound"
 
-[node name="CraftTTSSettings" type="GridContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1033274530]
+[node name="CraftTTSSettings" type="GridContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1033274530]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_constants/h_separation = 10
 columns = 2
 
-[node name="MsgLabel" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftTTSSettings" unique_id=1326747819]
+[node name="MsgLabel" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftTTSSettings" unique_id=1326747819]
 layout_mode = 2
 text = "Message:"
 
-[node name="CraftTTSMessage" type="LineEdit" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftTTSSettings" unique_id=903702665]
+[node name="CraftTTSMessage" type="LineEdit" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftTTSSettings" unique_id=903702665]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "{player} has crafted."
 
-[node name="Spacer" type="Control" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftTTSSettings" unique_id=87874932]
+[node name="Spacer" type="Control" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftTTSSettings" unique_id=87874932]
 layout_mode = 2
 
-[node name="CraftTTSTest" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftTTSSettings" unique_id=4478781]
+[node name="CraftTTSTest" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/CraftTTSSettings" unique_id=4478781]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Test TTS"
 
-[node name="HSeparator2" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1621258694]
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1621258694]
 layout_mode = 2
 
-[node name="MoiAlertHeader" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1206601261]
+[node name="MoiAlertHeader" type="HBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1206601261]
 layout_mode = 2
 
-[node name="MoiAlertTitle" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiAlertHeader" unique_id=1655935228]
+[node name="MoiAlertTitle" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiAlertHeader" unique_id=1655935228]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"HeaderMedium"
 text = "Moi Alert"
 
-[node name="MoiAlertReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiAlertHeader" unique_id=1980499349]
+[node name="MoiAlertReset" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiAlertHeader" unique_id=1980499349]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Reset to Defaults"
 
-[node name="MoiAlertMode" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=282229421]
+[node name="MoiAlertMode" type="OptionButton" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=282229421]
 unique_name_in_owner = true
 layout_mode = 2
 selected = 0
@@ -396,37 +392,37 @@ popup/item_0/id = 0
 popup/item_1/text = "TTS"
 popup/item_1/id = 1
 
-[node name="MoiSoundSettings" type="GridContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1193437127]
+[node name="MoiSoundSettings" type="GridContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1193437127]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 10
 columns = 2
 
-[node name="PathLabel" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=423848036]
+[node name="PathLabel" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=423848036]
 layout_mode = 2
 text = "Sound File:"
 
-[node name="HBox" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=1673984531]
+[node name="HBox" type="HBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=1673984531]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MoiSoundPath" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings/HBox" unique_id=571945432]
+[node name="MoiSoundPath" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings/HBox" unique_id=571945432]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "res://assets/sounds/moi.wav"
 clip_text = true
 
-[node name="MoiSoundChange" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings/HBox" unique_id=323615092]
+[node name="MoiSoundChange" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings/HBox" unique_id=323615092]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Change"
 
-[node name="VolLabel" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=1245056419]
+[node name="VolLabel" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=1245056419]
 layout_mode = 2
 text = "Volume:"
 
-[node name="MoiSoundVolume" type="HSlider" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=681549511]
+[node name="MoiSoundVolume" type="HSlider" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=681549511]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -435,45 +431,45 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="Spacer" type="Control" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=767127388]
+[node name="Spacer" type="Control" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=767127388]
 layout_mode = 2
 
-[node name="MoiSoundTest" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=844044630]
+[node name="MoiSoundTest" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiSoundSettings" unique_id=844044630]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Test Sound"
 
-[node name="MoiTTSSettings" type="GridContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1860702564]
+[node name="MoiTTSSettings" type="GridContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox" unique_id=1860702564]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_constants/h_separation = 10
 columns = 2
 
-[node name="MsgLabel" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiTTSSettings" unique_id=1904963020]
+[node name="MsgLabel" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiTTSSettings" unique_id=1904963020]
 layout_mode = 2
 text = "Message:"
 
-[node name="MoiTTSMessage" type="LineEdit" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiTTSSettings" unique_id=550940661]
+[node name="MoiTTSMessage" type="LineEdit" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiTTSSettings" unique_id=550940661]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "{player} has had an M.O.I."
 
-[node name="Spacer" type="Control" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiTTSSettings" unique_id=283393120]
+[node name="Spacer" type="Control" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiTTSSettings" unique_id=283393120]
 layout_mode = 2
 
-[node name="MoiTTSTest" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiTTSSettings" unique_id=1743132937]
+[node name="MoiTTSTest" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Moi Tracker/Margin/VBox/MoiTTSSettings" unique_id=1743132937]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Test TTS"
 
-[node name="Skill Tracker" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=322011847]
+[node name="Skill Tracker" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=322011847]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Tracker" unique_id=1401711441]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Tracker" unique_id=1401711441]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -481,20 +477,20 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Tracker/Margin" unique_id=1829819]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Tracker/Margin" unique_id=1829819]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Tracker/Margin/VBox" unique_id=1940057465]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Tracker/Margin/VBox" unique_id=1940057465]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Skill Tracker Settings"
 
-[node name="Trade Watcher" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=816255030]
+[node name="Trade Watcher" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=816255030]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher" unique_id=1828636225]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher" unique_id=1828636225]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -502,49 +498,49 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin" unique_id=120645492]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin" unique_id=120645492]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919137]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919137]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Trade Watcher Settings"
 
-[node name="TradeVoiceSettings" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919138]
+[node name="TradeVoiceSettings" type="HBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919138]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox/TradeVoiceSettings" unique_id=2083919139]
+[node name="Label" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox/TradeVoiceSettings" unique_id=2083919139]
 layout_mode = 2
 text = "Global TTS Voice: "
 
-[node name="TradeVoiceReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox/TradeVoiceSettings" unique_id=2083919140]
+[node name="TradeVoiceReset" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox/TradeVoiceSettings" unique_id=2083919140]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Reset"
 
-[node name="TradeVoiceSelect" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox/TradeVoiceSettings" unique_id=2083919141]
+[node name="TradeVoiceSelect" type="OptionButton" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox/TradeVoiceSettings" unique_id=2083919141]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919142]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=2083919142]
 layout_mode = 2
 
-[node name="ActiveMonitoringHeader" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=16058753]
+[node name="ActiveMonitoringHeader" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=16058753]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "Active Monitoring"
 
-[node name="TradeWatcherSummaryList" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=167543563]
+[node name="TradeWatcherSummaryList" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Trade Watcher/Margin/VBox" unique_id=167543563]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="STP Calculator" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=480427419]
+[node name="STP Calculator" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=480427419]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/STP Calculator" unique_id=51860773]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/STP Calculator" unique_id=51860773]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -552,20 +548,20 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/STP Calculator/Margin" unique_id=675453765]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/STP Calculator/Margin" unique_id=675453765]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/STP Calculator/Margin/VBox" unique_id=353110588]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/STP Calculator/Margin/VBox" unique_id=353110588]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "STP Calculator Settings"
 
-[node name="Skill Compare" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1772808845]
+[node name="Skill Compare" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1772808845]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 5
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Compare" unique_id=1660734422]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Compare" unique_id=1660734422]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -573,20 +569,20 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Compare/Margin" unique_id=48966613]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Compare/Margin" unique_id=48966613]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Compare/Margin/VBox" unique_id=1510039103]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Skill Compare/Margin/VBox" unique_id=1510039103]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Skill Compare Settings"
 
-[node name="Sermon Warden" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=2030772858]
+[node name="Sermon Warden" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=2030772858]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 6
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Sermon Warden" unique_id=270833853]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Sermon Warden" unique_id=270833853]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -594,20 +590,20 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Sermon Warden/Margin" unique_id=565933466]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Sermon Warden/Margin" unique_id=565933466]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Sermon Warden/Margin/VBox" unique_id=1048826622]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Sermon Warden/Margin/VBox" unique_id=1048826622]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Sermon Warden Settings"
 
-[node name="Log Alert" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1516116895]
+[node name="Log Alert" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1516116895]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 7
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert" unique_id=297964867]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert" unique_id=297964867]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -615,49 +611,49 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin" unique_id=1467195990]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin" unique_id=1467195990]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=220118292]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=220118292]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Log Alert Settings"
 
-[node name="LogAlertVoiceSettings" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=2083919150]
+[node name="LogAlertVoiceSettings" type="HBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=2083919150]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox/LogAlertVoiceSettings" unique_id=2083919151]
+[node name="Label" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox/LogAlertVoiceSettings" unique_id=2083919151]
 layout_mode = 2
 text = "Global TTS Voice: "
 
-[node name="LogAlertVoiceReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox/LogAlertVoiceSettings" unique_id=2083919152]
+[node name="LogAlertVoiceReset" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox/LogAlertVoiceSettings" unique_id=2083919152]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Reset"
 
-[node name="LogAlertVoiceSelect" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox/LogAlertVoiceSettings" unique_id=2083919153]
+[node name="LogAlertVoiceSelect" type="OptionButton" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox/LogAlertVoiceSettings" unique_id=2083919153]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSeparator" type="HSeparator" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=2083919154]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=2083919154]
 layout_mode = 2
 
-[node name="ActiveMonitoringHeader" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=1634218049]
+[node name="ActiveMonitoringHeader" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=1634218049]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "Active Monitoring"
 
-[node name="LogAlertSummaryList" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=21612947]
+[node name="LogAlertSummaryList" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Alert/Margin/VBox" unique_id=21612947]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Log Search" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=465707810]
+[node name="Log Search" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=465707810]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 8
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Search" unique_id=965815423]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Search" unique_id=965815423]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -665,20 +661,20 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Search/Margin" unique_id=78888248]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Search/Margin" unique_id=78888248]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Search/Margin/VBox" unique_id=1124440957]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Log Search/Margin/VBox" unique_id=1124440957]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Log Search Settings"
 
-[node name="Affinity Food" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1448589800]
+[node name="Affinity Food" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=1448589800]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 9
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Affinity Food" unique_id=460387701]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Affinity Food" unique_id=460387701]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -686,20 +682,20 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Affinity Food/Margin" unique_id=673772755]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Affinity Food/Margin" unique_id=673772755]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Affinity Food/Margin/VBox" unique_id=1988654698]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Affinity Food/Margin/VBox" unique_id=1988654698]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Affinity Food Planner Settings"
 
-[node name="Dye Estimator" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=322384043]
+[node name="Dye Estimator" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=322384043]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 10
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Dye Estimator" unique_id=1349293426]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Dye Estimator" unique_id=1349293426]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -707,20 +703,20 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Dye Estimator/Margin" unique_id=1367801023]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Dye Estimator/Margin" unique_id=1367801023]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Dye Estimator/Margin/VBox" unique_id=1226493522]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Dye Estimator/Margin/VBox" unique_id=1226493522]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Dye Estimator Settings"
 
-[node name="Settlement Planner" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=15294218]
+[node name="Settlement Planner" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=15294218]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 11
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Settlement Planner" unique_id=1264862683]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Settlement Planner" unique_id=1264862683]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -728,20 +724,20 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Settlement Planner/Margin" unique_id=1606835588]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Settlement Planner/Margin" unique_id=1606835588]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Settlement Planner/Margin/VBox" unique_id=760286135]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Settlement Planner/Margin/VBox" unique_id=760286135]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Settlement Planner Settings"
 
-[node name="Animal Checker" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=173829105]
+[node name="Animal Checker" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=173829105]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 12
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker" unique_id=173829106]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker" unique_id=173829106]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -749,37 +745,37 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin" unique_id=173829107]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin" unique_id=173829107]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox" unique_id=173829108]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox" unique_id=173829108]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Animal Checker Settings"
 
-[node name="AnimalCheckerVoiceSettings" type="HBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox" unique_id=173829109]
+[node name="AnimalCheckerVoiceSettings" type="HBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox" unique_id=173829109]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox/AnimalCheckerVoiceSettings" unique_id=173829110]
+[node name="Label" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox/AnimalCheckerVoiceSettings" unique_id=173829110]
 layout_mode = 2
 text = "Global TTS Voice: "
 
-[node name="AnimalCheckerVoiceReset" type="Button" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox/AnimalCheckerVoiceSettings" unique_id=173829111]
+[node name="AnimalCheckerVoiceReset" type="Button" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox/AnimalCheckerVoiceSettings" unique_id=173829111]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Reset"
 
-[node name="AnimalCheckerVoiceSelect" type="OptionButton" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox/AnimalCheckerVoiceSettings" unique_id=173829112]
+[node name="AnimalCheckerVoiceSelect" type="OptionButton" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Animal Checker/Margin/VBox/AnimalCheckerVoiceSettings" unique_id=173829112]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Credits" type="ScrollContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=611722462]
+[node name="Credits" type="ScrollContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs" unique_id=611722462]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 13
 
-[node name="Margin" type="MarginContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits" unique_id=409163744]
+[node name="Margin" type="MarginContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits" unique_id=409163744]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -788,26 +784,26 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits/Margin" unique_id=936372901]
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits/Margin" unique_id=936372901]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits/Margin/VBox" unique_id=2113699898]
+[node name="Title" type="Label" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits/Margin/VBox" unique_id=2113699898]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Godot Engine Credits"
 
-[node name="CreditsRTL" type="RichTextLabel" parent="Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits/Margin/VBox" unique_id=305240830]
+[node name="CreditsRTL" type="RichTextLabel" parent="PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs/Credits/Margin/VBox" unique_id=305240830]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
 script = ExtResource("3_64b4g")
 
-[node name="Terminal" type="Panel" parent="Layout" unique_id=1039621438]
+[node name="Terminal" type="Panel" parent="PanelContainer/Layout" unique_id=1039621438]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="TerminalLog" type="RichTextLabel" parent="Layout/Terminal" unique_id=1093261778]
+[node name="TerminalLog" type="RichTextLabel" parent="PanelContainer/Layout/Terminal" unique_id=1093261778]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

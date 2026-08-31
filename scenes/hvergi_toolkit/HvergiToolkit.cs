@@ -97,7 +97,7 @@ namespace HvergiToolkit
             dyeEstimatorButton.Pressed += () => onAppButtonPressed("res://scenes/apps/dye_estimator/dye_estimator.tscn");
             settlementPlannerButton.Pressed += () => onAppButtonPressed("res://scenes/apps/settlement_planner/settlement_planner.tscn");
 
-            var settingsTabs = GetNode<TabContainer>("Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs");
+            var settingsTabs = GetNode<TabContainer>("PanelContainer/Layout/HBoxContainer/SectionTab/SettingsContainer/SettingsTabs");
             settingsTabs.TabChanged += (tab) => RefreshMonitoringSummaries();
 
             InitializeSettings();

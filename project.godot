@@ -11,12 +11,18 @@ config_version=5
 [application]
 
 config/name="Hvergi Toolkit"
-config/version="0.1.2"
+config/version="0.3.0"
 run/main_scene="uid://pd2xx5lapec4"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 run/low_processor_mode=true
+boot_splash/bg_color=Color(0.13333334, 0.13333334, 0.13333334, 1)
 config/icon="res://icon.svg"
+
+[autoload]
+
+SettingsManager="*uid://cocxoefhlagrr"
+_mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 
 [display]
 
@@ -29,7 +35,11 @@ project/assembly_name="Hvergi Toolkit"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/license_exporter/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg", "res://addons/license_exporter/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://75qs05e5uq5p"
 
 [physics]
 
@@ -37,5 +47,6 @@ enabled=PackedStringArray("res://addons/license_exporter/plugin.cfg")
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 textures/vram_compression/import_etc2_astc=true

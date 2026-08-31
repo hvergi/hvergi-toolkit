@@ -1,0 +1,23 @@
+[gd_resource type="Theme" format=3 uid="uid://75qs05e5uq5p"]
+
+[ext_resource type="StyleBox" uid="uid://b6y2fiamq58am" path="res://themes/button_p_stylebox.tres" id="1_7luvb"]
+[ext_resource type="StyleBox" uid="uid://cehry1m3dtnmj" path="res://themes/button_d_stylebox.tres" id="1_gpeny"]
+[ext_resource type="StyleBox" uid="uid://kxwslpahmp4a" path="res://themes/button_fh_stylebox.tres" id="1_rbrta"]
+[ext_resource type="StyleBox" uid="uid://bdn8f2si1km6b" path="res://themes/panel_stylebox.tres" id="1_vfcvl"]
+[ext_resource type="StyleBox" uid="uid://c0fs1w1q7rwy0" path="res://themes/button_stylebox.tres" id="2_7luvb"]
+[ext_resource type="StyleBox" uid="uid://bh8w23maxag8q" path="res://themes/inset_panel_stylebox.tres" id="6_clk6v"]
+
+[resource]
+Button/styles/disabled = ExtResource("1_gpeny")
+Button/styles/focus = ExtResource("1_rbrta")
+Button/styles/hover = ExtResource("1_rbrta")
+Button/styles/normal = ExtResource("2_7luvb")
+Button/styles/pressed = ExtResource("1_7luvb")
+FoldableContainer/styles/panel = ExtResource("1_vfcvl")
+FoldableContainer/styles/title_collapsed_hover_panel = ExtResource("1_rbrta")
+FoldableContainer/styles/title_collapsed_panel = ExtResource("1_7luvb")
+FoldableContainer/styles/title_hover_panel = ExtResource("1_rbrta")
+FoldableContainer/styles/title_panel = ExtResource("2_7luvb")
+LineEdit/styles/normal = ExtResource("6_clk6v")
+Panel/styles/panel = ExtResource("1_vfcvl")
+PanelContainer/styles/panel = ExtResource("1_vfcvl")

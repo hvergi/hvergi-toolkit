@@ -2,13 +2,26 @@
 
 [ext_resource type="Script" uid="uid://b8im0gs3lnimv" path="res://scenes/ui/settings/Settings.cs" id="1_1m5ku"]
 
-[node name="Settings" type="ScrollContainer" unique_id=614003993]
+[node name="Settings" type="ScrollContainer" unique_id=614003993 node_paths=PackedStringArray("_soundPicker", "_craftAlertTypeButton", "_craftSoundContainer", "_craftTTSContainer", "_craftSoundChangeButton", "_craftSoundFileLabel", "_craftSoundReset", "_moiAlertTypeButton", "_moiSoundContainer", "_moiTTSContainer", "_moiSoundChangeButton", "_moiSoundFileLabel", "_moiSoundReset")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1m5ku")
+_soundPicker = NodePath("SoundPicker")
+_craftAlertTypeButton = NodePath("Margin/VBox/MOITracker/VBoxContainer/HBoxContainer/CraftAlertTypeOptionButton")
+_craftSoundContainer = NodePath("Margin/VBox/MOITracker/VBoxContainer/CraftAlertSoundHBoxContainer")
+_craftTTSContainer = NodePath("Margin/VBox/MOITracker/VBoxContainer/CraftAlertTTSVBoxContainer")
+_craftSoundChangeButton = NodePath("Margin/VBox/MOITracker/VBoxContainer/CraftAlertSoundHBoxContainer/CraftAlertSoundChangeButton")
+_craftSoundFileLabel = NodePath("Margin/VBox/MOITracker/VBoxContainer/CraftAlertSoundHBoxContainer/CraftAlertSoundFileLabel")
+_craftSoundReset = NodePath("Margin/VBox/MOITracker/VBoxContainer/CraftAlertSoundHBoxContainer/CraftAlertSoundResetButton")
+_moiAlertTypeButton = NodePath("Margin/VBox/MOITracker/VBoxContainer/HBoxContainer3/MOIAlertTypeOptionButton")
+_moiSoundContainer = NodePath("Margin/VBox/MOITracker/VBoxContainer/MOIAlertSoundHBoxContainer")
+_moiTTSContainer = NodePath("Margin/VBox/MOITracker/VBoxContainer/MOIAlertTTSVBoxContainer")
+_moiSoundChangeButton = NodePath("Margin/VBox/MOITracker/VBoxContainer/MOIAlertSoundHBoxContainer/MOIAlertSoundChangeButton")
+_moiSoundFileLabel = NodePath("Margin/VBox/MOITracker/VBoxContainer/MOIAlertSoundHBoxContainer/MOIAlertSoundFileLabel")
+_moiSoundReset = NodePath("Margin/VBox/MOITracker/VBoxContainer/MOIAlertSoundHBoxContainer/MOIAlertSoundResetButton")
 metadata/_tab_index = 0
 
 [node name="Margin" type="MarginContainer" parent="." unique_id=1791698673]
@@ -47,11 +60,7 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Time To Craft Alert"
 
-[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer" unique_id=212992033]
-layout_mode = 2
-text = "Reset"
-
-[node name="OptionButton" type="OptionButton" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer" unique_id=429294427]
+[node name="CraftAlertTypeOptionButton" type="OptionButton" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer" unique_id=429294427]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
@@ -61,62 +70,63 @@ popup/item_0/id = 0
 popup/item_1/text = "TTS"
 popup/item_1/id = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer" unique_id=239848165]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=2039043065]
+[node name="CraftAlertSoundHBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=2039043065]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer2" unique_id=957532095]
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/CraftAlertSoundHBoxContainer" unique_id=957532095]
 layout_mode = 2
 text = "Sound File:"
 
-[node name="Label2" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer2" unique_id=1816118170]
+[node name="CraftAlertSoundFileLabel" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/CraftAlertSoundHBoxContainer" unique_id=1816118170]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "{Path to file}"
 
-[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer2" unique_id=215371599]
+[node name="CraftAlertSoundChangeButton" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/CraftAlertSoundHBoxContainer" unique_id=215371599]
 layout_mode = 2
 text = "Change"
 
-[node name="Button2" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer2" unique_id=1839624630]
+[node name="CraftAlertSoundResetButton" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/CraftAlertSoundHBoxContainer" unique_id=1839624630]
 layout_mode = 2
 text = "Reset"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=1070271212]
+[node name="CraftAlertTTSVBoxContainer" type="VBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=1070271212]
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2" unique_id=129117050]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/CraftAlertTTSVBoxContainer" unique_id=129117050]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=677790449]
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/CraftAlertTTSVBoxContainer/HBoxContainer3" unique_id=677790449]
 layout_mode = 2
 text = "TTS Message:"
 
-[node name="LineEdit" type="LineEdit" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=1167361340]
+[node name="CraftAlertTTSMessageLineEdit" type="LineEdit" parent="Margin/VBox/MOITracker/VBoxContainer/CraftAlertTTSVBoxContainer/HBoxContainer3" unique_id=1167361340]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Time to Craft."
 
-[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=1635612460]
+[node name="CraftAlertTTSMessageResetButton" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/CraftAlertTTSVBoxContainer/HBoxContainer3" unique_id=1635612460]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Reset"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2" unique_id=450825757]
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/CraftAlertTTSVBoxContainer" unique_id=450825757]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1399580821]
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/CraftAlertTTSVBoxContainer/HBoxContainer" unique_id=1399580821]
 layout_mode = 2
 text = "TTS Voice"
 
-[node name="OptionButton" type="OptionButton" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=126992070]
+[node name="CraftAlertTTSVoiceOptionButton" type="OptionButton" parent="Margin/VBox/MOITracker/VBoxContainer/CraftAlertTTSVBoxContainer/HBoxContainer" unique_id=126992070]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1922755252]
+[node name="CraftAlertTTSResetButton" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/CraftAlertTTSVBoxContainer/HBoxContainer" unique_id=1922755252]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Reset"
 
@@ -131,11 +141,8 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "MOI Alert"
 
-[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer3" unique_id=998463101]
-layout_mode = 2
-text = "Reset"
-
-[node name="OptionButton" type="OptionButton" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer3" unique_id=1175239057]
+[node name="MOIAlertTypeOptionButton" type="OptionButton" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer3" unique_id=1175239057]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
@@ -148,59 +155,60 @@ popup/item_1/id = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer3" unique_id=2027487900]
 layout_mode = 2
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=1425580085]
+[node name="MOIAlertSoundHBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=1425580085]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer4" unique_id=1150208008]
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/MOIAlertSoundHBoxContainer" unique_id=1150208008]
 layout_mode = 2
 text = "Sound File:"
 
-[node name="Label2" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer4" unique_id=1932057263]
+[node name="MOIAlertSoundFileLabel" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/MOIAlertSoundHBoxContainer" unique_id=1932057263]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "{Path to file}"
 
-[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer4" unique_id=2077174919]
+[node name="MOIAlertSoundChangeButton" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/MOIAlertSoundHBoxContainer" unique_id=2077174919]
 layout_mode = 2
 text = "Change"
 
-[node name="Button2" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/HBoxContainer4" unique_id=221827131]
+[node name="MOIAlertSoundResetButton" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/MOIAlertSoundHBoxContainer" unique_id=221827131]
 layout_mode = 2
 text = "Reset"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=2073405338]
+[node name="MOIAlertTTSVBoxContainer" type="VBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer" unique_id=2073405338]
+visible = false
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3" unique_id=588236967]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/MOIAlertTTSVBoxContainer" unique_id=588236967]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=2146215210]
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/MOIAlertTTSVBoxContainer/HBoxContainer3" unique_id=2146215210]
 layout_mode = 2
 text = "TTS Message:"
 
-[node name="LineEdit" type="LineEdit" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=1689127063]
+[node name="LineEdit" type="LineEdit" parent="Margin/VBox/MOITracker/VBoxContainer/MOIAlertTTSVBoxContainer/HBoxContainer3" unique_id=1689127063]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "{player} has had an M.O.I"
 
-[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=1257555528]
+[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/MOIAlertTTSVBoxContainer/HBoxContainer3" unique_id=1257555528]
 layout_mode = 2
 text = "Reset"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3" unique_id=1681368742]
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBox/MOITracker/VBoxContainer/MOIAlertTTSVBoxContainer" unique_id=1681368742]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3/HBoxContainer" unique_id=1826047979]
+[node name="Label" type="Label" parent="Margin/VBox/MOITracker/VBoxContainer/MOIAlertTTSVBoxContainer/HBoxContainer" unique_id=1826047979]
 layout_mode = 2
 text = "TTS Voice"
 
-[node name="OptionButton" type="OptionButton" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3/HBoxContainer" unique_id=2113149774]
+[node name="OptionButton" type="OptionButton" parent="Margin/VBox/MOITracker/VBoxContainer/MOIAlertTTSVBoxContainer/HBoxContainer" unique_id=2113149774]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/VBoxContainer3/HBoxContainer" unique_id=1948790780]
+[node name="Button" type="Button" parent="Margin/VBox/MOITracker/VBoxContainer/MOIAlertTTSVBoxContainer/HBoxContainer" unique_id=1948790780]
 layout_mode = 2
 text = "Reset"
 
@@ -215,3 +223,13 @@ title = "Log Alert"
 [node name="AnimalChecker" type="FoldableContainer" parent="Margin/VBox" unique_id=2001200922]
 layout_mode = 2
 title = "Animal Checker"
+
+[node name="SoundPicker" type="FileDialog" parent="." unique_id=264237687]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(600, 400)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.wav", "*.mp3", "*.ogg")
+use_native_dialog = true
